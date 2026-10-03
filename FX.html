@@ -1,4 +1,17 @@
-<!doctype html><html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>安的事件分析与决策系统 V56 动态现实决策版</title><style>body{margin:0;background:#f4f6fa;color:#172033;font-family:-apple-system,BlinkMacSystemFont,PingFang SC,Microsoft YaHei,sans-serif}header{padding:28px 18px;text-align:center;color:#fff;background:linear-gradient(135deg,#17254d,#315efb)}h1{margin:0;font-size:24px}.sub{margin-top:8px;opacity:.82;font-size:13px}main{max-width:900px;margin:auto;padding:16px}.card{background:#fff;border:1px solid #e4e8ef;border-radius:16px;padding:18px;margin-bottom:14px;box-shadow:0 5px 20px #1520440a}h2{font-size:17px;margin:0 0 12px}.grid{display:grid;grid-template-columns:repeat(2,1fr);gap:12px}label{display:block;font-size:13px;font-weight:700;margin:12px 0 7px}textarea,input{width:100%;box-sizing:border-box;border:1px solid #dfe4ec;border-radius:10px;padding:11px;font:inherit}textarea{min-height:100px;resize:vertical}button{border:0;border-radius:10px;padding:11px 16px;font-weight:700;margin:12px 8px 0 0;cursor:pointer}.primary{background:#315efb;color:#fff}.secondary{background:#edf1f7}.result{display:none}.metric{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}.metric div{background:#f7f9fc;border-radius:12px;padding:13px}.metric b{display:block;font-size:20px;margin-top:5px}.muted{color:#687386;font-size:13px}.step{display:flex;gap:10px;margin:14px 0}.num{min-width:30px;height:30px;border-radius:9px;background:#edf1ff;color:#315efb;display:grid;place-items:center;font-weight:700}.notice{padding:12px;border-radius:10px;background:#fff8e8;border:1px solid #f1dfb1;color:#765500;font-size:13px}.qbox{margin:10px 0 14px;padding:12px;background:#f7f9fc;border-radius:12px}.qbox textarea{min-height:72px;background:#fff}.tag{display:inline-block;padding:3px 8px;border-radius:999px;background:#edf1ff;color:#315efb;font-size:11px;margin-left:6px}.good{background:#edf8f0;border-color:#cfe8d7;color:#245c34}.bad{background:#fff0f0;border-color:#edcccc;color:#8a3030}.dash{display:grid;grid-template-columns:repeat(4,1fr);gap:10px}.dash div{background:#f7f9fc;border-radius:12px;padding:12px}.dash b{display:block;font-size:18px;margin-top:5px}.small{font-size:12px;color:#687386}@media(max-width:620px){.grid,.metric,.dash{grid-template-columns:1fr}h1{font-size:21px}}.valuegrid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}.valuegrid div{background:#f7f9fc;border-radius:12px;padding:12px}.timeline{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}.timeline div{background:#f7f9fc;border-radius:12px;padding:12px}@media(max-width:620px){.valuegrid,.timeline{grid-template-columns:1fr}}.wizard{padding:14px;background:#f7f9fc;border-radius:12px}.wizard-nav{display:flex;justify-content:space-between;align-items:center;gap:10px}.progress{height:8px;background:#e8ecf3;border-radius:99px;overflow:hidden}.progress i{display:block;height:100%;width:0;background:#315efb}.wizard-q{font-size:16px;font-weight:700;margin:14px 0 8px}.wizard-a{min-height:120px}.dashboard-grid{display:grid;grid-template-columns:repeat(6,1fr);gap:10px}.dashboard-detail{line-height:1.7}.dashboard-grid div{background:#f7f9fc;border-radius:12px;padding:12px}.dashboard-grid b{display:block;font-size:17px;margin-top:5px}.mini-list{margin:8px 0 0 18px;padding:0}.mini-list li{margin:5px 0}@media(max-width:760px){.dashboard-grid{grid-template-columns:repeat(2,1fr)}} .v8-start{display:block}.v8-start textarea{min-height:150px;font-size:16px}.v8-start .tip{margin-top:8px}.v8-only{display:block!important}.v8-hide{display:none!important}#smart{display:none}.v8-start .primary{font-size:15px;padding:13px 20px}@media(max-width:620px){.v8-start textarea{min-height:130px}}}</style>
+<!DOCTYPE html>
+<html lang="zh-CN"><head><meta charset="utf-8"/><meta content="width=device-width,initial-scale=1" name="viewport"/><title>安的事件分析与决策系统 V57 动态现实决策版</title><style>body{margin:0;background:#f4f6fa;color:#172033;font-family:-apple-system,BlinkMacSystemFont,PingFang SC,Microsoft YaHei,sans-serif}header{padding:28px 18px;text-align:center;color:#fff;background:linear-gradient(135deg,#17254d,#315efb)}h1{margin:0;font-size:24px}.sub{margin-top:8px;opacity:.82;font-size:13px}main{max-width:900px;margin:auto;padding:16px}.card{background:#fff;border:1px solid #e4e8ef;border-radius:16px;padding:18px;margin-bottom:14px;box-shadow:0 5px 20px #1520440a}h2{font-size:17px;margin:0 0 12px}.grid{display:grid;grid-template-columns:repeat(2,1fr);gap:12px}label{display:block;font-size:13px;font-weight:700;margin:12px 0 7px}textarea,input{width:100%;box-sizing:border-box;border:1px solid #dfe4ec;border-radius:10px;padding:11px;font:inherit}textarea{min-height:100px;resize:vertical}button{border:0;border-radius:10px;padding:11px 16px;font-weight:700;margin:12px 8px 0 0;cursor:pointer}.primary{background:#315efb;color:#fff}.secondary{background:#edf1f7}.result{display:none}.metric{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}.metric div{background:#f7f9fc;border-radius:12px;padding:13px}.metric b{display:block;font-size:20px;margin-top:5px}.muted{color:#687386;font-size:13px}.step{display:flex;gap:10px;margin:14px 0}.num{min-width:30px;height:30px;border-radius:9px;background:#edf1ff;color:#315efb;display:grid;place-items:center;font-weight:700}.notice{padding:12px;border-radius:10px;background:#fff8e8;border:1px solid #f1dfb1;color:#765500;font-size:13px}.qbox{margin:10px 0 14px;padding:12px;background:#f7f9fc;border-radius:12px}.qbox textarea{min-height:72px;background:#fff}.tag{display:inline-block;padding:3px 8px;border-radius:999px;background:#edf1ff;color:#315efb;font-size:11px;margin-left:6px}.good{background:#edf8f0;border-color:#cfe8d7;color:#245c34}.bad{background:#fff0f0;border-color:#edcccc;color:#8a3030}.dash{display:grid;grid-template-columns:repeat(4,1fr);gap:10px}.dash div{background:#f7f9fc;border-radius:12px;padding:12px}.dash b{display:block;font-size:18px;margin-top:5px}.small{font-size:12px;color:#687386}@media(max-width:620px){.grid,.metric,.dash{grid-template-columns:1fr}h1{font-size:21px}}.valuegrid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}.valuegrid div{background:#f7f9fc;border-radius:12px;padding:12px}.timeline{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}.timeline div{background:#f7f9fc;border-radius:12px;padding:12px}@media(max-width:620px){.valuegrid,.timeline{grid-template-columns:1fr}}.wizard{padding:14px;background:#f7f9fc;border-radius:12px}.wizard-nav{display:flex;justify-content:space-between;align-items:center;gap:10px}.progress{height:8px;background:#e8ecf3;border-radius:99px;overflow:hidden}.progress i{display:block;height:100%;width:0;background:#315efb}.wizard-q{font-size:16px;font-weight:700;margin:14px 0 8px}.wizard-a{min-height:120px}.dashboard-grid{display:grid;grid-template-columns:repeat(6,1fr);gap:10px}.dashboard-detail{line-height:1.7}.dashboard-grid div{background:#f7f9fc;border-radius:12px;padding:12px}.dashboard-grid b{display:block;font-size:17px;margin-top:5px}.mini-list{margin:8px 0 0 18px;padding:0}.mini-list li{margin:5px 0}@media(max-width:760px){.dashboard-grid{grid-template-columns:repeat(2,1fr)}} .v8-start{display:block}.v8-start textarea{min-height:150px;font-size:16px}.v8-start .tip{margin-top:8px}.v8-only{display:block!important}.v8-hide{display:none!important}#smart{display:none}.v8-start .primary{font-size:15px;padding:13px 20px}@media(max-width:620px){.v8-start textarea{min-height:130px}}
+/* V57 主界面极简模式：第一个整体大框是唯一前台工作区；其后的所有分析模块继续在后台运行，但不再占用主界面。 */
+main > section:not(#v8Start){display:none !important;}
+</style>
+<style id="mainOnlyFirstFrame">
+/* V57正式极简主界面：第一个整体大框以下全部后台运行，不在主界面展示。 */
+main > section:not(#v8Start),
+main > div:not(#v8Start),
+main > .result:not(#v8Start) { display:none !important; }
+/* 动态插入到第一个大框之后的后台面板同样隐藏，但不删除、不停止其逻辑。 */
+main > section[id]:not(#v8Start),
+main > section[class*="card"]:not(#v8Start) { display:none !important; }
+</style>
 <style id="backendEngineVisibility">
 /* V7.4：专业引擎全部后台运行，主界面不展示内部分析模块 */
 #industryEngine,
@@ -6,32 +19,42 @@
 #industryTreeV70,
 #professionalAudit { display:none !important; }
 </style>
-<style>[data-internal="true"]{display:none!important}</style></head><body><header><h1>安的事件分析与决策系统 <span style="font-size:12px;opacity:.65">V56</span></h1><div class="sub">问题 → 事实 → 因果 → 博弈 → 概率 → EV → 风险 → 方案 → 翻转 → 压测 → 复盘→结果→建议</div></header><main><section class="card v8-start" id="v8Start"><h2>我想分析什么？</h2><textarea id="v8Input" placeholder="直接用自己的话告诉我你正在考虑什么。
+<style>[data-internal="true"]{display:none!important}</style><style id="v57FormalUiHideDevPanels">
+/* 正式界面：六项智能强化/证据权重测试层只在后台运行，不占用主界面。 */
+#v57PlusPanel{display:none !important;}
+</style>
+<style id="v57MainOnlyFinal">
+/* V57 最终正式界面：主界面只保留第一个整体大框；其余模块全部后台运行。 */
+main > *:not(#v8Start) { display:none !important; }
+/* 动态脚本即使尝试显示内部面板，也不能把后台模块带回主界面。 */
+main > #v8Start ~ * { display:none !important; visibility:hidden !important; }
+</style>
+</head><body><header><h1>安的事件分析与决策系统 <span style="font-size:12px;opacity:.65">V57</span></h1><div class="sub">问题 → 事实 → 因果 → 博弈 → 概率 → EV → 风险 → 方案 → 翻转 → 压测 → 复盘→结果→建议</div></header><main><section class="card v8-start" id="v8Start"><h2>我想分析什么？</h2><textarea id="v8Input" placeholder="直接用自己的话告诉我你正在考虑什么。
 
 例如：
 “我想在郑州二七区开一个英语培训班，不知道值不值得做。”
 
-不用选择行业，也不用填写概率、收益、成本等参数。系统会自己判断并一步一步问你。"></textarea><div class="muted tip">你只需要描述问题，其他一切复杂统计和计算问题交给我完成。</div><button class="primary" onclick="startV8()">开始智能分析</button><div style="margin-top:10px"><button class="secondary" type="button" onclick="clearCurrentAnalysis()">清除本次数据</button><button class="secondary" type="button" onclick="openDataManager()">清除所有数据</button></div><div id="dataManager" class="notice" style="display:none;margin-top:10px"><b>清除所有数据</b><div class="small" style="margin-top:6px">“重新开始”只清除当前分析；“清除全部数据”会删除本系统保存在本机浏览器中的历史案例、预测记录和项目数据。</div><button class="secondary" type="button" onclick="clearCurrentAnalysis()">清除本次分析</button><button class="secondary" type="button" onclick="clearAllAppData()">🗑 清除全部数据</button><button class="secondary" type="button" onclick="closeDataManager()">关闭</button></div><div id="smartInterviewStatus" class="small" style="margin-top:10px;display:none"></div></section>
+不用选择行业，也不用填写概率、收益、成本等参数。系统会自己判断并一步一步问你。"></textarea><div class="muted tip">你只需要描述问题，其他一切复杂统计和计算问题交给我完成。</div><button class="primary" onclick="startV8()">开始智能分析</button><div style="margin-top:10px"><button class="secondary" onclick="clearCurrentAnalysis()" type="button">清除本次数据</button><button class="secondary" onclick="openDataManager()" type="button">清除所有数据</button></div><div class="notice" id="dataManager" style="display:none;margin-top:10px"><b>清除所有数据</b><div class="small" style="margin-top:6px">“重新开始”只清除当前分析；“清除全部数据”会删除本系统保存在本机浏览器中的历史案例、预测记录和项目数据。</div><button class="secondary" onclick="clearCurrentAnalysis()" type="button">清除本次分析</button><button class="secondary" onclick="clearAllAppData()" type="button">🗑 清除全部数据</button><button class="secondary" onclick="closeDataManager()" type="button">关闭</button></div><div class="small" id="smartInterviewStatus" style="margin-top:10px;display:none"></div></section>
 <section class="card" id="researchBridge" style="display:none">
 <h2>🌐 外部资料调查</h2>
 <div class="notice" id="researchStatus">系统会先判断是否需要外部资料。</div>
-<div class="grid" style="margin-top:10px"><div><label>搜索范围</label><select id="researchMode"><option value="china" selected>🇨🇳 中国搜索优先</option><option value="global">🌍 全球搜索</option></select></div><div><label>调查深度</label><select id="researchDepth"><option value="standard" selected>标准</option><option value="deep">深度</option></select></div></div>
+<div class="grid" style="margin-top:10px"><div><label>搜索范围</label><select id="researchMode"><option selected="" value="china">🇨🇳 中国搜索优先</option><option value="global">🌍 全球搜索</option></select></div><div><label>调查深度</label><select id="researchDepth"><option selected="" value="standard">标准</option><option value="deep">深度</option></select></div></div>
 <div id="researchTasks" style="margin-top:10px"></div>
-<button class="secondary" type="button" onclick="regenerateResearchTasks()">重新生成调查任务</button>
-<button class="primary" type="button" onclick="startChinaResearch()">开始查资料</button>
+<button class="secondary" onclick="regenerateResearchTasks()" type="button">重新生成调查任务</button>
+<button class="primary" onclick="startChinaResearch()" type="button">开始查资料</button>
 <div class="small" style="margin-top:8px">搜索结果属于外部线索，不自动等同于已验证事实；正式进入计算大脑前，应记录来源、日期、样本、口径并进行交叉验证。</div>
 </section>
-<section class="card v8-hide"><h2>① 新建事件</h2><label>事件名称</label><input id="title" placeholder="例如：是否回家探亲？是否继续一段感情？是否扩大培训业务？"><label>决策类型</label><select id="decisionType"><option value="生活决策">生活决策</option><option value="感情投入">感情投入</option><option value="亲情与家庭">亲情与家庭</option><option value="商业经营">商业经营</option><option value="投资理财">投资理财</option><option value="职业与学习">职业与学习</option><option value="其他复杂问题">其他复杂问题</option></select><label>真正要决定的问题</label><textarea id="question" placeholder="把最终需要做出的选择写清楚"></textarea><label>已确认事实</label><textarea id="facts" placeholder="只填写已经确认的数据、事实和来源"></textarea><label>当前假设</label><textarea id="assumptions" placeholder="哪些只是估计、判断或尚未验证？"></textarea><button class="primary" onclick="analyze()">开始分析</button><button class="secondary" onclick="demo()">加载示例</button><button class="secondary" onclick="location.reload()">清空</button></section>
+<section class="card v8-hide"><h2>① 新建事件</h2><label>事件名称</label><input id="title" placeholder="例如：是否回家探亲？是否继续一段感情？是否扩大培训业务？"/><label>决策类型</label><select id="decisionType"><option value="生活决策">生活决策</option><option value="感情投入">感情投入</option><option value="亲情与家庭">亲情与家庭</option><option value="商业经营">商业经营</option><option value="投资理财">投资理财</option><option value="职业与学习">职业与学习</option><option value="其他复杂问题">其他复杂问题</option></select><label>真正要决定的问题</label><textarea id="question" placeholder="把最终需要做出的选择写清楚"></textarea><label>已确认事实</label><textarea id="facts" placeholder="只填写已经确认的数据、事实和来源"></textarea><label>当前假设</label><textarea id="assumptions" placeholder="哪些只是估计、判断或尚未验证？"></textarea><button class="primary" onclick="analyze()">开始分析</button><button class="secondary" onclick="demo()">加载示例</button><button class="secondary" onclick="location.reload()">清空</button></section>
 <section class="card result v8-hide" id="overview"><h2>分析总览</h2><div class="metric"><div>信息完整度<b id="complete">—</b></div><div>情景EV<b id="ev">—</b></div><div>当前状态<b id="state">待分析</b></div></div><p class="muted" id="summary"></p></section>
 <section class="card result v8-hide" id="layers"><h2>② 11层分析链路</h2><div id="layerList"></div><div class="notice" id="smartStatus">下面的问题用于补齐分析链路。事实不足时，系统会明确标出“未知”，不会把未知数据当成事实。</div></section>
 <section class="card result" id="smart"><h2>智能追问</h2><div class="wizard"><div class="small" id="wizardCount">第1/11层</div><div class="progress"><i id="wizardBar"></i></div><div class="wizard-q" id="wizardQuestion">—</div><div class="muted" id="wizardHint">—</div><textarea class="wizard-a" id="wizardAnswer" placeholder="写下你的答案；不知道也可以写“不知道”"></textarea><div class="wizard-nav"><button class="secondary" onclick="wizardPrev()">上一层</button><button class="primary" onclick="wizardNext()">下一层</button></div></div><div id="questions" style="display:none"></div><button class="primary" onclick="buildReport()">生成决策仪表盘</button></section>
-<section class="v8-hide card result"><h2>③ 情景概率与EV</h2><div class="grid"><div><label>上行情景概率 %</label><input id="pu" type="number" value="30"></div><div><label>上行收益</label><input id="ru" type="number" value="50"></div><div><label>下行情景概率 %</label><input id="pd" type="number" value="20"></div><div><label>下行损失</label><input id="rd" type="number" value="30"></div><div><label>基准情景概率 %</label><input id="pm" type="number" value="50"></div><div><label>基准结果</label><input id="rm" type="number" value="15"></div></div><button class="primary" onclick="calc()">重新计算EV</button><p class="muted">EV = 上行概率×上行结果 − 下行概率×下行损失 + 基准概率×基准结果。三种情景概率必须合计100%。商业事件可用金额；感情、亲情和生活决策可使用自定义效用分（例如 0–100），并把情绪、关系、时间、金钱、长期影响等分别考虑。效用分是个人判断，不是客观事实，不要把它伪装成精确的金钱价值。</p></section>
-<section class="v8-hide card result"><h2>④ 策略与压力测试</h2><label>最大可接受损失</label><input id="maxloss" type="number" value="10"><label>最低EV门槛</label><input id="minev" type="number" value="0"><label>必须验证的关键变量</label><textarea id="checks" placeholder="例如：真实获客成本、转化率、竞争反应、现金流"></textarea><div class="notice" id="strategyText">等待分析。</div></section>
-<section id="industryEngine" class="v8-hide card"><h2>行业智能分析引擎 V6.1 · 专业行业模型</h2><p>自动识别行业与问题类型，调用行业专业价值链、标准术语、指标口径、风险库、验证优先级与决策闸门；数值仍以真实数据为准。</p><textarea id="industryInput" rows="4" placeholder="例如：我想在郑州开一个英语培训班，是否值得做？"></textarea><select id="industrySelect"><option value="auto">自动识别</option><option value="education">教育</option><option value="food">餐饮</option><option value="ecommerce">电商</option><option value="retail">实体零售/超市</option><option value="manufacturing">制造</option><option value="saas">SaaS/软件</option><option value="realestate">房地产</option><option value="finance">金融/投资</option><option value="healthcare">医疗</option><option value="professional">专业服务</option><option value="personal">个人决策</option></select><button type="button" onclick="runIndustryEngine()">识别并生成专业框架</button><div id="industryResult"></div></section>
-<section style="display:none!important" class="v8-hide card" id="dynamicVariableEngine"><h2>V6.3 动态关键变量引擎</h2><p>不再只使用行业通用重点；系统根据当前问题、已填数据、行业因果链与EV敏感性，动态识别关键变量、信息缺口、潜在翻转变量与验证优先级。</p><div id="dynamicVariableResult" class="notice">等待运行。</div><button type="button" onclick="runDynamicVariableEngine()">运行动态关键变量分析</button></section>
-<section class="card result" id="mathStatBrainPanel"><h2>🧠 计算大脑·数学家 × 统计学家审计 <span class="tag">V29</span></h2><div class="small" style="margin-bottom:10px">先判断“能不能算、凭什么算、算出来是否可靠”，再计算。这里检查定义、概率、基准率、因果、证据、模型选择、敏感性与自我攻击；未知不会被强行变成事实。</div><div class="dashboard-grid"><div>数据状态<b id="msDataState">待审计</b></div><div>模型选择<b id="msModelChoice">待判断</b></div><div>概率质量<b id="msProbQuality">待判断</b></div><div>因果风险<b id="msCausalRisk">待判断</b></div><div>鲁棒性<b id="msRobustness">待判断</b></div><div>自我攻击<b id="msAttack">待运行</b></div></div><div class="grid" style="margin-top:12px"><div class="notice" id="msAudit">等待审计。</div><div class="notice" id="msUnknown">未知与假设：等待识别。</div><div class="notice" id="msBias">统计风险：等待识别。</div></div><button class="secondary" type="button" onclick="runMathStatAudit()">运行数学家/统计学家审计</button><button class="secondary" type="button" onclick="runMathStatTests()">运行 V29 极限自检</button><div id="msTestOut" class="notice" style="margin-top:10px">尚未自检。</div></section><section class="card result" id="calcBrainPanel"><h2>🧮 计算大脑 <span class="tag">V29</span></h2><div class="small" style="margin-bottom:10px">调查大脑负责把现实弄清楚；计算大脑负责把得失、风险、翻转点和替代方案算清楚。11层框架在后台运行，不要求你逐层填表。</div><div class="dashboard-grid"><div>模型状态<b id="cbStatus">待计算</b></div><div>关键变量<b id="cbKeyVar">—</b></div><div>基准EV<b id="cbBaseEV">—</b></div><div>压力EV<b id="cbStressEV">—</b></div><div>EV缓冲<b id="cbBuffer">—</b></div><div>最大下行<b id="cbMaxDown">—</b></div><div>翻转变量<b id="cbFlipVar">—</b></div><div>结论稳定度<b id="cbStability">—</b></div></div><div class="notice" id="cbModelNote" style="margin-top:10px">等待调查大脑提供事实、估计、未知和约束。</div><div style="margin-top:14px"><h3 style="margin:0 0 8px;font-size:16px">计算大脑内部输出</h3><div id="cbOutput" class="small">尚未运行。</div></div><button class="primary" type="button" onclick="runCalculationBrain()">运行计算大脑</button><button class="secondary" type="button" onclick="runCalculationBrainTests()">运行计算大脑自检</button><div id="cbTestOut" class="notice" style="margin-top:10px">尚未自检。</div></section>
+<section class="v8-hide card result"><h2>③ 情景概率与EV</h2><div class="grid"><div><label>上行情景概率 %</label><input id="pu" type="number" value="30"/></div><div><label>上行收益</label><input id="ru" type="number" value="50"/></div><div><label>下行情景概率 %</label><input id="pd" type="number" value="20"/></div><div><label>下行损失</label><input id="rd" type="number" value="30"/></div><div><label>基准情景概率 %</label><input id="pm" type="number" value="50"/></div><div><label>基准结果</label><input id="rm" type="number" value="15"/></div></div><button class="primary" onclick="calc()">重新计算EV</button><p class="muted">EV = 上行概率×上行结果 − 下行概率×下行损失 + 基准概率×基准结果。三种情景概率必须合计100%。商业事件可用金额；感情、亲情和生活决策可使用自定义效用分（例如 0–100），并把情绪、关系、时间、金钱、长期影响等分别考虑。效用分是个人判断，不是客观事实，不要把它伪装成精确的金钱价值。</p></section>
+<section class="v8-hide card result"><h2>④ 策略与压力测试</h2><label>最大可接受损失</label><input id="maxloss" type="number" value="10"/><label>最低EV门槛</label><input id="minev" type="number" value="0"/><label>必须验证的关键变量</label><textarea id="checks" placeholder="例如：真实获客成本、转化率、竞争反应、现金流"></textarea><div class="notice" id="strategyText">等待分析。</div></section>
+<section class="v8-hide card" id="industryEngine"><h2>行业智能分析引擎 V6.1 · 专业行业模型</h2><p>自动识别行业与问题类型，调用行业专业价值链、标准术语、指标口径、风险库、验证优先级与决策闸门；数值仍以真实数据为准。</p><textarea id="industryInput" placeholder="例如：我想在郑州开一个英语培训班，是否值得做？" rows="4"></textarea><select id="industrySelect"><option value="auto">自动识别</option><option value="education">教育</option><option value="food">餐饮</option><option value="ecommerce">电商</option><option value="retail">实体零售/超市</option><option value="manufacturing">制造</option><option value="saas">SaaS/软件</option><option value="realestate">房地产</option><option value="finance">金融/投资</option><option value="healthcare">医疗</option><option value="professional">专业服务</option><option value="personal">个人决策</option></select><button onclick="runIndustryEngine()" type="button">识别并生成专业框架</button><div id="industryResult"></div></section>
+<section class="v8-hide card" id="dynamicVariableEngine" style="display:none!important"><h2>V6.3 动态关键变量引擎</h2><p>不再只使用行业通用重点；系统根据当前问题、已填数据、行业因果链与EV敏感性，动态识别关键变量、信息缺口、潜在翻转变量与验证优先级。</p><div class="notice" id="dynamicVariableResult">等待运行。</div><button onclick="runDynamicVariableEngine()" type="button">运行动态关键变量分析</button></section>
+<section class="card result" id="mathStatBrainPanel"><h2>🧠 计算大脑·数学家 × 统计学家审计 <span class="tag">V29</span></h2><div class="small" style="margin-bottom:10px">先判断“能不能算、凭什么算、算出来是否可靠”，再计算。这里检查定义、概率、基准率、因果、证据、模型选择、敏感性与自我攻击；未知不会被强行变成事实。</div><div class="dashboard-grid"><div>数据状态<b id="msDataState">待审计</b></div><div>模型选择<b id="msModelChoice">待判断</b></div><div>概率质量<b id="msProbQuality">待判断</b></div><div>因果风险<b id="msCausalRisk">待判断</b></div><div>鲁棒性<b id="msRobustness">待判断</b></div><div>自我攻击<b id="msAttack">待运行</b></div></div><div class="grid" style="margin-top:12px"><div class="notice" id="msAudit">等待审计。</div><div class="notice" id="msUnknown">未知与假设：等待识别。</div><div class="notice" id="msBias">统计风险：等待识别。</div></div><button class="secondary" onclick="runMathStatAudit()" type="button">运行数学家/统计学家审计</button><button class="secondary" onclick="runMathStatTests()" type="button">运行 V29 极限自检</button><div class="notice" id="msTestOut" style="margin-top:10px">尚未自检。</div></section><section class="card result" id="calcBrainPanel"><h2>🧮 计算大脑 <span class="tag">V29</span></h2><div class="small" style="margin-bottom:10px">调查大脑负责把现实弄清楚；计算大脑负责把得失、风险、翻转点和替代方案算清楚。11层框架在后台运行，不要求你逐层填表。</div><div class="dashboard-grid"><div>模型状态<b id="cbStatus">待计算</b></div><div>关键变量<b id="cbKeyVar">—</b></div><div>基准EV<b id="cbBaseEV">—</b></div><div>压力EV<b id="cbStressEV">—</b></div><div>EV缓冲<b id="cbBuffer">—</b></div><div>最大下行<b id="cbMaxDown">—</b></div><div>翻转变量<b id="cbFlipVar">—</b></div><div>结论稳定度<b id="cbStability">—</b></div></div><div class="notice" id="cbModelNote" style="margin-top:10px">等待调查大脑提供事实、估计、未知和约束。</div><div style="margin-top:14px"><h3 style="margin:0 0 8px;font-size:16px">计算大脑内部输出</h3><div class="small" id="cbOutput">尚未运行。</div></div><button class="primary" onclick="runCalculationBrain()" type="button">运行计算大脑</button><button class="secondary" onclick="runCalculationBrainTests()" type="button">运行计算大脑自检</button><div class="notice" id="cbTestOut" style="margin-top:10px">尚未自检。</div></section>
 <section class="card result" id="dashboard"><h2>⑤ 最终分析仪表盘</h2><div class="dashboard-grid"><div>信息完整度<b id="dComplete">—</b></div><div>数据可信度<b id="dCredibility">—</b></div><div>关键变量验证度<b id="dKeyValidation">—</b></div><div>基准EV<b id="dEV">—</b></div><div>压力EV<b id="dStress">—</b></div><div>压力承受性<b id="dRisk">—</b></div><div>多维价值<b id="dValue">—</b></div><div>机会成本<b id="dOpp">—</b></div><div>结论稳定度<b id="dStability">—</b></div><div>证据记录完整度<b id="dEvidence">—</b></div></div>
-<div id="decisionIntelligencePanel" class="card v8-hide" style="margin-top:12px;display:none"><h3>决策智能引擎</h3><div class="grid"><div class="notice" id="flipAlert">最大翻转变量：分析中…</div><div class="notice" id="uncertaintyAlert">最大不确定性：分析中…</div><div class="notice" id="minValidation">最小成本验证：分析中…</div><div class="notice" id="decisionState">当前决策状态：分析中…</div></div></div><div class="notice" id="dashboardText" style="margin-top:12px">完成智能提问后生成。</div>
+<div class="card v8-hide" id="decisionIntelligencePanel" style="margin-top:12px;display:none"><h3>决策智能引擎</h3><div class="grid"><div class="notice" id="flipAlert">最大翻转变量：分析中…</div><div class="notice" id="uncertaintyAlert">最大不确定性：分析中…</div><div class="notice" id="minValidation">最小成本验证：分析中…</div><div class="notice" id="decisionState">当前决策状态：分析中…</div></div></div><div class="notice" id="dashboardText" style="margin-top:12px">完成智能提问后生成。</div>
 <div class="grid" style="margin-top:12px"><div><b>关键变量</b><div class="small" id="dKey">待识别</div></div><div><b>核心矛盾</b><div class="small" id="dConflict">待识别</div></div></div>
 <div style="margin-top:16px"><h3 style="margin:0 0 8px;font-size:16px">一、结论说明</h3><div class="notice" id="dConclusion">尚未生成。</div><div class="small" id="dConclusionDetail" style="margin-top:8px">系统会解释“为什么得到这个结果”，而不只显示一个分数。</div></div>
 <div style="margin-top:16px"><h3 style="margin:0 0 8px;font-size:16px">二、情景与EV拆解</h3><div class="grid"><div class="notice" id="dScenarioBase">基准情景：—</div><div class="notice" id="dScenarioStress">压力情景：—</div></div><div class="small" id="dEVExplain" style="margin-top:8px">EV组成：—</div></div>
@@ -40,16 +63,15 @@
 <div style="margin-top:16px"><h3 style="margin:0 0 8px;font-size:16px">五、决策条件</h3><div class="notice" id="conditions">—</div></div>
 <div style="margin-top:16px"><h3 style="margin:0 0 8px;font-size:16px">六、下一步行动</h3><ol class="mini-list small" id="dNextActions"><li>—</li></ol></div>
 <div style="margin-top:16px"><h3 style="margin:0 0 8px;font-size:16px">七、仪表盘结论依据</h3><ul class="mini-list small" id="dReasons"></ul></div>
-<div style="margin-top:16px"><h3 style="margin:0 0 8px;font-size:16px">项目可行性因果链 <span class="tag">V5.3</span></h3><div class="small" style="margin-bottom:10px">商业/课程项目重点检查：流量 → 获客 → 成交 → 交付 → 续费 → 利润 → 现金流 → 扩张。系统只根据你填写的信息识别“已覆盖 / 有描述但缺数据 / 缺失”，不把未知当成事实。</div><div id="causalChain" class="timeline"></div><div class="notice" id="causalSummary" style="margin-top:10px">完成分析后生成因果链检查。</div></div>
-<div style="margin-top:16px"><h3 style="margin:0 0 8px;font-size:16px">验证优先级 <span class="tag">V5.3</span></h3><div id="validationPriority" class="notice">系统会找出当前最可能改变结论、且最值得先验证的数据。</div></div>
+<div style="margin-top:16px"><h3 style="margin:0 0 8px;font-size:16px">项目可行性因果链 <span class="tag">V5.3</span></h3><div class="small" style="margin-bottom:10px">商业/课程项目重点检查：流量 → 获客 → 成交 → 交付 → 续费 → 利润 → 现金流 → 扩张。系统只根据你填写的信息识别“已覆盖 / 有描述但缺数据 / 缺失”，不把未知当成事实。</div><div class="timeline" id="causalChain"></div><div class="notice" id="causalSummary" style="margin-top:10px">完成分析后生成因果链检查。</div></div>
+<div style="margin-top:16px"><h3 style="margin:0 0 8px;font-size:16px">验证优先级 <span class="tag">V5.3</span></h3><div class="notice" id="validationPriority">系统会找出当前最可能改变结论、且最值得先验证的数据。</div></div>
 <div style="margin-top:16px"><h3 style="margin:0 0 8px;font-size:16px">决策翻转条件</h3><div class="notice" id="flipConditions">完成分析后，系统会列出哪些新证据出现时需要重新计算。</div></div><div style="margin-top:16px"><h3 style="margin:0 0 8px;font-size:16px">决策翻转实验室 <span class="tag">V5.3</span></h3><div class="small" style="margin-bottom:8px">系统尝试计算“什么变量变化后，EV会触及门槛”。这是敏感性/临界点计算，不是预测；结果依赖当前输入口径。</div><div class="grid"><div class="notice" id="flipLabProb">上行概率临界点：—</div><div class="notice" id="flipLabGain">上行收益临界点：—</div><div class="notice" id="flipLabLoss">下行损失临界点：—</div><div class="notice" id="flipLabDownProb">下行概率临界点：—</div></div></div>
 <div style="margin-top:16px"><h3 style="margin:0 0 8px;font-size:16px">⑥ 系统建议：如果我是你，我会这样做</h3><div class="notice" id="systemAdvice">完成分析后，系统会基于事实、假设、EV、风险、机会成本和多维价值，给出条件化建议。它是辅助判断，不会替你承担最终决定。</div><ul class="mini-list small" id="adviceReasons"></ul></div></section>
-<section class="card result" id="decisionLoopPanel"><h2>🧠 三大脑闭环总控 <span class="tag">V31</span></h2><div class="small">不是三个独立模块：所有事实、估计、未知、计算结果和结论统一进入 DecisionState；发现缺口时自动回调查，数据更新后再回计算，计算完成后再进结论。</div><div class="notice" id="decisionLoopStatus" style="margin-top:10px">等待联动。</div><div class="small" id="decisionLoopData" style="margin-top:8px">总线尚未运行。</div><button class="primary" type="button" onclick="runIntegratedDecisionLoop()">运行三大脑闭环</button><button class="secondary" type="button" onclick="runIntegratedDecisionLoopTests()">运行终极联动自检</button><div id="decisionLoopTestOut" class="notice" style="margin-top:10px">尚未自检。</div></section>
+<section class="card result" id="decisionLoopPanel"><h2>🧠 三大脑闭环总控 <span class="tag">V31</span></h2><div class="small">不是三个独立模块：所有事实、估计、未知、计算结果和结论统一进入 DecisionState；发现缺口时自动回调查，数据更新后再回计算，计算完成后再进结论。</div><div class="notice" id="decisionLoopStatus" style="margin-top:10px">等待联动。</div><div class="small" id="decisionLoopData" style="margin-top:8px">总线尚未运行。</div><button class="primary" onclick="runIntegratedDecisionLoop()" type="button">运行三大脑闭环</button><button class="secondary" onclick="runIntegratedDecisionLoopTests()" type="button">运行终极联动自检</button><div class="notice" id="decisionLoopTestOut" style="margin-top:10px">尚未自检。</div></section>
 <section class="card result" id="conclusionBrainPanel">
 <h2>🎯 结论大脑 <span class="tag">V54 最强商业顾问</span></h2>
 <div class="small" style="margin-bottom:12px">先告诉你结果，再解释原因；把复杂分析整理成人最容易阅读、判断和行动的顺序。</div>
-
-<div id="analysisResultHero" class="card" style="margin:0 0 14px;border:2px solid #315efb;background:linear-gradient(135deg,#f7f9ff,#ffffff);box-shadow:0 4px 16px rgba(49,94,251,.10)">
+<div class="card" id="analysisResultHero" style="margin:0 0 14px;border:2px solid #315efb;background:linear-gradient(135deg,#f7f9ff,#ffffff);box-shadow:0 4px 16px rgba(49,94,251,.10)">
 <h3 style="margin:0 0 10px;font-size:19px">📊 分析结果</h3>
 <div class="metric">
 <div>当前结论<b id="resultStateTop">待分析</b></div>
@@ -62,65 +84,49 @@
 </div>
 <div class="notice" id="resultSummaryTop" style="margin-top:10px"><b>分析结果：</b>完成调查与计算后，这里先给出最终结果。</div>
 </div>
-
 <div class="notice" id="conHeadline"><b>一句话结论：</b>完成分析后生成。</div>
-
 <div class="grid" style="margin-top:12px">
 <div class="notice"><b>🧭 决策状态</b><span id="conState">待生成</span></div>
 <div class="notice"><b>证据状态</b><span id="conEvidence">—</span></div>
 <div class="notice"><b>风险状态</b><span id="conRisk">—</span></div>
 <div class="notice"><b>最关键变量</b><span id="conKey">—</span></div>
 </div>
-
 <div style="margin-top:16px"><h3 style="margin:0 0 8px;font-size:16px">① 为什么得到这个结果</h3><div class="notice" id="conWhy">结论依据：—</div></div>
-
 <div style="margin-top:16px"><h3 style="margin:0 0 8px;font-size:16px">② 我最担心什么</h3><div class="notice" id="conUnknown">未知边界：—</div><div class="notice" id="fatalRisks" style="margin-top:8px"><b>🚨 一票否决风险：</b>分析后生成。</div></div>
-
 <div style="margin-top:16px"><h3 style="margin:0 0 8px;font-size:16px">③ 如果结论错了，会错在哪里？</h3><div class="notice" id="ifWrong"><b>反事实检查：</b>分析后生成。</div></div>
-
 <div style="margin-top:16px"><h3 style="margin:0 0 8px;font-size:16px">④ 下一步最值得做什么</h3><div class="notice" id="cheapestValidation"><b>💡 最低成本验证：</b>分析后生成。</div><ol class="mini-list small" id="conActions"><li>—</li></ol></div>
-
 <div style="margin-top:16px"><h3 style="margin:0 0 8px;font-size:16px">⑤ 我的行动方案</h3><div class="notice" id="resultActionNarrative"><b>行动方式：</b>分析后生成。</div><div class="grid" style="margin-top:8px"><div class="notice" id="investmentBoundary"><b>投入边界：</b>分析后生成。</div><div class="notice" id="scaleGate"><b>扩大条件：</b>分析后生成。</div></div></div>
-
 <div style="margin-top:16px"><h3 style="margin:0 0 8px;font-size:16px">⑥ 什么时候必须停止 / 改变决定</h3><div class="notice" id="conFlip">翻转条件：—</div><ul class="mini-list small" id="conStops"><li>—</li></ul></div>
-
-<div style="margin-top:16px"><h3 style="margin:0 0 8px;font-size:16px">⑦ 方案路径</h3><div class="grid" id="optionPaths"><div class="notice"><b>原方案</b><br>—</div><div class="notice"><b>小规模验证</b><br>—</div><div class="notice"><b>替代路径</b><br>—</div></div></div>
-
+<div style="margin-top:16px"><h3 style="margin:0 0 8px;font-size:16px">⑦ 方案路径</h3><div class="grid" id="optionPaths"><div class="notice"><b>原方案</b><br/>—</div><div class="notice"><b>小规模验证</b><br/>—</div><div class="notice"><b>替代路径</b><br/>—</div></div></div>
 <div style="margin-top:16px"><h3 style="margin:0 0 8px;font-size:16px">⑧ 项目时间轴</h3><div class="timeline" id="projectTimeline"><div class="notice">提出问题 → 调查 → 计算 → 决策 → 执行 → 实际结果 → 复盘 → 更新模型</div></div></div>
-
 <div style="margin-top:16px"><h3 style="margin:0 0 8px;font-size:16px">⑨ 综上概率结论</h3><div class="metric"><div>综合成功率<b id="conSuccessRate">—</b></div><div>综合失败率<b id="conFailureRate">—</b></div><div>概率完整性<b id="conProbQuality">—</b></div><div>情景偏斜度<b id="conScenarioSkew">—</b></div></div><div class="grid" style="margin-top:10px"><div class="notice" id="conGoodScenario"><b>乐观情景：</b>—</div><div class="notice" id="conBaseScenario"><b>基准情景：</b>—</div><div class="notice" id="conBadScenario"><b>悲观情景：</b>—</div><div class="notice" id="conScenarioNote"><b>口径说明：</b>成功/失败按各情景结果是否达到0或以上划分；若结果定义不是金钱，则按用户填写的结果口径计算。</div></div></div>
-
 <div class="card" style="margin-top:16px;border:2px solid #315efb;background:#f8faff"><h3 style="margin:0 0 8px;font-size:17px">🎯 顾问最终建议</h3><div class="notice" id="conAdvisorRecommendation"><b>如果我是你：</b>等待分析完成。</div><div class="small" style="margin-top:8px">这是基于当前信息的顾问建议，不是替你做决定。最终是否执行，由你自己决定。</div></div>
-
 <details style="margin-top:16px"><summary><b>🔍 展开：证据链与可靠性</b></summary><div class="notice" id="evidenceChain" style="margin-top:10px"><b>证据链：</b>分析后生成。</div><div class="notice" style="margin-top:8px"><b>结论强度：</b><span id="conStrength">—</span></div><div class="notice" style="margin-top:8px"><b>可信度说明：</b>概率和EV不是保证；系统会区分事实、估计、假设与未知。</div></details>
-
-<details style="margin-top:10px"><summary><b>🏢 展开：商业顾问深度分析</b></summary><div class="card" style="margin-top:10px;border:1px solid #cbd5ff;background:#f8faff"><div class="small" style="margin-bottom:10px">不止判断做不做，还设计怎么做；信息不足时明确说不知道，不虚构市场数据。</div><div class="notice" id="bizThesis"><b>商业判断：</b>等待生成</div><div class="notice" id="bizModel"><b>商业模式：</b>—</div><div class="notice" id="bizProfit"><b>利润引擎：</b>—</div><div class="notice" id="bizEdge"><b>客户与竞争：</b>—</div><div class="notice" id="bizExperiment"><b>最低成本验证：</b>—</div><div class="notice" id="bizPlan"><b>如果我是你：</b>—</div><div class="notice" id="bizGates"><b>扩张/停止闸门：</b>—</div><div class="notice" id="bizAlternatives"><b>替代商业路径：</b>—</div><div class="notice" id="bizPricing"><b>定价与收益结构：</b>—</div><div class="notice" id="bizMoat"><b>竞争壁垒：</b>—</div><div class="notice" id="bizResources"><b>资源配置：</b>—</div><div class="notice" id="bizGame"><b>竞争博弈：</b>—</div><div class="notice" id="bizMetrics"><b>经营仪表盘：</b>—</div><div class="notice" id="bizStrategy"><b>战略总判断：</b>—</div><div class="notice" id="bizObjective"><b>商业目标：</b>—</div><div class="notice" id="bizEngine"><b>赚钱方程：</b>—</div><div class="notice" id="bizBottleneck"><b>当前最大瓶颈：</b>—</div><div class="notice" id="bizHypotheses"><b>关键商业假设：</b>—</div><div class="notice" id="bizCapital"><b>资本配置：</b>—</div><div class="notice" id="bizGame2"><b>主动博弈：</b>—</div><div class="notice" id="bizScale"><b>规模闸门：</b>—</div><div class="notice" id="bizStop"><b>切换/停止闸门：</b>—</div><button class="secondary" type="button" onclick="runBusinessAdvisorTests()">运行商业顾问专项测试</button><div class="notice" id="bizTestOut" style="margin-top:8px">尚未自检。</div></div></details>
-
-<details style="margin-top:10px"><summary><b>🧪 展开：系统自检</b></summary><button class="secondary" type="button" onclick="runConclusionBrainTests()" style="margin-top:10px">运行结论大脑自检</button><div id="conTestOut" class="notice" style="margin-top:10px">尚未自检。</div></details>
-
+<details style="margin-top:10px"><summary><b>🏢 展开：商业顾问深度分析</b></summary><div class="card" style="margin-top:10px;border:1px solid #cbd5ff;background:#f8faff"><div class="small" style="margin-bottom:10px">不止判断做不做，还设计怎么做；信息不足时明确说不知道，不虚构市场数据。</div><div class="notice" id="bizThesis"><b>商业判断：</b>等待生成</div><div class="notice" id="bizModel"><b>商业模式：</b>—</div><div class="notice" id="bizProfit"><b>利润引擎：</b>—</div><div class="notice" id="bizEdge"><b>客户与竞争：</b>—</div><div class="notice" id="bizExperiment"><b>最低成本验证：</b>—</div><div class="notice" id="bizPlan"><b>如果我是你：</b>—</div><div class="notice" id="bizGates"><b>扩张/停止闸门：</b>—</div><div class="notice" id="bizAlternatives"><b>替代商业路径：</b>—</div><div class="notice" id="bizPricing"><b>定价与收益结构：</b>—</div><div class="notice" id="bizMoat"><b>竞争壁垒：</b>—</div><div class="notice" id="bizResources"><b>资源配置：</b>—</div><div class="notice" id="bizGame"><b>竞争博弈：</b>—</div><div class="notice" id="bizMetrics"><b>经营仪表盘：</b>—</div><div class="notice" id="bizStrategy"><b>战略总判断：</b>—</div><div class="notice" id="bizObjective"><b>商业目标：</b>—</div><div class="notice" id="bizEngine"><b>赚钱方程：</b>—</div><div class="notice" id="bizBottleneck"><b>当前最大瓶颈：</b>—</div><div class="notice" id="bizHypotheses"><b>关键商业假设：</b>—</div><div class="notice" id="bizCapital"><b>资本配置：</b>—</div><div class="notice" id="bizGame2"><b>主动博弈：</b>—</div><div class="notice" id="bizScale"><b>规模闸门：</b>—</div><div class="notice" id="bizStop"><b>切换/停止闸门：</b>—</div><button class="secondary" onclick="runBusinessAdvisorTests()" type="button">运行商业顾问专项测试</button><div class="notice" id="bizTestOut" style="margin-top:8px">尚未自检。</div></div></details>
+<details style="margin-top:10px"><summary><b>🧪 展开：系统自检</b></summary><button class="secondary" onclick="runConclusionBrainTests()" style="margin-top:10px" type="button">运行结论大脑自检</button><div class="notice" id="conTestOut" style="margin-top:10px">尚未自检。</div></details>
 <div class="notice" id="conCaveat" style="margin-top:12px">结论大脑不改变调查与计算结果；它负责把结果、不确定性、边界和行动整理成可执行的条件化决策。</div>
-<button class="primary" type="button" onclick="runConclusionBrain()">生成结论大脑</button>
+<button class="primary" onclick="runConclusionBrain()" type="button">生成结论大脑</button>
 </section>
 <section class="card result"><h2>⑥ 复盘</h2><textarea id="reviewText" placeholder="事情结束后记录：哪些判断正确？哪些假设错误？概率是否高估？实际损失与预期是否一致？"></textarea><button class="primary" onclick="save()">保存到本机</button><button class="secondary" onclick="exportTxt()">导出TXT</button><p class="muted" id="saved"></p></section>
-<section class="card result" id="compare"><h2>⑦ 方案比较</h2><div class="grid"><div><label>方案A</label><input id="aName" value="方案A"><label>收益</label><input id="aGain" type="number" value="20"><label>成本</label><input id="aCost" type="number" value="8"><label>成功概率%</label><input id="aProb" type="number" value="60"></div><div><label>方案B</label><input id="bName" value="方案B"><label>收益</label><input id="bGain" type="number" value="15"><label>成本</label><input id="bCost" type="number" value="5"><label>成功概率%</label><input id="bProb" type="number" value="70"></div></div><button class="primary" onclick="comparePlans()">计算方案指标</button><div id="compareOut" class="notice">输入两个方案后计算。</div></section>
-<section class="card result" id="sensitivity"><h2>⑧ 敏感性分析</h2><label>关键变量当前值</label><input id="baseVar" type="number" value="50"><label>下降幅度%</label><input id="downVar" type="number" value="20"><label>上升幅度%</label><input id="upVar" type="number" value="20"><button class="primary" onclick="sensitivity()">测试敏感度</button><div id="sensOut" class="notice">等待测试。</div></section>
-<section class="card result" id="pressure"><h2>⑨ 反事实压力测试</h2><div class="grid"><div><label>收益下降%</label><input id="stressGain" type="number" value="30"></div><div><label>成本上升%</label><input id="stressCost" type="number" value="30"></div><div><label>成功概率下降百分点</label><input id="stressProb" type="number" value="15"></div><div><label>最大可承受损失</label><input id="stressMax" type="number" value="10"></div></div><button class="primary" onclick="stressTest()">执行压力测试</button><div id="stressOut" class="notice">尚未测试。</div></section>
-<section class="card result" id="action"><h2>⑩ 策略卡</h2><div id="actionCard" class="notice">完成分析后生成。</div></section><section class="card result" id="evidence"><h2>⑪ 事实核验与证据质量</h2><p class="muted">保留原界面风格。把关键说法逐条分类，避免将推断或未经验证的假设当成事实。</p><div class="grid"><div><label>已验证事实（注明来源/日期）</label><textarea id="verifiedFacts" placeholder="事实｜来源｜日期｜如何核验"></textarea></div><div><label>待核验说法</label><textarea id="unverifiedFacts" placeholder="说法｜可能来源｜核验方法"></textarea></div><div><label>关键假设与依据</label><textarea id="assumptionBasis" placeholder="假设｜依据｜可信程度｜若错误会怎样"></textarea></div><div><label>反方证据 / 可能推翻结论的信息</label><textarea id="counterEvidence" placeholder="哪些证据会让当前判断不再成立？"></textarea></div></div><button class="primary" onclick="checkEvidence()">评估证据完整度</button><div id="evidenceOut" class="notice">尚未评估。此指标仅反映填写情况，不代表事实客观真实。</div></section>
-<section class="card result" id="forecast"><h2>⑫ 预测记录与事后校准</h2><p class="muted">在事件结果揭晓前记录概率与期限，结果发生后再填写实际结果。概率评分使用 Brier 分数：越接近 0 越好。</p><div class="grid"><div><label>预测事件（可明确判定是/否）</label><input id="forecastEvent" placeholder="例如：未来30天内转化率达到目标"></div><div><label>预测期限 / 截止日期</label><input id="forecastDate" placeholder="例如：2026-11-02"></div><div><label>预测发生概率 %</label><input id="forecastProb" type="number" min="0" max="100" value="60"></div><div><label>实际结果</label><select id="forecastOutcome"><option value="">尚未揭晓</option><option value="1">发生（是）</option><option value="0">未发生（否）</option></select></div></div><button class="primary" onclick="scoreForecast()">记录 / 计算校准分</button><div id="forecastOut" class="notice">结果揭晓后再计算评分。请保留预测时的概率，不要事后修改。</div><button class="secondary" onclick="saveForecast()">保存本次预测记录</button><div id="forecastHistory" class="small"></div></section>
-<section class="card result" id="opportunity"><h2>⑬ 机会成本与可逆性检查</h2><div class="grid"><div><label>当前方案预计净收益</label><input id="currentNet" type="number" placeholder="填入与备选方案同口径的净收益"></div><div><label>最佳替代方案预计净收益</label><input id="alternativeNet" type="number" placeholder="包含暂不行动方案"></div><div><label>延迟行动的预计代价</label><input id="delayCost" type="number" value="0"></div><div><label>决策可逆性</label><select id="reversibility"><option value="unknown">尚不清楚</option><option value="high">较容易撤回</option><option value="medium">部分可逆</option><option value="low">难以撤回</option></select></div></div><button class="primary" onclick="checkOpportunity()">检查机会成本</button><div id="opportunityOut" class="notice">请使用相同时间范围、币种和成本口径填写。</div></section><section class="card result" id="values"><h2>⑭ 多维价值评估</h2><p class="muted">不同问题不必只用金钱衡量。请按你自己的标准给每个维度打分（0–100），分数代表“对你而言的重要价值/结果”，不是客观事实。</p><div class="valuegrid"><div><label>经济价值权重 %</label><input id="wMoney" type="number" value="20"><label>经济结果 0–100</label><input id="vMoney" type="number" value="50"></div><div><label>关系/情感权重 %</label><input id="wRelation" type="number" value="25"><label>关系结果 0–100</label><input id="vRelation" type="number" value="50"></div><div><label>时间/自由权重 %</label><input id="wTime" type="number" value="20"><label>时间结果 0–100</label><input id="vTime" type="number" value="50"></div><div><label>成长/长期权重 %</label><input id="wGrowth" type="number" value="20"><label>成长结果 0–100</label><input id="vGrowth" type="number" value="50"></div><div><label>个人边界/幸福权重 %</label><input id="wLife" type="number" value="15"><label>个人结果 0–100</label><input id="vLife" type="number" value="50"></div></div><button class="primary" onclick="calcValues()">计算综合价值</button><div id="valueOut" class="notice">尚未计算。权重合计必须为100%。</div></section>
-<section class="card result" id="alternatives"><h2>⑮ 第三种选择生成器</h2><p class="muted">强制寻找“做/不做”之外的方案，避免把人为设定的二选一误当成全部可能。</p><div class="grid"><div><label>当前方案</label><textarea id="altCurrent" placeholder="例如：回家住7天"></textarea></div><div><label>不采取当前方案</label><textarea id="altNo" placeholder="例如：这次不回家"></textarea></div><div><label>折中方案1</label><textarea id="altMid1" placeholder="例如：回家3天"></textarea></div><div><label>折中方案2</label><textarea id="altMid2" placeholder="例如：改期并提前确定下一次见面时间"></textarea></div></div><button class="primary" onclick="generateAlternatives()">生成替代方案</button><div id="altOut" class="notice">填写后，系统会检查是否真正覆盖了不同程度的行动、延迟和试运行方案。</div></section>
-<section class="card result" id="horizon"><h2>⑯ 短期 / 中期 / 长期后果</h2><div class="timeline"><div><b>短期</b><label>可能收益</label><textarea id="shortGain" placeholder="今天～数周"></textarea><label>可能代价</label><textarea id="shortCost"></textarea></div><div><b>中期</b><label>可能收益</label><textarea id="midGain" placeholder="数月"></textarea><label>可能代价</label><textarea id="midCost"></textarea></div><div><b>长期</b><label>可能收益</label><textarea id="longGain" placeholder="一年及以上"></textarea><label>可能代价</label><textarea id="longCost"></textarea></div></div><button class="primary" onclick="checkHorizon()">生成时间轴检查</button><div id="horizonOut" class="notice">不要只看眼前收益；记录可能出现的二阶和长期影响。</div></section>
-<section class="card result" id="perspective"><h2>⑰ 双方视角与信息边界</h2><div class="grid"><div><label>我的明确需求</label><textarea id="myNeed"></textarea><label>我的推测（不是事实）</label><textarea id="myGuess"></textarea></div><div><label>对方明确表达过的需求</label><textarea id="theirNeed"></textarea><label>我对对方的推测</label><textarea id="theirGuess"></textarea></div></div><button class="primary" onclick="checkPerspective()">检查事实与推测边界</button><div id="perspectiveOut" class="notice">尤其适用于感情、亲情和合作关系：不要把“我认为对方会怎样”直接当成对方真实想法。</div></section>
+<section class="card result" id="compare"><h2>⑦ 方案比较</h2><div class="grid"><div><label>方案A</label><input id="aName" value="方案A"/><label>收益</label><input id="aGain" type="number" value="20"/><label>成本</label><input id="aCost" type="number" value="8"/><label>成功概率%</label><input id="aProb" type="number" value="60"/></div><div><label>方案B</label><input id="bName" value="方案B"/><label>收益</label><input id="bGain" type="number" value="15"/><label>成本</label><input id="bCost" type="number" value="5"/><label>成功概率%</label><input id="bProb" type="number" value="70"/></div></div><button class="primary" onclick="comparePlans()">计算方案指标</button><div class="notice" id="compareOut">输入两个方案后计算。</div></section>
+<section class="card result" id="sensitivity"><h2>⑧ 敏感性分析</h2><label>关键变量当前值</label><input id="baseVar" type="number" value="50"/><label>下降幅度%</label><input id="downVar" type="number" value="20"/><label>上升幅度%</label><input id="upVar" type="number" value="20"/><button class="primary" onclick="sensitivity()">测试敏感度</button><div class="notice" id="sensOut">等待测试。</div></section>
+<section class="card result" id="pressure"><h2>⑨ 反事实压力测试</h2><div class="grid"><div><label>收益下降%</label><input id="stressGain" type="number" value="30"/></div><div><label>成本上升%</label><input id="stressCost" type="number" value="30"/></div><div><label>成功概率下降百分点</label><input id="stressProb" type="number" value="15"/></div><div><label>最大可承受损失</label><input id="stressMax" type="number" value="10"/></div></div><button class="primary" onclick="stressTest()">执行压力测试</button><div class="notice" id="stressOut">尚未测试。</div></section>
+<section class="card result" id="action"><h2>⑩ 策略卡</h2><div class="notice" id="actionCard">完成分析后生成。</div></section><section class="card result" id="evidence"><h2>⑪ 事实核验与证据质量</h2><p class="muted">保留原界面风格。把关键说法逐条分类，避免将推断或未经验证的假设当成事实。</p><div class="grid"><div><label>已验证事实（注明来源/日期）</label><textarea id="verifiedFacts" placeholder="事实｜来源｜日期｜如何核验"></textarea></div><div><label>待核验说法</label><textarea id="unverifiedFacts" placeholder="说法｜可能来源｜核验方法"></textarea></div><div><label>关键假设与依据</label><textarea id="assumptionBasis" placeholder="假设｜依据｜可信程度｜若错误会怎样"></textarea></div><div><label>反方证据 / 可能推翻结论的信息</label><textarea id="counterEvidence" placeholder="哪些证据会让当前判断不再成立？"></textarea></div></div><button class="primary" onclick="checkEvidence()">评估证据完整度</button><div class="notice" id="evidenceOut">尚未评估。此指标仅反映填写情况，不代表事实客观真实。</div></section>
+<section class="card result" id="forecast"><h2>⑫ 预测记录与事后校准</h2><p class="muted">在事件结果揭晓前记录概率与期限，结果发生后再填写实际结果。概率评分使用 Brier 分数：越接近 0 越好。</p><div class="grid"><div><label>预测事件（可明确判定是/否）</label><input id="forecastEvent" placeholder="例如：未来30天内转化率达到目标"/></div><div><label>预测期限 / 截止日期</label><input id="forecastDate" placeholder="例如：2026-11-02"/></div><div><label>预测发生概率 %</label><input id="forecastProb" max="100" min="0" type="number" value="60"/></div><div><label>实际结果</label><select id="forecastOutcome"><option value="">尚未揭晓</option><option value="1">发生（是）</option><option value="0">未发生（否）</option></select></div></div><button class="primary" onclick="scoreForecast()">记录 / 计算校准分</button><div class="notice" id="forecastOut">结果揭晓后再计算评分。请保留预测时的概率，不要事后修改。</div><button class="secondary" onclick="saveForecast()">保存本次预测记录</button><div class="small" id="forecastHistory"></div></section>
+<section class="card result" id="opportunity"><h2>⑬ 机会成本与可逆性检查</h2><div class="grid"><div><label>当前方案预计净收益</label><input id="currentNet" placeholder="填入与备选方案同口径的净收益" type="number"/></div><div><label>最佳替代方案预计净收益</label><input id="alternativeNet" placeholder="包含暂不行动方案" type="number"/></div><div><label>延迟行动的预计代价</label><input id="delayCost" type="number" value="0"/></div><div><label>决策可逆性</label><select id="reversibility"><option value="unknown">尚不清楚</option><option value="high">较容易撤回</option><option value="medium">部分可逆</option><option value="low">难以撤回</option></select></div></div><button class="primary" onclick="checkOpportunity()">检查机会成本</button><div class="notice" id="opportunityOut">请使用相同时间范围、币种和成本口径填写。</div></section><section class="card result" id="values"><h2>⑭ 多维价值评估</h2><p class="muted">不同问题不必只用金钱衡量。请按你自己的标准给每个维度打分（0–100），分数代表“对你而言的重要价值/结果”，不是客观事实。</p><div class="valuegrid"><div><label>经济价值权重 %</label><input id="wMoney" type="number" value="20"/><label>经济结果 0–100</label><input id="vMoney" type="number" value="50"/></div><div><label>关系/情感权重 %</label><input id="wRelation" type="number" value="25"/><label>关系结果 0–100</label><input id="vRelation" type="number" value="50"/></div><div><label>时间/自由权重 %</label><input id="wTime" type="number" value="20"/><label>时间结果 0–100</label><input id="vTime" type="number" value="50"/></div><div><label>成长/长期权重 %</label><input id="wGrowth" type="number" value="20"/><label>成长结果 0–100</label><input id="vGrowth" type="number" value="50"/></div><div><label>个人边界/幸福权重 %</label><input id="wLife" type="number" value="15"/><label>个人结果 0–100</label><input id="vLife" type="number" value="50"/></div></div><button class="primary" onclick="calcValues()">计算综合价值</button><div class="notice" id="valueOut">尚未计算。权重合计必须为100%。</div></section>
+<section class="card result" id="alternatives"><h2>⑮ 第三种选择生成器</h2><p class="muted">强制寻找“做/不做”之外的方案，避免把人为设定的二选一误当成全部可能。</p><div class="grid"><div><label>当前方案</label><textarea id="altCurrent" placeholder="例如：回家住7天"></textarea></div><div><label>不采取当前方案</label><textarea id="altNo" placeholder="例如：这次不回家"></textarea></div><div><label>折中方案1</label><textarea id="altMid1" placeholder="例如：回家3天"></textarea></div><div><label>折中方案2</label><textarea id="altMid2" placeholder="例如：改期并提前确定下一次见面时间"></textarea></div></div><button class="primary" onclick="generateAlternatives()">生成替代方案</button><div class="notice" id="altOut">填写后，系统会检查是否真正覆盖了不同程度的行动、延迟和试运行方案。</div></section>
+<section class="card result" id="horizon"><h2>⑯ 短期 / 中期 / 长期后果</h2><div class="timeline"><div><b>短期</b><label>可能收益</label><textarea id="shortGain" placeholder="今天～数周"></textarea><label>可能代价</label><textarea id="shortCost"></textarea></div><div><b>中期</b><label>可能收益</label><textarea id="midGain" placeholder="数月"></textarea><label>可能代价</label><textarea id="midCost"></textarea></div><div><b>长期</b><label>可能收益</label><textarea id="longGain" placeholder="一年及以上"></textarea><label>可能代价</label><textarea id="longCost"></textarea></div></div><button class="primary" onclick="checkHorizon()">生成时间轴检查</button><div class="notice" id="horizonOut">不要只看眼前收益；记录可能出现的二阶和长期影响。</div></section>
+<section class="card result" id="perspective"><h2>⑰ 双方视角与信息边界</h2><div class="grid"><div><label>我的明确需求</label><textarea id="myNeed"></textarea><label>我的推测（不是事实）</label><textarea id="myGuess"></textarea></div><div><label>对方明确表达过的需求</label><textarea id="theirNeed"></textarea><label>我对对方的推测</label><textarea id="theirGuess"></textarea></div></div><button class="primary" onclick="checkPerspective()">检查事实与推测边界</button><div class="notice" id="perspectiveOut">尤其适用于感情、亲情和合作关系：不要把“我认为对方会怎样”直接当成对方真实想法。</div></section>
 <!-- V28 第二大脑：数学/统计智慧层 -->
 <section class="card result" id="wisdomLayer">
 <h2>🧮 第二大脑·数学家 × 统计学家</h2>
 <div class="notice">先判断“能不能算、该怎么估、结果有多稳”，再计算。未知数据不会被强行伪装成精确数字。</div>
 <div class="grid">
-<div><label>模拟次数</label><input id="mcN" type="number" value="10000" min="1000" step="1000"><label>概率扰动（±百分点）</label><input id="mcProb" type="number" value="5" min="0" max="50"><label>结果扰动（±%）</label><input id="mcOutcome" type="number" value="15" min="0" max="100"></div>
-<div><label>验证成本</label><input id="voiCost" type="number" value="0" min="0"><label>关键假设可能改变的EV幅度</label><input id="voiImpact" type="number" value="0"><label>决策门槛EV</label><input id="brainThreshold" type="number" value="0"></div>
+<div><label>模拟次数</label><input id="mcN" min="1000" step="1000" type="number" value="10000"/><label>概率扰动（±百分点）</label><input id="mcProb" max="50" min="0" type="number" value="5"/><label>结果扰动（±%）</label><input id="mcOutcome" max="100" min="0" type="number" value="15"/></div>
+<div><label>验证成本</label><input id="voiCost" min="0" type="number" value="0"/><label>关键假设可能改变的EV幅度</label><input id="voiImpact" type="number" value="0"/><label>决策门槛EV</label><input id="brainThreshold" type="number" value="0"/></div>
 </div>
 <button class="primary" onclick="runWisdomLayer()">运行第二大脑·极限推理</button>
-<div id="wisdomOut" class="notice">等待计算。</div>
+<div class="notice" id="wisdomOut">等待计算。</div>
 </section>
 <script>
 /* V29：极限严谨智慧层——概率分布、蒙特卡洛、基准率/贝叶斯、信息价值、校准、模型选择、数据血缘、反方攻击 */
@@ -694,7 +700,6 @@ window.AN_DECISION_V62=V62;
 window.anDecisionV62=V62;
 })();
 </script>
-
 <script>
 /* V6.3 动态关键变量引擎 */
 (function(){
@@ -847,7 +852,6 @@ return best};
 window.__industryV70Ready=true;
 })();
 </script>
-
 <script>
 /* V7.4：主业 × 决策对象 × 关键词三层行业判定器 + 后台专业分析审计器 */
 (function(){
@@ -1003,8 +1007,6 @@ window.__industryV70Ready=true;
   const anchor=document.getElementById('industryEngine'); if(anchor)anchor.parentNode.insertBefore(sec,anchor.nextSibling); else document.body.appendChild(sec);
 })();
 </script>
-
-
 <script>
 /* V9.1 Human-centered Adaptive Interview Engine
    目标：更智能、更人性化、更有逻辑、更有同理心。
@@ -1474,7 +1476,6 @@ function runCalculationBrainTests(){
 window.runCalculationBrain=runCalculationBrain;window.runCalculationBrainTests=runCalculationBrainTests;
 })();
 </script>
-
 <script>
 /* V26：第二大脑极致计算层——鲁棒性、概率区间、情景支配、后悔值、模型完整性、验证价值 */
 (function(){
@@ -2070,7 +2071,6 @@ window.AN_DECISION_ORCHESTRATOR_V31={collectDecisionState,routeDecisionBrain,syn
 
 })();
 </script>
-
 <script>
 /* V54：人性化结论排序 + 证据链/致命风险/最低成本验证/反事实/方案路径/时间轴 */
 (function(){
@@ -2130,7 +2130,6 @@ window.AN_DECISION_ORCHESTRATOR_V31={collectDecisionState,routeDecisionBrain,syn
   window.AN_CONCLUSION_V54={render:v54Render};
 })();
 </script>
-
 <script>
 /* V36：三大脑自动推演总控 + 主动商业战略推演
    目标：不是三个模块轮流亮灯，而是围绕“当前最值得做的下一步”自动闭环。
@@ -2264,8 +2263,6 @@ window.AN_DECISION_ORCHESTRATOR_V31={collectDecisionState,routeDecisionBrain,syn
   document.addEventListener('DOMContentLoaded',()=>ensurePanel());
 })();
 </script>
-
-
 <style id="v38HumanDialogueStyle">
 #v38DialoguePanel .dialogue{background:#f7f9fc;border-radius:14px;padding:14px;line-height:1.75}
 #v38DialoguePanel .dialogue strong{color:#172033}
@@ -2449,7 +2446,6 @@ window.AN_DECISION_ORCHESTRATOR_V31={collectDecisionState,routeDecisionBrain,syn
   setTimeout(()=>{if(input())render();},0);
 })();
 </script>
-
 <script>
 /* V40：人性化自适应顾问层
    不是“多说几句”，而是让系统形成真正的对话循环：听懂→复述确认→识别事实/感受/目标→发现缺口→只问当前最有价值的问题→根据回答改变路线→必要时挑战→与用户协商→行动/复盘。
@@ -2588,7 +2584,6 @@ window.AN_DECISION_ORCHESTRATOR_V31={collectDecisionState,routeDecisionBrain,syn
  const panel=document.createElement('section');panel.className='card result';panel.id='v39TestPanel';panel.innerHTML='<h2>V40 自适应顾问自检</h2><button class="secondary" type="button" onclick="runV40Tests()">运行 V40 自检</button><div id="v39TestOut" class="notice">尚未自检。</div>';const anchor=document.getElementById('dashboard');if(anchor&&anchor.parentNode)anchor.parentNode.insertBefore(panel,anchor.nextSibling);else document.body.appendChild(panel);
 })();
 </script>
-
 <script>
 /* V40：会思考的顾问层
    不是“多问几个问题”，而是维护一个可解释的内部思考状态：
@@ -2639,7 +2634,6 @@ window.AN_DECISION_ORCHESTRATOR_V31={collectDecisionState,routeDecisionBrain,syn
 </script>
 <script>/* V40启动桥：在开始智能分析后自动建立一次“思考快照” */
 (function(){const old=window.startV8;if(typeof old==='function'){window.startV8=function(){const r=old.apply(this,arguments);try{window.AN_THINKING_ADVISOR_V40.open();}catch(e){}return r;};}else{window.addEventListener('load',()=>{try{window.AN_THINKING_ADVISOR_V40.open();}catch(e){}})}})();</script>
-
 <script>
 /* V41：顾问责任边界与用户决策权
    原则：系统负责分析、计算、提出方案、解释依据与风险；用户保留最终决定权。
@@ -2681,8 +2675,6 @@ window.AN_DECISION_ORCHESTRATOR_V31={collectDecisionState,routeDecisionBrain,syn
  W.runV41BoundaryTests=()=>B.tests();
 })();
 </script>
-
-
 <script>
 /* V42：超级商业顾问层
    目标：从“分析商业项目”升级为“主动经营推演”。
@@ -2760,7 +2752,6 @@ window.AN_DECISION_ORCHESTRATOR_V31={collectDecisionState,routeDecisionBrain,syn
  const oldStart=W.startV8;if(typeof oldStart==='function')W.startV8=function(){const r=oldStart.apply(this,arguments);try{analyze();}catch(e){}return r};
 })();
 </script>
-
 <script>
 /* V44：长期项目记忆与信念更新层 */
 (function(){
@@ -2900,8 +2891,6 @@ window.AN_DECISION_ORCHESTRATOR_V31={collectDecisionState,routeDecisionBrain,syn
  W.AN_DECISION_EVOLUTION_V47={state:S,capture,addEvidence,recordPrediction,recordOutcome,calibration,survival,opportunity,resource,redTeam,evidenceAudit,review,save,restore,exportJSON,render,reviewUI,tests};W.runV47UltimateTests=tests;W.addEventListener?.('beforeunload',()=>{try{persist()}catch(e){}});setTimeout(()=>{render();},0);
 })();
 </script>
-
-
 <script>
 /* V48：现实世界推理引擎
    六大升级：外部调查桥、基准率、概率/EV区间、因果依赖图、战略方案树、决策生命周期。
@@ -3135,7 +3124,6 @@ window.runV52UltimateTests=tests;
 try{render()}catch(e){window.__V52_RENDER_ERROR=String(e)}
 })();
 </script>
-
 <script>
 /* V54 structural self-test: DOM order, unique IDs, required decision outputs, and hidden secondary panels. */
 (function(){
@@ -3154,8 +3142,6 @@ try{render()}catch(e){window.__V52_RENDER_ERROR=String(e)}
  function el(id){return document.getElementById(id)}
 })();
 </script>
-
-
 <style id="v55LifeStyles">
 #v55LifePanel{margin-top:14px}
 #v55LifePanel .v55-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
@@ -3169,52 +3155,50 @@ try{render()}catch(e){window.__V52_RENDER_ERROR=String(e)}
 #v55LifePanel textarea{min-height:74px}
 @media(max-width:700px){#v55LifePanel .v55-grid{grid-template-columns:1fr}}
 </style>
-
 <section class="card result" id="v56DynamicPanel">
 <h2>⚡ V56 动态现实决策引擎 <span class="tag">新信息会重新判断</span></h2>
 <div class="small">把一次分析变成连续决策：锁定真正问题 → 找最小信息集 → 给出优先行动 → 明确翻转/停止条件 → 新事实进入后重新计算。</div>
 <div class="v55-grid" style="margin-top:10px">
- <div class="v55-box"><div class="v55-label">① 真正要解决的问题</div><div id="v56CoreProblem">—</div></div>
- <div class="v55-box"><div class="v55-label">② 最小信息集</div><div id="v56MinInfo">—</div></div>
- <div class="v55-box"><div class="v55-label">③ 当前第一优先行动</div><div id="v56PriorityAction">—</div></div>
- <div class="v55-box"><div class="v55-label">④ 如果我是你，我会</div><div id="v56IfMe">—</div></div>
+<div class="v55-box"><div class="v55-label">① 真正要解决的问题</div><div id="v56CoreProblem">—</div></div>
+<div class="v55-box"><div class="v55-label">② 最小信息集</div><div id="v56MinInfo">—</div></div>
+<div class="v55-box"><div class="v55-label">③ 当前第一优先行动</div><div id="v56PriorityAction">—</div></div>
+<div class="v55-box"><div class="v55-label">④ 如果我是你，我会</div><div id="v56IfMe">—</div></div>
 </div>
 <div class="v55-box" style="margin-top:10px"><div class="v55-label">⑤ 什么情况会让我改变方案</div><div id="v56Flip">—</div></div>
 <div class="v55-box" style="margin-top:10px"><div class="v55-label">⑥ 后悔控制</div><div id="v56Regret">—</div></div>
 <div class="v55-box" style="margin-top:10px"><div class="v55-label">⑦ 新事实 / 新结果</div><textarea id="v56NewFact" placeholder="例如：刚刚得到一个新数据、发生了新情况，或实际结果和预测不同。系统会据此重新判断。"></textarea>
-<button class="primary" type="button" onclick="v56Update()">加入新信息并重新判断</button></div>
-<div id="v56History" class="small" style="margin-top:10px">暂无更新记录。</div>
-<div id="v56TestOut" class="notice" style="margin-top:10px">V57 动态引擎尚未自检。</div>
-<button class="secondary" type="button" onclick="runV56Tests()">运行 V56 动态能力自检</button>
+<button class="primary" onclick="v56Update()" type="button">加入新信息并重新判断</button></div>
+<div class="small" id="v56History" style="margin-top:10px">暂无更新记录。</div>
+<div class="notice" id="v56TestOut" style="margin-top:10px">V57 动态引擎尚未自检。</div>
+<button class="secondary" onclick="runV56Tests()" type="button">运行 V56 动态能力自检</button>
 </section>
-
 <section class="card result" id="v55LifePanel">
- <h2>🧭 V55 强生活问题解决引擎 <span class="tag">默认收起深层分析</span></h2>
- <div class="small v55-muted">V54 全部决策能力保留。V55 新增：人性化理解 → 问题重构 → 最小必要反问 → 现实资源约束 → 行动计划 → 条件分支 → 复盘闭环。</div>
- <div class="v55-grid" style="margin-top:10px">
-  <div class="v55-box"><div class="v55-label">① 你现在的问题</div><div id="v55Problem" class="v55-value">等待输入。</div></div>
-  <div class="v55-box"><div class="v55-label">② 人性化理解</div><div id="v55Empathy" class="v55-value">系统会先理解处境，再进入分析。</div></div>
-  <div class="v55-box"><div class="v55-label">③ 真正要解决的事</div><div id="v55Reframe" class="v55-value">—</div></div>
-  <div class="v55-box"><div class="v55-label">④ 当前最关键变量</div><div id="v55KeyVars" class="v55-value">—</div></div>
- </div>
- <div class="v55-box" style="margin-top:10px"><div class="v55-label">⑤ 智能反问</div><div id="v55Question" class="v55-value">当缺失信息可能改变方案时，系统只提出最有价值的问题。</div><div id="v55QuestionReason" class="v55-muted" style="margin-top:5px"></div></div>
- <div class="v55-box v55-action" style="margin-top:10px"><div class="v55-label">⑥ 现在行动</div><div id="v55Action" class="v55-value">—</div></div>
- <div class="v55-grid" style="margin-top:10px">
-  <div class="v55-box"><div class="v55-label">⑦ 如果发生变化</div><div id="v55Branches" class="v55-value">—</div></div>
-  <div class="v55-box"><div class="v55-label">⑧ 停止 / 转向条件</div><div id="v55Stops" class="v55-value">—</div></div>
- </div>
- <details style="margin-top:10px"><summary><b>V55 深层生活推理</b><span class="tag">默认收起</span></summary>
-  <div class="v55-grid" style="margin-top:10px">
-   <div class="v55-box"><div class="v55-label">现实约束</div><div id="v55Constraints">—</div></div>
-   <div class="v55-box"><div class="v55-label">机会成本</div><div id="v55Opportunity">—</div></div>
-   <div class="v55-box"><div class="v55-label">可逆性</div><div id="v55Reversibility">—</div></div>
-   <div class="v55-box"><div class="v55-label">信息价值</div><div id="v55VOI">—</div></div>
-  </div>
- </details>
- <div class="v55-box" style="margin-top:10px"><div class="v55-label">💬 顾问式交流</div><div id="v55Advisor" class="v55-value">我会尽量少说空话，多帮你把眼前这件事变成下一步能做的事情。</div></div>
- <button class="secondary" type="button" onclick="runV55LifeSolve()" style="margin-top:10px">重新识别生活问题</button>
- <button class="secondary" type="button" onclick="runV55LifeTests()" style="margin-top:8px">V55生活能力自检</button>
- <div id="v55TestOut" class="notice" style="margin-top:8px">尚未自检。</div>
+<h2>🧭 V55 强生活问题解决引擎 <span class="tag">默认收起深层分析</span></h2>
+<div class="small v55-muted">V54 全部决策能力保留。V55 新增：人性化理解 → 问题重构 → 最小必要反问 → 现实资源约束 → 行动计划 → 条件分支 → 复盘闭环。</div>
+<div class="v55-grid" style="margin-top:10px">
+<div class="v55-box"><div class="v55-label">① 你现在的问题</div><div class="v55-value" id="v55Problem">等待输入。</div></div>
+<div class="v55-box"><div class="v55-label">② 人性化理解</div><div class="v55-value" id="v55Empathy">系统会先理解处境，再进入分析。</div></div>
+<div class="v55-box"><div class="v55-label">③ 真正要解决的事</div><div class="v55-value" id="v55Reframe">—</div></div>
+<div class="v55-box"><div class="v55-label">④ 当前最关键变量</div><div class="v55-value" id="v55KeyVars">—</div></div>
+</div>
+<div class="v55-box" style="margin-top:10px"><div class="v55-label">⑤ 智能反问</div><div class="v55-value" id="v55Question">当缺失信息可能改变方案时，系统只提出最有价值的问题。</div><div class="v55-muted" id="v55QuestionReason" style="margin-top:5px"></div></div>
+<div class="v55-box v55-action" style="margin-top:10px"><div class="v55-label">⑥ 现在行动</div><div class="v55-value" id="v55Action">—</div></div>
+<div class="v55-grid" style="margin-top:10px">
+<div class="v55-box"><div class="v55-label">⑦ 如果发生变化</div><div class="v55-value" id="v55Branches">—</div></div>
+<div class="v55-box"><div class="v55-label">⑧ 停止 / 转向条件</div><div class="v55-value" id="v55Stops">—</div></div>
+</div>
+<details style="margin-top:10px"><summary><b>V55 深层生活推理</b><span class="tag">默认收起</span></summary>
+<div class="v55-grid" style="margin-top:10px">
+<div class="v55-box"><div class="v55-label">现实约束</div><div id="v55Constraints">—</div></div>
+<div class="v55-box"><div class="v55-label">机会成本</div><div id="v55Opportunity">—</div></div>
+<div class="v55-box"><div class="v55-label">可逆性</div><div id="v55Reversibility">—</div></div>
+<div class="v55-box"><div class="v55-label">信息价值</div><div id="v55VOI">—</div></div>
+</div>
+</details>
+<div class="v55-box" style="margin-top:10px"><div class="v55-label">💬 顾问式交流</div><div class="v55-value" id="v55Advisor">我会尽量少说空话，多帮你把眼前这件事变成下一步能做的事情。</div></div>
+<button class="secondary" onclick="runV55LifeSolve()" style="margin-top:10px" type="button">重新识别生活问题</button>
+<button class="secondary" onclick="runV55LifeTests()" style="margin-top:8px" type="button">V55生活能力自检</button>
+<div class="notice" id="v55TestOut" style="margin-top:8px">尚未自检。</div>
 </section>
 <script id="v55LifeEngine">
 (function(){
@@ -3342,7 +3326,6 @@ try{render()}catch(e){window.__V52_RENDER_ERROR=String(e)}
  window.clearCurrentAnalysis=clearCurrentAnalysis;window.openDataManager=openDataManager;window.closeDataManager=closeDataManager;window.clearAllAppData=clearAllAppData;
 })();
 </script>
-
 <script id="v56DynamicEngine">
 (function(){
  const W=window,E=id=>document.getElementById(id);
@@ -3385,7 +3368,6 @@ try{render()}catch(e){window.__V52_RENDER_ERROR=String(e)}
  W.v56Update=update;W.runV56Tests=tests;setTimeout(()=>{if(t())render(t())},0);
 })();
 </script>
-
 <script id="v57PlusSixBrains">
 /* V57+ 六项智能强化层
    1动态更新 2人性/博弈 3因果链 4半真半假证据 5连续矛盾 6现实语境
@@ -3490,6 +3472,59 @@ try{render()}catch(e){window.__V52_RENDER_ERROR=String(e)}
  const oldBuild=W.buildReport;if(typeof oldBuild==='function')W.buildReport=function(){const r=oldBuild.apply(this,arguments);try{setTimeout(()=>{analyze();render()},0)}catch(e){}return r};
  document.addEventListener('DOMContentLoaded',()=>{try{analyze();render()}catch(e){}});
 })();
+</script><script id="v57EvidenceWeightEnforcer">
+/* 第三轮修复：证据“识别”必须真正进入结论。
+   强证据 > 可重复实测 > 一般陈述 > 观点/传言；未知不作为反向证据。
+   原则仍然是不追问、不脑补：只是降低结论强度/改变行动条件。
+*/
+(function(){
+ const W=window;
+ const q=id=>document.getElementById(id);
+ const txt=id=>String(q(id)?.value??q(id)?.textContent??'').trim();
+ const strength=s=>{const x=String(s||'');if(!x)return 0;if(/合同|订单|到账|发票|流水|银行记录|系统记录|实际成交|真实付费|已经发生|统计表|财报|官方公告/.test(x))return .95;if(/截图|聊天记录|录音|现场记录|第三方数据/.test(x))return .82;if(/亲眼|亲自|自己测|连续|多次|过去三个月|过去半年/.test(x))return .75;if(/我觉得|感觉|应该|可能|估计|大概|听说|有人说|都说|肯定|一定/.test(x))return .25;if(/不知道|不清楚|没数据|未核实|没有/.test(x))return 0;return .55};
+ function collect(){
+   const arr=[];
+   ['verifiedFacts','unverifiedFacts','assumptionBasis','counterEvidence'].forEach(id=>{String(txt(id)||'').split(/\n+/).map(x=>x.trim()).filter(Boolean).forEach(x=>arr.push(x));});
+   const ia=W.__AN_ACTIVE_INTERVIEW?.answers||{};Object.values(ia).forEach(v=>{if(String(v||'').trim())arr.push(String(v).trim())});
+   return arr;
+ }
+ function audit(){
+   const arr=collect(), ss=arr.map(strength);
+   const strong=ss.filter(x=>x>=.75).length, weak=ss.filter(x=>x>0&&x<.5).length, unknown=arr.filter(x=>/不知道|不清楚|没数据|未核实|没有真实经营数据|暂无数据/.test(x)).length;
+   const max=ss.length?Math.max(...ss):0, avg=ss.length?ss.reduce((a,b)=>a+b,0)/ss.length:0;
+   return {count:arr.length,strong,weak,unknown,max,avg,weakDominant:weak>0&&strong===0};
+ }
+ function enforce(c){
+   if(!c)return c;
+   const a=audit(); c.evidenceAudit=a;
+   // 只有弱证据/传言、没有强证据时，禁止把正EV直接升级为“条件成立”。
+   if(a.weakDominant && a.count>=1 && c.state==='条件成立'){
+      c.state='证据不足'; c.action='小规模验证'; c.strength=Math.min(Number(c.strength)||45,45);
+      c.reasons=(c.reasons||[]).concat('当前关键依据主要是观点/听说/估计，缺少更强的实际记录；正EV不能单独支撑直接行动。');
+      c.actions=(c.actions||[]); c.actions.unshift('先用低成本方式验证关键说法，不把传言当作已验证事实。');
+   }
+   // 如果存在强证据与弱说法冲突，允许强证据支配；保留弱说法作为反方信息而非同权事实。
+   if(a.strong>0 && a.weak>0){
+      c.reasons=(c.reasons||[]).concat('证据强度已区分：实际记录/订单等强证据权重大于听说、感觉和估计。');
+   }
+   return c;
+ }
+ const old=W.AN_CONCLUSION_V30?.runConclusionBrain;
+ if(typeof old==='function'){
+   const wrapped=function(){const c=old.apply(this,arguments);return enforce(c)};
+   W.AN_CONCLUSION_V30.runConclusionBrain=wrapped;
+   W.runConclusionBrain=wrapped;
+ }
+ W.AN_EVIDENCE_WEIGHT_V57={audit,enforce,tests:function(){
+   const fake=st=>enforce({state:'条件成立',action:'执行并监控',strength:78,reasons:[],actions:[],stops:[]});
+   const save={verified:txt('verifiedFacts'),unverified:txt('unverifiedFacts'),basis:txt('assumptionBasis'),counter:txt('counterEvidence')};
+   if(q('verifiedFacts'))q('verifiedFacts').value='';if(q('unverifiedFacts'))q('unverifiedFacts').value='专家说这个课程一定赚钱';if(q('assumptionBasis'))q('assumptionBasis').value='';if(q('counterEvidence'))q('counterEvidence').value='';
+   const weak=fake();
+   if(q('verifiedFacts'))q('verifiedFacts').value='已经有30笔真实订单到账';
+   const mixed=fake();
+   Object.entries(save).forEach(([id,v])=>{if(q(id))q(id).value=v});
+   return {weakBlocked:weak.state==='证据不足'&&weak.action==='小规模验证',strongConflictRetained:mixed.reasons.some(x=>String(x).includes('证据强度已区分'))};
+ }};
+})();
 </script>
-
 </body></html>
