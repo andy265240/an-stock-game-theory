@@ -1,4 +1,4 @@
-<!doctype html><html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>安的事件分析与决策系统 V54 人性化结论顾问版</title><style>body{margin:0;background:#f4f6fa;color:#172033;font-family:-apple-system,BlinkMacSystemFont,PingFang SC,Microsoft YaHei,sans-serif}header{padding:28px 18px;text-align:center;color:#fff;background:linear-gradient(135deg,#17254d,#315efb)}h1{margin:0;font-size:24px}.sub{margin-top:8px;opacity:.82;font-size:13px}main{max-width:900px;margin:auto;padding:16px}.card{background:#fff;border:1px solid #e4e8ef;border-radius:16px;padding:18px;margin-bottom:14px;box-shadow:0 5px 20px #1520440a}h2{font-size:17px;margin:0 0 12px}.grid{display:grid;grid-template-columns:repeat(2,1fr);gap:12px}label{display:block;font-size:13px;font-weight:700;margin:12px 0 7px}textarea,input{width:100%;box-sizing:border-box;border:1px solid #dfe4ec;border-radius:10px;padding:11px;font:inherit}textarea{min-height:100px;resize:vertical}button{border:0;border-radius:10px;padding:11px 16px;font-weight:700;margin:12px 8px 0 0;cursor:pointer}.primary{background:#315efb;color:#fff}.secondary{background:#edf1f7}.result{display:none}.metric{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}.metric div{background:#f7f9fc;border-radius:12px;padding:13px}.metric b{display:block;font-size:20px;margin-top:5px}.muted{color:#687386;font-size:13px}.step{display:flex;gap:10px;margin:14px 0}.num{min-width:30px;height:30px;border-radius:9px;background:#edf1ff;color:#315efb;display:grid;place-items:center;font-weight:700}.notice{padding:12px;border-radius:10px;background:#fff8e8;border:1px solid #f1dfb1;color:#765500;font-size:13px}.qbox{margin:10px 0 14px;padding:12px;background:#f7f9fc;border-radius:12px}.qbox textarea{min-height:72px;background:#fff}.tag{display:inline-block;padding:3px 8px;border-radius:999px;background:#edf1ff;color:#315efb;font-size:11px;margin-left:6px}.good{background:#edf8f0;border-color:#cfe8d7;color:#245c34}.bad{background:#fff0f0;border-color:#edcccc;color:#8a3030}.dash{display:grid;grid-template-columns:repeat(4,1fr);gap:10px}.dash div{background:#f7f9fc;border-radius:12px;padding:12px}.dash b{display:block;font-size:18px;margin-top:5px}.small{font-size:12px;color:#687386}@media(max-width:620px){.grid,.metric,.dash{grid-template-columns:1fr}h1{font-size:21px}}.valuegrid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}.valuegrid div{background:#f7f9fc;border-radius:12px;padding:12px}.timeline{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}.timeline div{background:#f7f9fc;border-radius:12px;padding:12px}@media(max-width:620px){.valuegrid,.timeline{grid-template-columns:1fr}}.wizard{padding:14px;background:#f7f9fc;border-radius:12px}.wizard-nav{display:flex;justify-content:space-between;align-items:center;gap:10px}.progress{height:8px;background:#e8ecf3;border-radius:99px;overflow:hidden}.progress i{display:block;height:100%;width:0;background:#315efb}.wizard-q{font-size:16px;font-weight:700;margin:14px 0 8px}.wizard-a{min-height:120px}.dashboard-grid{display:grid;grid-template-columns:repeat(6,1fr);gap:10px}.dashboard-detail{line-height:1.7}.dashboard-grid div{background:#f7f9fc;border-radius:12px;padding:12px}.dashboard-grid b{display:block;font-size:17px;margin-top:5px}.mini-list{margin:8px 0 0 18px;padding:0}.mini-list li{margin:5px 0}@media(max-width:760px){.dashboard-grid{grid-template-columns:repeat(2,1fr)}} .v8-start{display:block}.v8-start textarea{min-height:150px;font-size:16px}.v8-start .tip{margin-top:8px}.v8-only{display:block!important}.v8-hide{display:none!important}#smart{display:none}.v8-start .primary{font-size:15px;padding:13px 20px}@media(max-width:620px){.v8-start textarea{min-height:130px}}}</style>
+<!doctype html><html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>安的事件分析与决策系统 V49 终极结论与概率顾问版</title><style>body{margin:0;background:#f4f6fa;color:#172033;font-family:-apple-system,BlinkMacSystemFont,PingFang SC,Microsoft YaHei,sans-serif}header{padding:28px 18px;text-align:center;color:#fff;background:linear-gradient(135deg,#17254d,#315efb)}h1{margin:0;font-size:24px}.sub{margin-top:8px;opacity:.82;font-size:13px}main{max-width:900px;margin:auto;padding:16px}.card{background:#fff;border:1px solid #e4e8ef;border-radius:16px;padding:18px;margin-bottom:14px;box-shadow:0 5px 20px #1520440a}h2{font-size:17px;margin:0 0 12px}.grid{display:grid;grid-template-columns:repeat(2,1fr);gap:12px}label{display:block;font-size:13px;font-weight:700;margin:12px 0 7px}textarea,input{width:100%;box-sizing:border-box;border:1px solid #dfe4ec;border-radius:10px;padding:11px;font:inherit}textarea{min-height:100px;resize:vertical}button{border:0;border-radius:10px;padding:11px 16px;font-weight:700;margin:12px 8px 0 0;cursor:pointer}.primary{background:#315efb;color:#fff}.secondary{background:#edf1f7}.result{display:none}.metric{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}.metric div{background:#f7f9fc;border-radius:12px;padding:13px}.metric b{display:block;font-size:20px;margin-top:5px}.muted{color:#687386;font-size:13px}.step{display:flex;gap:10px;margin:14px 0}.num{min-width:30px;height:30px;border-radius:9px;background:#edf1ff;color:#315efb;display:grid;place-items:center;font-weight:700}.notice{padding:12px;border-radius:10px;background:#fff8e8;border:1px solid #f1dfb1;color:#765500;font-size:13px}.qbox{margin:10px 0 14px;padding:12px;background:#f7f9fc;border-radius:12px}.qbox textarea{min-height:72px;background:#fff}.tag{display:inline-block;padding:3px 8px;border-radius:999px;background:#edf1ff;color:#315efb;font-size:11px;margin-left:6px}.good{background:#edf8f0;border-color:#cfe8d7;color:#245c34}.bad{background:#fff0f0;border-color:#edcccc;color:#8a3030}.dash{display:grid;grid-template-columns:repeat(4,1fr);gap:10px}.dash div{background:#f7f9fc;border-radius:12px;padding:12px}.dash b{display:block;font-size:18px;margin-top:5px}.small{font-size:12px;color:#687386}@media(max-width:620px){.grid,.metric,.dash{grid-template-columns:1fr}h1{font-size:21px}}.valuegrid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}.valuegrid div{background:#f7f9fc;border-radius:12px;padding:12px}.timeline{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}.timeline div{background:#f7f9fc;border-radius:12px;padding:12px}@media(max-width:620px){.valuegrid,.timeline{grid-template-columns:1fr}}.wizard{padding:14px;background:#f7f9fc;border-radius:12px}.wizard-nav{display:flex;justify-content:space-between;align-items:center;gap:10px}.progress{height:8px;background:#e8ecf3;border-radius:99px;overflow:hidden}.progress i{display:block;height:100%;width:0;background:#315efb}.wizard-q{font-size:16px;font-weight:700;margin:14px 0 8px}.wizard-a{min-height:120px}.dashboard-grid{display:grid;grid-template-columns:repeat(6,1fr);gap:10px}.dashboard-detail{line-height:1.7}.dashboard-grid div{background:#f7f9fc;border-radius:12px;padding:12px}.dashboard-grid b{display:block;font-size:17px;margin-top:5px}.mini-list{margin:8px 0 0 18px;padding:0}.mini-list li{margin:5px 0}@media(max-width:760px){.dashboard-grid{grid-template-columns:repeat(2,1fr)}} .v8-start{display:block}.v8-start textarea{min-height:150px;font-size:16px}.v8-start .tip{margin-top:8px}.v8-only{display:block!important}.v8-hide{display:none!important}#smart{display:none}.v8-start .primary{font-size:15px;padding:13px 20px}@media(max-width:620px){.v8-start textarea{min-height:130px}}}</style>
 <style id="backendEngineVisibility">
 /* V7.4：专业引擎全部后台运行，主界面不展示内部分析模块 */
 #industryEngine,
@@ -6,7 +6,7 @@
 #industryTreeV70,
 #professionalAudit { display:none !important; }
 </style>
-<style>[data-internal="true"]{display:none!important}</style></head><body><header><h1>安的事件分析与决策系统 <span style="font-size:12px;opacity:.65">V54</span></h1><div class="sub">问题 → 事实 → 因果 → 博弈 → 概率 → EV → 风险 → 方案 → 翻转 → 压测 → 复盘→结果→建议</div></header><main><section class="card v8-start" id="v8Start"><h2>我想分析什么？</h2><textarea id="v8Input" placeholder="直接用自己的话告诉我你正在考虑什么。
+<style>[data-internal="true"]{display:none!important}</style></head><body><header><h1>安的事件分析与决策系统 <span style="font-size:12px;opacity:.65">V26</span></h1><div class="sub">问题 → 事实 → 因果 → 博弈 → 概率 → EV → 风险 → 方案 → 翻转 → 压测 → 复盘→结果→建议</div></header><main><section class="card v8-start" id="v8Start"><h2>我想分析什么？</h2><textarea id="v8Input" placeholder="直接用自己的话告诉我你正在考虑什么。
 
 例如：
 “我想在郑州二七区开一个英语培训班，不知道值不值得做。”
@@ -45,10 +45,7 @@
 <div style="margin-top:16px"><h3 style="margin:0 0 8px;font-size:16px">决策翻转条件</h3><div class="notice" id="flipConditions">完成分析后，系统会列出哪些新证据出现时需要重新计算。</div></div><div style="margin-top:16px"><h3 style="margin:0 0 8px;font-size:16px">决策翻转实验室 <span class="tag">V5.3</span></h3><div class="small" style="margin-bottom:8px">系统尝试计算“什么变量变化后，EV会触及门槛”。这是敏感性/临界点计算，不是预测；结果依赖当前输入口径。</div><div class="grid"><div class="notice" id="flipLabProb">上行概率临界点：—</div><div class="notice" id="flipLabGain">上行收益临界点：—</div><div class="notice" id="flipLabLoss">下行损失临界点：—</div><div class="notice" id="flipLabDownProb">下行概率临界点：—</div></div></div>
 <div style="margin-top:16px"><h3 style="margin:0 0 8px;font-size:16px">⑥ 系统建议：如果我是你，我会这样做</h3><div class="notice" id="systemAdvice">完成分析后，系统会基于事实、假设、EV、风险、机会成本和多维价值，给出条件化建议。它是辅助判断，不会替你承担最终决定。</div><ul class="mini-list small" id="adviceReasons"></ul></div></section>
 <section class="card result" id="decisionLoopPanel"><h2>🧠 三大脑闭环总控 <span class="tag">V31</span></h2><div class="small">不是三个独立模块：所有事实、估计、未知、计算结果和结论统一进入 DecisionState；发现缺口时自动回调查，数据更新后再回计算，计算完成后再进结论。</div><div class="notice" id="decisionLoopStatus" style="margin-top:10px">等待联动。</div><div class="small" id="decisionLoopData" style="margin-top:8px">总线尚未运行。</div><button class="primary" type="button" onclick="runIntegratedDecisionLoop()">运行三大脑闭环</button><button class="secondary" type="button" onclick="runIntegratedDecisionLoopTests()">运行终极联动自检</button><div id="decisionLoopTestOut" class="notice" style="margin-top:10px">尚未自检。</div></section>
-<section class="card result" id="conclusionBrainPanel">
-<h2>🎯 结论大脑 <span class="tag">V54 最强商业顾问</span></h2>
-<div class="small" style="margin-bottom:12px">先告诉你结果，再解释原因；把复杂分析整理成人最容易阅读、判断和行动的顺序。</div>
-
+<section class="card result" id="conclusionBrainPanel"><h2>🎯 结论大脑 <span class="tag">V53 最强商业顾问</span></h2><div class="small" style="margin-bottom:10px">不止总结计算结果。它还要判断商业模式、利润引擎、客户与竞争、资源配置、验证路径和扩张条件；所有建议必须区分事实、假设与待验证项。</div>
 <div id="analysisResultHero" class="card" style="margin:0 0 14px;border:2px solid #315efb;background:linear-gradient(135deg,#f7f9ff,#ffffff);box-shadow:0 4px 16px rgba(49,94,251,.10)">
 <h3 style="margin:0 0 10px;font-size:19px">📊 分析结果</h3>
 <div class="metric">
@@ -60,47 +57,9 @@
 <div>最关键变量<b id="resultKeyTop">—</b></div>
 <div>行动方式<b id="resultActionTop">—</b></div>
 </div>
-<div class="notice" id="resultSummaryTop" style="margin-top:10px"><b>分析结果：</b>完成调查与计算后，这里先给出最终结果。</div>
+<div class="notice" id="resultSummaryTop" style="margin-top:10px"><b>分析结果：</b>完成调查与计算后，这里先给出最终结果；下面再解释为什么。</div>
 </div>
-
-<div class="notice" id="conHeadline"><b>一句话结论：</b>完成分析后生成。</div>
-
-<div class="grid" style="margin-top:12px">
-<div class="notice"><b>🧭 决策状态</b><span id="conState">待生成</span></div>
-<div class="notice"><b>证据状态</b><span id="conEvidence">—</span></div>
-<div class="notice"><b>风险状态</b><span id="conRisk">—</span></div>
-<div class="notice"><b>最关键变量</b><span id="conKey">—</span></div>
-</div>
-
-<div style="margin-top:16px"><h3 style="margin:0 0 8px;font-size:16px">① 为什么得到这个结果</h3><div class="notice" id="conWhy">结论依据：—</div></div>
-
-<div style="margin-top:16px"><h3 style="margin:0 0 8px;font-size:16px">② 我最担心什么</h3><div class="notice" id="conUnknown">未知边界：—</div><div class="notice" id="fatalRisks" style="margin-top:8px"><b>🚨 一票否决风险：</b>分析后生成。</div></div>
-
-<div style="margin-top:16px"><h3 style="margin:0 0 8px;font-size:16px">③ 如果结论错了，会错在哪里？</h3><div class="notice" id="ifWrong"><b>反事实检查：</b>分析后生成。</div></div>
-
-<div style="margin-top:16px"><h3 style="margin:0 0 8px;font-size:16px">④ 下一步最值得做什么</h3><div class="notice" id="cheapestValidation"><b>💡 最低成本验证：</b>分析后生成。</div><ol class="mini-list small" id="conActions"><li>—</li></ol></div>
-
-<div style="margin-top:16px"><h3 style="margin:0 0 8px;font-size:16px">⑤ 我的行动方案</h3><div class="notice" id="resultActionNarrative"><b>行动方式：</b>分析后生成。</div><div class="grid" style="margin-top:8px"><div class="notice" id="investmentBoundary"><b>投入边界：</b>分析后生成。</div><div class="notice" id="scaleGate"><b>扩大条件：</b>分析后生成。</div></div></div>
-
-<div style="margin-top:16px"><h3 style="margin:0 0 8px;font-size:16px">⑥ 什么时候必须停止 / 改变决定</h3><div class="notice" id="conFlip">翻转条件：—</div><ul class="mini-list small" id="conStops"><li>—</li></ul></div>
-
-<div style="margin-top:16px"><h3 style="margin:0 0 8px;font-size:16px">⑦ 方案路径</h3><div class="grid" id="optionPaths"><div class="notice"><b>原方案</b><br>—</div><div class="notice"><b>小规模验证</b><br>—</div><div class="notice"><b>替代路径</b><br>—</div></div></div>
-
-<div style="margin-top:16px"><h3 style="margin:0 0 8px;font-size:16px">⑧ 项目时间轴</h3><div class="timeline" id="projectTimeline"><div class="notice">提出问题 → 调查 → 计算 → 决策 → 执行 → 实际结果 → 复盘 → 更新模型</div></div></div>
-
-<div style="margin-top:16px"><h3 style="margin:0 0 8px;font-size:16px">⑨ 综上概率结论</h3><div class="metric"><div>综合成功率<b id="conSuccessRate">—</b></div><div>综合失败率<b id="conFailureRate">—</b></div><div>概率完整性<b id="conProbQuality">—</b></div><div>情景偏斜度<b id="conScenarioSkew">—</b></div></div><div class="grid" style="margin-top:10px"><div class="notice" id="conGoodScenario"><b>乐观情景：</b>—</div><div class="notice" id="conBaseScenario"><b>基准情景：</b>—</div><div class="notice" id="conBadScenario"><b>悲观情景：</b>—</div><div class="notice" id="conScenarioNote"><b>口径说明：</b>成功/失败按各情景结果是否达到0或以上划分；若结果定义不是金钱，则按用户填写的结果口径计算。</div></div></div>
-
-<div class="card" style="margin-top:16px;border:2px solid #315efb;background:#f8faff"><h3 style="margin:0 0 8px;font-size:17px">🎯 顾问最终建议</h3><div class="notice" id="conAdvisorRecommendation"><b>如果我是你：</b>等待分析完成。</div><div class="small" style="margin-top:8px">这是基于当前信息的顾问建议，不是替你做决定。最终是否执行，由你自己决定。</div></div>
-
-<details style="margin-top:16px"><summary><b>🔍 展开：证据链与可靠性</b></summary><div class="notice" id="evidenceChain" style="margin-top:10px"><b>证据链：</b>分析后生成。</div><div class="notice" style="margin-top:8px"><b>结论强度：</b><span id="conStrength">—</span></div><div class="notice" style="margin-top:8px"><b>可信度说明：</b>概率和EV不是保证；系统会区分事实、估计、假设与未知。</div></details>
-
-<details style="margin-top:10px"><summary><b>🏢 展开：商业顾问深度分析</b></summary><div class="card" style="margin-top:10px;border:1px solid #cbd5ff;background:#f8faff"><div class="small" style="margin-bottom:10px">不止判断做不做，还设计怎么做；信息不足时明确说不知道，不虚构市场数据。</div><div class="notice" id="bizThesis"><b>商业判断：</b>等待生成</div><div class="notice" id="bizModel"><b>商业模式：</b>—</div><div class="notice" id="bizProfit"><b>利润引擎：</b>—</div><div class="notice" id="bizEdge"><b>客户与竞争：</b>—</div><div class="notice" id="bizExperiment"><b>最低成本验证：</b>—</div><div class="notice" id="bizPlan"><b>如果我是你：</b>—</div><div class="notice" id="bizGates"><b>扩张/停止闸门：</b>—</div><div class="notice" id="bizAlternatives"><b>替代商业路径：</b>—</div><div class="notice" id="bizPricing"><b>定价与收益结构：</b>—</div><div class="notice" id="bizMoat"><b>竞争壁垒：</b>—</div><div class="notice" id="bizResources"><b>资源配置：</b>—</div><div class="notice" id="bizGame"><b>竞争博弈：</b>—</div><div class="notice" id="bizMetrics"><b>经营仪表盘：</b>—</div><div class="notice" id="bizStrategy"><b>战略总判断：</b>—</div><div class="notice" id="bizObjective"><b>商业目标：</b>—</div><div class="notice" id="bizEngine"><b>赚钱方程：</b>—</div><div class="notice" id="bizBottleneck"><b>当前最大瓶颈：</b>—</div><div class="notice" id="bizHypotheses"><b>关键商业假设：</b>—</div><div class="notice" id="bizCapital"><b>资本配置：</b>—</div><div class="notice" id="bizGame2"><b>主动博弈：</b>—</div><div class="notice" id="bizScale"><b>规模闸门：</b>—</div><div class="notice" id="bizStop"><b>切换/停止闸门：</b>—</div><button class="secondary" type="button" onclick="runBusinessAdvisorTests()">运行商业顾问专项测试</button><div class="notice" id="bizTestOut" style="margin-top:8px">尚未自检。</div></div></details>
-
-<details style="margin-top:10px"><summary><b>🧪 展开：系统自检</b></summary><button class="secondary" type="button" onclick="runConclusionBrainTests()" style="margin-top:10px">运行结论大脑自检</button><div id="conTestOut" class="notice" style="margin-top:10px">尚未自检。</div></details>
-
-<div class="notice" id="conCaveat" style="margin-top:12px">结论大脑不改变调查与计算结果；它负责把结果、不确定性、边界和行动整理成可执行的条件化决策。</div>
-<button class="primary" type="button" onclick="runConclusionBrain()">生成结论大脑</button>
-</section>
+<div class="dashboard-grid"><div>决策状态<b id="conState">待生成</b></div><div>结论强度<b id="conStrength">—</b></div><div>证据状态<b id="conEvidence">—</b></div><div>风险状态<b id="conRisk">—</b></div><div>最关键变量<b id="conKey">—</b></div><div>行动方式<b id="conAction">—</b></div></div><div class="card" style="grid-column:1/-1;margin:0;border:1px solid #cbd5ff;background:#f8faff"><h3 style="margin:0 0 10px;font-size:16px">📊 综上概率结论</h3><div class="metric"><div>综合成功率<b id="conSuccessRate">—</b></div><div>综合失败率<b id="conFailureRate">—</b></div><div>概率完整性<b id="conProbQuality">—</b></div><div>情景偏斜度<b id="conScenarioSkew">—</b></div></div><div class="grid" style="margin-top:10px"><div class="notice" id="conGoodScenario"><b>乐观情景：</b>—</div><div class="notice" id="conBaseScenario"><b>基准情景：</b>—</div><div class="notice" id="conBadScenario"><b>悲观情景：</b>—</div><div class="notice" id="conScenarioNote"><b>口径说明：</b>成功/失败按各情景结果是否达到0或以上划分；若结果定义不是金钱，则按用户填写的结果口径计算。</div></div></div><div class="grid" style="margin-top:12px"><div class="notice" id="conHeadline">完成分析后生成。</div><div class="notice" id="conWhy">结论依据：—</div><div class="notice" id="conUnknown">未知边界：—</div><div class="notice" id="conFlip">何时推翻：—</div></div><div style="margin-top:14px"><h3 style="margin:0 0 8px;font-size:16px">行动方案</h3><ol class="mini-list small" id="conActions"><li>—</li></ol></div><div style="margin-top:12px"><h3 style="margin:0 0 8px;font-size:16px">停止 / 复核条件</h3><ul class="mini-list small" id="conStops"><li>—</li></ul></div><div class="notice" id="conCaveat" style="margin-top:12px">这是条件化决策建议，不是保证结果。</div><div class="card" style="margin-top:14px;border:2px solid #315efb;background:#f8faff"><h3 style="margin:0 0 8px;font-size:17px">🎯 我的最终顾问建议</h3><div class="notice" id="conAdvisorRecommendation"><b>如果我是你：</b>等待分析完成。</div><div class="small" style="margin-top:8px">系统会说明建议依据、最担心的风险、第一步行动、投入边界和改变建议的条件；最终是否执行仍由用户自己决定。</div></div><div class="card" style="margin-top:14px;border:1px solid #cbd5ff;background:#f8faff"><h3 style="margin:0 0 8px;font-size:16px">🧭 商业顾问层：不只判断做不做，还设计怎么做</h3><div class="small" style="margin-bottom:10px">输出商业逻辑、利润驱动、关键短板、低成本验证、分阶段行动和扩张闸门；信息不足时明确说不知道，不虚构市场数据。</div><div class="notice" id="bizThesis"><b>商业判断：</b>等待生成</div><div class="notice" id="bizModel"><b>商业模式：</b>—</div><div class="notice" id="bizProfit"><b>利润引擎：</b>—</div><div class="notice" id="bizEdge"><b>客户与竞争：</b>—</div><div class="notice" id="bizExperiment"><b>最低成本验证：</b>—</div><div class="notice" id="bizPlan"><b>如果我是你：</b>—</div><div class="notice" id="bizGates"><b>扩张/停止闸门：</b>—</div><div class="notice" id="bizAlternatives"><b>替代商业路径：</b>—</div><div class="notice" id="bizPricing"><b>定价与收益结构：</b>—</div><div class="notice" id="bizMoat"><b>竞争壁垒：</b>—</div><div class="notice" id="bizResources"><b>资源配置：</b>—</div><div class="notice" id="bizGame"><b>竞争博弈：</b>—</div><div class="notice" id="bizMetrics"><b>经营仪表盘：</b>—</div><div class="notice" id="bizStrategy"><b>战略总判断：</b>—</div><div class="notice" id="bizObjective"><b>商业目标：</b>—</div><div class="notice" id="bizEngine"><b>赚钱方程：</b>—</div><div class="notice" id="bizBottleneck"><b>当前最大瓶颈：</b>—</div><div class="notice" id="bizHypotheses"><b>关键商业假设：</b>—</div><div class="notice" id="bizCapital"><b>资本配置：</b>—</div><div class="notice" id="bizGame2"><b>主动博弈：</b>—</div><div class="notice" id="bizScale"><b>规模闸门：</b>—</div><div class="notice" id="bizStop"><b>切换/停止闸门：</b>—</div><button class="secondary" type="button" onclick="runBusinessAdvisorTests()">运行商业顾问专项测试</button><div class="notice" id="bizTestOut" style="margin-top:8px">尚未自检。</div></div><button class="primary" type="button" onclick="runConclusionBrain()">生成结论大脑</button><button class="secondary" type="button" onclick="runConclusionBrainTests()">运行 V30 极限自检</button><div id="conTestOut" class="notice" style="margin-top:10px">尚未自检。</div></section>
 <section class="card result"><h2>⑥ 复盘</h2><textarea id="reviewText" placeholder="事情结束后记录：哪些判断正确？哪些假设错误？概率是否高估？实际损失与预期是否一致？"></textarea><button class="primary" onclick="save()">保存到本机</button><button class="secondary" onclick="exportTxt()">导出TXT</button><p class="muted" id="saved"></p></section>
 <section class="card result" id="compare"><h2>⑦ 方案比较</h2><div class="grid"><div><label>方案A</label><input id="aName" value="方案A"><label>收益</label><input id="aGain" type="number" value="20"><label>成本</label><input id="aCost" type="number" value="8"><label>成功概率%</label><input id="aProb" type="number" value="60"></div><div><label>方案B</label><input id="bName" value="方案B"><label>收益</label><input id="bGain" type="number" value="15"><label>成本</label><input id="bCost" type="number" value="5"><label>成功概率%</label><input id="bProb" type="number" value="70"></div></div><button class="primary" onclick="comparePlans()">计算方案指标</button><div id="compareOut" class="notice">输入两个方案后计算。</div></section>
 <section class="card result" id="sensitivity"><h2>⑧ 敏感性分析</h2><label>关键变量当前值</label><input id="baseVar" type="number" value="50"><label>下降幅度%</label><input id="downVar" type="number" value="20"><label>上升幅度%</label><input id="upVar" type="number" value="20"><button class="primary" onclick="sensitivity()">测试敏感度</button><div id="sensOut" class="notice">等待测试。</div></section>
@@ -2069,66 +2028,6 @@ window.AN_DECISION_ORCHESTRATOR_V31={collectDecisionState,routeDecisionBrain,syn
 </script>
 
 <script>
-/* V54：人性化结论排序 + 证据链/致命风险/最低成本验证/反事实/方案路径/时间轴 */
-(function(){
-  function el(id){return document.getElementById(id)}
-  function set(id,html){const e=el(id);if(e)e.innerHTML=html}
-  function txt(id){return (el(id)?.textContent||'').trim()}
-  function val(id){return (el(id)?.value||'').trim()}
-  function v54Render(c,prob){
-    if(!c)return;
-    const ev=Number.isFinite(c.ev)?c.ev:null;
-    const stress=Number.isFinite(c.stress)?c.stress:null;
-    const key=val('q10')||txt('resultKeyTop')||'关键变量';
-    const unknown=val('q3')||txt('conUnknown')||'当前仍有未知项';
-    const evidence=Number(txt('dEvidence').replace(/[^0-9.\-]/g,''));
-    const complete=Number(txt('dComplete').replace(/[^0-9.\-]/g,''));
-    const reliability=Math.max(0,Math.min(100,Math.round((isFinite(evidence)?evidence:0)*.45+(isFinite(complete)?complete:0)*.35+(isFinite(c.strength)?c.strength:0)*.20)));
-    const hard=(txt('dRisk').includes('超过')||txt('dStress').includes('超过'));
-    const irreversible=val('reversibility').includes('不可');
-    const fatal=[];
-    if(hard)fatal.push('当前风险指标触及/超过承受边界');
-    if(irreversible)fatal.push('存在不可逆投入，需要先验证再扩大');
-    if(!isFinite(evidence)||evidence<40)fatal.push('关键证据不足，不能把模型结果当成确定事实');
-    if(!fatal.length)fatal.push('目前没有识别到明确的一票否决项，但仍需监控压力情景与关键假设');
-    set('fatalRisks','<b>🚨 一票否决风险：</b>'+fatal.join('；'));
-    const wrong=[];
-    if(key&&key!=='关键变量')wrong.push('最可能先错在“'+key+'”的实际值偏离当前假设');
-    if(unknown&&unknown!=='未知边界：—')wrong.push('当前未知信息被证实与模型假设不同');
-    if(stress!==null&&ev!==null&&stress<ev)wrong.push('压力情景进一步恶化，使EV跌破决策门槛');
-    if(!wrong.length)wrong.push('新证据改变核心假设，或实际结果持续偏离预测');
-    set('ifWrong','<b>反事实检查：</b>'+wrong.join('；')+'。一旦出现，应重新调查并计算，而不是强行维持原结论。');
-    const first=(c.actions&&c.actions[0])||'先验证最可能改变结论的关键变量';
-    const vc=(val('validationCost')||val('experimentCost')||'').trim();
-    set('cheapestValidation','<b>💡 最低成本验证：</b>'+first+(vc?'；预计验证成本约 '+vc:'')+'。原则：先买信息，再买资产；先可逆，后不可逆。');
-    set('resultActionNarrative','<b>行动方式：</b>'+ (c.action||'先验证') +'。如果当前证据不足，优先小规模、可退出、可复盘的动作。');
-    const budget=val('budget')||val('capital')||'未填写';
-    const maxLoss=val('stressMax')||val('maxloss')||'未填写';
-    set('investmentBoundary','<b>投入边界：</b>预算约束 '+budget+'；最大可承受损失 '+maxLoss+'。未填写的边界不会被系统擅自补造。');
-    set('scaleGate','<b>扩大条件：</b>关键指标达到预设目标、压力情景仍可承受、核心假设获得真实数据验证后再扩大。');
-    const alt=txt('bizAlternatives').replace(/^替代商业路径：/,'').trim();
-    set('optionPaths','<div class="notice"><b>原方案</b><br>'+((c.action||'按原计划执行')+'；但需满足停止/翻转条件')+'</div><div class="notice"><b>小规模验证</b><br>'+first+'</div><div class="notice"><b>替代路径</b><br>'+((alt&&alt!=='—')?alt:'若原方案不可行，寻找更低成本、更可逆的替代路径')+'</div>');
-    const stage=c.action||'先验证';
-    set('projectTimeline','<div class="timeline"><div><b>现在：</b>'+stage+'</div><div><b>下一节点：</b>取得关键验证数据</div><div><b>再下一节点：</b>重新计算概率、EV与风险</div><div><b>长期：</b>实际结果 → 复盘 → 更新模型</div></div>');
-    const chain=[];
-    if(txt('dReasons'))chain.push('事实/数据 → '+txt('dReasons'));
-    chain.push('概率与EV → '+(ev===null?'待完成计算':('EV '+ev)));
-    chain.push('风险与压力 → '+(stress===null?'待完成压力测试':('压力结果 '+stress)));
-    chain.push('顾问结论 → '+(c.state||'待生成'));
-    chain.push('行动 → '+(c.action||'待生成'));
-    set('evidenceChain','<b>证据链：</b>'+chain.join(' → ')+'。其中事实、估计、假设和未知必须保持区分。');
-    // Keep reliability visible in top card without changing the existing metric contract.
-    set('resultReliabilityTop',reliability+'/100');
-  }
-  const old=window.runConclusionBrain;
-  if(typeof old==='function'){
-    window.runConclusionBrain=function(){const c=old.apply(this,arguments);try{const prob=typeof updateConclusionProbability==='function'?updateConclusionProbability():null;v54Render(c,prob)}catch(e){const x=el('conHeadline');if(x)x.innerHTML='<b>结论渲染提示：</b>'+e.message}return c};
-  }
-  window.AN_CONCLUSION_V54={render:v54Render};
-})();
-</script>
-
-<script>
 /* V36：三大脑自动推演总控 + 主动商业战略推演
    目标：不是三个模块轮流亮灯，而是围绕“当前最值得做的下一步”自动闭环。
 */
@@ -2242,7 +2141,7 @@ window.AN_DECISION_ORCHESTRATOR_V31={collectDecisionState,routeDecisionBrain,syn
     add('教育分流',()=>classifyBusiness('开魔方课程')==='education');
     add('餐饮分流',()=>classifyBusiness('开餐厅')==='food');
     add('线上分流',()=>classifyBusiness('做一个线上软件')==='online');
-    add('缺需求时先需求验证',()=>/真实需求|真实付费需求|真实付费成交/.test(businessInference().bottleneck));
+    add('缺需求时先需求验证',()=>businessInference().bottleneck==='真实付费需求');
     add('需求已知后转向经济',()=>{window.__AN_ACTIVE_INTERVIEW={answers:{demand:'已有真实付费订单',economics:'不知道'}};window.AN_DECISION_STATE={userInput:'开超市',facts:['已有真实付费订单'],estimates:[],unknowns:['单位经济未知'],opinions:[],constraints:{},analysis:{},conclusion:{},next:{}};return businessInference().bottleneck==='单位经济'});
     add('替代路径≥4',()=>businessInference().paths.length>=4);
     add('未知仍然是未知',()=>businessInference().unknowns>=1);
@@ -2464,8 +2363,8 @@ window.AN_DECISION_ORCHESTRATOR_V31={collectDecisionState,routeDecisionBrain,syn
    if(!x)return 'empty';
    if(/不知道|不清楚|没数据|没有数据|还没|暂时没有|无法确定|说不上来/.test(x))return 'unknown';
    if(/我觉得|我感觉|应该|可能|大概|估计|好像|听说|我认为|感觉会/.test(x))return 'estimate';
-   if(/我(?:最|很)?想|我希望|我的目标|我就是要|我更在意|对我来说最重要|我需要/.test(x))return 'goal';
-   if(/我(?:很|有点|特别|非常|真的|有些)?(?:怕|担心)|害怕|不敢|焦虑|紧张|难受|很累|烦|委屈|失望|难过|伤心/.test(x))return 'feeling';
+   if(/我想|我希望|我的目标|我就是要|我更在意|对我来说最重要|我需要/.test(x))return 'goal';
+   if(/我怕|我担心|害怕|不敢|焦虑|紧张|难受|很累|烦|委屈|失望|难过|伤心/.test(x))return 'feeling';
    if(/必须|只能|不能|一定要|绝对不|预算不能超过|最多亏|最多损失|时间必须|地点必须/.test(x))return 'constraint';
    if(/合同|订单|流水|发票|记录|实际|已经发生|真实付费|到账|统计|数据|报告|财报|签约|成交/.test(x))return 'fact';
    return 'mixed';
@@ -2502,7 +2401,7 @@ window.AN_DECISION_ORCHESTRATOR_V31={collectDecisionState,routeDecisionBrain,syn
    const it=intent(all);
    if(it==='support')return {id:'support',q:'你不用现在做决定。你愿意的话，先告诉我：最近最让你难受的那一件事是什么？',why:'先把你真正面对的问题说清楚，比急着分析更重要。',score:100};
    if(it==='help')return {id:'help',q:'你希望我最终帮你解决到什么程度？是先判断原因、给你处理办法，还是帮你做一个具体选择？',why:'先确定你需要的是解释、办法还是决策，避免答非所问。',score:100};
-   if(!d.demand&&!d.money)add('reality','现在这件事里，已经发生的最确定的一件事是什么？哪怕只有一条也行。','我先建立现实，而不是拿猜测开始计算。',95);
+   if(!demand&&!d.money)add('reality','现在这件事里，已经发生的最确定的一件事是什么？哪怕只有一条也行。','我先建立现实，而不是拿猜测开始计算。',95);
    if(d.demand&&!d.money)add('economics','如果只抓一个数字，你最清楚的是收入、成本、利润还是客单价？不知道也没关系。','我需要先找到这件事真正的经济发动机。',88);
    if(!d.demand)add('demand','目前有没有真实的人已经付钱、下单、预约或明确承诺？','真实行为比“感觉有需求”更能改变商业判断。',92);
    if(!d.money)add('money','这件事最可能让钱流向哪里？收入从哪里来，最大的支出又是什么？','先找到钱的流入和流出，才能判断项目到底靠什么赚钱。',87);
@@ -2574,7 +2473,7 @@ window.AN_DECISION_ORCHESTRATOR_V31={collectDecisionState,routeDecisionBrain,syn
    add('总线记录人性信息',()=>{const z=W.AN_DECISION_STATE;W.AN_DECISION_STATE={};syncBus('我怕亏钱');const ok=!!W.AN_DECISION_STATE.humanDialogue.feelings.length;W.AN_DECISION_STATE=z;return ok});
    add('用户硬约束可识别',()=>/约束/.test(reflect('我必须控制在10万以内')));
    add('对话会改变轮次',()=>{const z={...D,messages:D.messages.slice(),turn:D.turn};answer('我不知道真实客流');const ok=D.turn===z.turn+1;Object.assign(D,z);return ok});
-   add('重复问题被抑制',()=>{const z={...D,questionsAsked:['reality','demand','money','risk','competition','flip','validation','goal'],messages:[],facts:[],estimates:[],feelings:[],goals:[],unknowns:[],constraints:[],lastReply:'',lastQuestion:''}; Object.assign(D,z);const q=chooseQuestion();Object.assign(D,z);return q&&q.id==='open'});
+   add('重复问题被抑制',()=>{const z={...D,questionsAsked:['reality','demand','money','risk','competition','flip','validation','goal'],messages:D.messages.slice()};const q=chooseQuestion();Object.assign(D,z);return q&&q.id==='open'});
    for(let i=0;i<1000;i++)add('边界#'+i,()=>{const arr=['不知道','我觉得可能赚钱','已经有订单记录','我很担心亏钱','我必须控制预算'];return ['unknown','estimate','fact','feeling','constraint'].includes(classifyPiece(arr[i%arr.length]))});
    D.turn=old.turn;D.stage=old.stage;D.messages=old.messages;D.facts=old.facts;D.estimates=old.estimates;D.feelings=old.feelings;D.goals=old.goals;D.unknowns=old.unknowns;D.constraints=old.constraints;D.questionsAsked=old.questionsAsked;D.lastQuestion=old.lastQuestion;D.lastReply=old.lastReply;D.confidence=old.confidence;D.mode=old.mode;
    const e=document.getElementById('v39TestOut');if(e){e.className='notice '+(pass===total?'good':'bad');e.innerHTML=`<b>V40 人性化自适应顾问自检：${pass}/${total} 通过</b><br><span class="small">覆盖事实/估计/感受/目标/约束/未知分离、意图识别、动态提问、总线同步、重复问题抑制与1000组边界测试。代码级测试，不等同于长期真实用户测试。</span>`}
@@ -3132,24 +3031,4 @@ window.runV52UltimateTests=tests;
 try{render()}catch(e){window.__V52_RENDER_ERROR=String(e)}
 })();
 </script>
-
-<script>
-/* V54 structural self-test: DOM order, unique IDs, required decision outputs, and hidden secondary panels. */
-(function(){
- window.runV54StructuralTests=function(){
-  const ids=['analysisResultHero','resultStateTop','resultSuccessTop','resultEVTop','resultRiskTop','resultReliabilityTop','resultKeyTop','resultActionTop','conHeadline','conWhy','fatalRisks','ifWrong','cheapestValidation','resultActionNarrative','investmentBoundary','scaleGate','conFlip','conStops','optionPaths','projectTimeline','conSuccessRate','conFailureRate','conProbQuality','conScenarioSkew','conAdvisorRecommendation','evidenceChain'];
-  const cases=[]; const add=(name,ok)=>cases.push({name,ok:!!ok});
-  add('核心结论区存在',!!document.getElementById('conclusionBrainPanel'));
-  add('结果驾驶舱在一句话结论之前',(()=>{const a=el('analysisResultHero'),b=el('conHeadline');return !!a&&!!b&&!!(a.compareDocumentPosition(b)&Node.DOCUMENT_POSITION_FOLLOWING)})());
-  add('关键输出ID全部存在',ids.every(id=>!!document.getElementById(id)));
-  const all=[...document.querySelectorAll('[id]')].map(x=>x.id);add('无重复ID',new Set(all).size===all.length);
-  add('深度商业分析默认收起',(()=>{const d=[...document.querySelectorAll('details')];return d.some(x=>x.querySelector('#bizThesis'))&&!d.find(x=>x.querySelector('#bizThesis')).open})());
-  add('系统自检默认收起',(()=>{const d=[...document.querySelectorAll('details')];return d.some(x=>x.querySelector('#conTestOut'))&&!d.find(x=>x.querySelector('#conTestOut')).open})());
-  add('V54渲染函数存在',typeof window.AN_CONCLUSION_V54?.render==='function');
-  const pass=cases.filter(x=>x.ok).length; const out=document.getElementById('conTestOut');if(out){out.innerHTML='<b>V54 结构自检：'+pass+'/'+cases.length+' 通过</b>。';out.className='notice '+(pass===cases.length?'good':'bad')}return {pass,total:cases.length,cases};
- }
- function el(id){return document.getElementById(id)}
-})();
-</script>
-
 </body></html>
