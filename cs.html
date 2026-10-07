@@ -634,7 +634,7 @@ html,body{touch-action:manipulation!important;}
   left:0!important;
   right:0!important;
   top:38px!important;
-  bottom:38px!important;
+  bottom:var(--poker-shell-bottom,38px)!important;
   width:100vw!important;
   max-width:100vw!important;
   margin:0!important;
@@ -3141,6 +3141,65 @@ body:has(#training:not(.hidden)){overflow:hidden!important;}
   setTimeout(sync,300);
 })();
 </script>
+
+<style id="poker-home-screen-bottom-final">
+/* 仅快速扑克/随机扑克：主屏幕模式动态读取底部固定小横条真实高度。其他项目完全不参与。 */
+@media (display-mode: standalone){
+  #training:has(#pokerAnswerUI:not(.hidden)) #pokerAnswerUI{
+    bottom:var(--poker-home-bar-space,38px)!important;
+  }
+  #training:has(#pokerAnswerUI:not(.hidden)) #pokerAnswerUI #answerSlots{
+    bottom:calc(var(--poker-home-library-space,78px))!important;
+  }
+  #training:has(#pokerAnswerUI:not(.hidden)) #pokerAnswerUI #pokerLibraryHeader{
+    bottom:calc(var(--poker-home-library-height,68px))!important;
+  }
+  #training:has(#pokerAnswerUI:not(.hidden)) #pokerAnswerUI #pokerLibrary{
+    bottom:0!important;
+  }
+}
+</style>
+<script id="poker-home-screen-bottom-final-js">
+(function(){
+  'use strict';
+  const IDS=new Set(['speedCards','randomCards']);
+  const get=(id)=>document.getElementById(id);
+  function isPoker(){
+    const app=window.AnMemoryApp, p=app&&app.current&&app.current.project;
+    return !!(p&&IDS.has(p.id));
+  }
+  function standalone(){
+    return !!(window.matchMedia&&window.matchMedia('(display-mode: standalone)').matches) || !!window.navigator.standalone;
+  }
+  function sync(){
+    const training=get('training'), ui=get('pokerAnswerUI'), bar=get('memoryControls');
+    if(!training||!ui||!bar||!isPoker()||!standalone()||ui.classList.contains('hidden')) return;
+    const br=bar.getBoundingClientRect();
+    const tr=training.getBoundingClientRect();
+    const viewportBottom=(window.visualViewport&&window.visualViewport.height)||window.innerHeight||document.documentElement.clientHeight;
+    const barH=Math.max(0,Math.ceil(br.height));
+    const barTop=Math.ceil(br.top);
+    const actualBottomGap=Math.max(0,Math.ceil(viewportBottom-barTop));
+    const safe=Math.max(barH,actualBottomGap)+2;
+    const libraryH=Math.max(68,Math.ceil(get('pokerLibrary')?.getBoundingClientRect().height||68));
+    const headerH=Math.max(40,Math.ceil(get('pokerLibraryHeader')?.getBoundingClientRect().height||40));
+    training.style.setProperty('--poker-home-bar-space',safe+'px');
+    training.style.setProperty('--poker-home-library-space',(safe+libraryH+headerH)+'px');
+    training.style.setProperty('--poker-home-library-height',libraryH+'px');
+  }
+  function later(){requestAnimationFrame(()=>requestAnimationFrame(sync));}
+  window.__syncPokerHomeBottom=sync;
+  document.addEventListener('DOMContentLoaded',later,{passive:true});
+  window.addEventListener('resize',later,{passive:true});
+  window.addEventListener('orientationchange',later,{passive:true});
+  window.addEventListener('pageshow',later,{passive:true});
+  if(window.visualViewport){window.visualViewport.addEventListener('resize',later,{passive:true});window.visualViewport.addEventListener('scroll',later,{passive:true});}
+  const mo=new MutationObserver(()=>{if(isPoker())later();});
+  mo.observe(document.body,{subtree:true,attributes:true,attributeFilter:['class','style']});
+  setTimeout(later,100);setTimeout(later,400);setTimeout(later,1000);
+})();
+</script>
+
 </body>
 
 
@@ -3214,16 +3273,20 @@ body:has(#training:not(.hidden)){overflow:hidden!important;}
 /* “以上是全部内容”必须是真正的内容末尾标记，禁止 sticky 到顶部。 */
 #training .all-content-end,
 #training .poker-memory-end{
-  position:static!important;
+  position:sticky!important;
+  bottom:var(--content-follow-marker-bottom,0px)!important;
   top:auto!important;
-  z-index:auto!important;
+  z-index:2147483646!important;
   width:100%!important;
   margin:18px 0 0!important;
   padding:10px 0!important;
   text-align:center!important;
-  background:transparent!important;
+  color:#888!important;
+  background:rgba(255,255,255,.97)!important;
   border:0!important;
   box-shadow:none!important;
+  backdrop-filter:blur(8px)!important;
+  -webkit-backdrop-filter:blur(8px)!important;
 }
 /* 动态尾部：只出现在内容最后，不在页面初始位置占位。 */
 #training .content-follow-bottom-spacer{
@@ -3264,15 +3327,20 @@ body:has(#training:not(.hidden)){overflow:hidden!important;}
       s.style.setProperty('height','0px');
       s.style.setProperty('min-height','0px');
       t.style.setProperty('--content-follow-bottom-space','0px');
+      t.style.setProperty('--content-follow-marker-bottom','0px');
       return;
     }
     const br=b.getBoundingClientRect();
     const tr=t.getBoundingClientRect();
     const overlap=Math.max(0,Math.ceil(tr.bottom-br.top));
+    const barHeight=Math.max(0,Math.ceil(br.height));
     const safe=Math.max(8,overlap+8);
     s.style.setProperty('height',safe+'px');
     s.style.setProperty('min-height',safe+'px');
     t.style.setProperty('--content-follow-bottom-space',safe+'px');
+    /* “以上是全部内容”只在滚动到内容末尾后吸附到小横条上沿。
+       使用小横条真实高度，而不是固定 px，兼容浏览器与主屏幕模式。 */
+    t.style.setProperty('--content-follow-marker-bottom',barHeight+'px');
   }
   function later(){requestAnimationFrame(()=>requestAnimationFrame(sync));}
   window.__syncContentFollowingBottomV2=sync;
@@ -3951,8 +4019,7 @@ body:has(#training.answer-bottom-mode) #answerBox.answer-space-expanded:has(#tex
 </style>
 
 <style id="all-content-end-final-center-no-box">
-/* 最终：所有项目“以上是全部内容”统一居中；去掉白色长方形背景/框体；
-   保持结束提示在顶部可见区域，不被顶部小横条的文字区域遮挡。 */
+/* 全部内容结束标记：它属于内容尾部，绝不固定在顶部。 */
 #training #stim .all-content-end,
 #training #stim .poker-memory-end,
 #training .poker-memory .poker-memory-end {
@@ -3961,6 +4028,7 @@ body:has(#training.answer-bottom-mode) #answerBox.answer-space-expanded:has(#tex
   display:block !important;
   text-align:center !important;
   margin:4px 0 0 !important;
+  padding:10px 0 !important;
   color:#888 !important;
   background:transparent !important;
   border:0 !important;
@@ -3968,8 +4036,86 @@ body:has(#training.answer-bottom-mode) #answerBox.answer-space-expanded:has(#tex
   box-shadow:none !important;
   backdrop-filter:none !important;
   -webkit-backdrop-filter:none !important;
-  position:sticky !important;
-  top:0 !important;
-  z-index:2147483640 !important;
+  position:static !important;
+  top:auto !important;
+  z-index:auto !important;
 }
 </style>
+
+<style id="poker-answer-standalone-final-architecture">
+/* 仅快速扑克/随机扑克：根据底部小横条真实高度调整答题外框底边。
+   其他项目完全不参与这套规则。 */
+#training.answer-bottom-mode #pokerAnswerUI #answerSlots{
+  max-height:none!important;
+  height:auto!important;
+  overflow-y:visible!important;
+  overflow-x:hidden!important;
+  padding-bottom:var(--poker-answer-tail-space,0px)!important;
+  scroll-padding-bottom:var(--poker-answer-tail-space,0px)!important;
+  box-sizing:border-box!important;
+}
+#pokerAnswerUI .poker-library{
+  bottom:var(--poker-library-bottom,0px)!important;
+}
+</style>
+<script id="poker-answer-standalone-final-architecture-script">
+(function(){
+  'use strict';
+  function px(n){return Math.max(0,Math.ceil(Number(n)||0));}
+  function sync(){
+    var training=document.getElementById('training');
+    var poker=document.getElementById('pokerAnswerUI');
+    var slots=document.getElementById('answerSlots');
+    var lib=document.getElementById('pokerLibrary');
+    if(!training || !poker || !slots || !lib) return;
+    if(training.classList.contains('hidden') ||
+       !training.classList.contains('answer-bottom-mode') ||
+       poker.classList.contains('hidden')){
+      training.style.setProperty('--poker-answer-tail-space','0px');
+      slots.style.setProperty('--poker-answer-tail-space','0px');
+      return;
+    }
+    var tr=training.getBoundingClientRect();
+    var lr=lib.getBoundingClientRect();
+    var bar=document.getElementById('memoryControls');
+    /* 只针对快速扑克/随机扑克：以底部小横条的真实高度决定扑克答题外框的底边。
+       这样添加到主屏幕后小横条变高，扑克答题牌也会整体提前避开；浏览器原有高度不变。 */
+    var barHeight=0;
+    if(bar && !bar.classList.contains('hidden')){
+      barHeight=px(bar.getBoundingClientRect().height);
+    }
+    training.style.setProperty('--poker-shell-bottom',Math.max(38,barHeight)+'px');
+    var overlap=Math.max(0,tr.bottom-lr.top);
+    var tail=Math.max(8,px(overlap)+8);
+    training.style.setProperty('--poker-answer-tail-space',tail+'px');
+    slots.style.setProperty('--poker-answer-tail-space',tail+'px');
+  }
+  function later(){
+    requestAnimationFrame(function(){requestAnimationFrame(sync);});
+  }
+  window.__syncPokerAnswerStandaloneFinal=sync;
+  document.addEventListener('DOMContentLoaded',later,{passive:true});
+  window.addEventListener('resize',later,{passive:true});
+  window.addEventListener('orientationchange',later,{passive:true});
+  window.addEventListener('pageshow',later,{passive:true});
+  document.addEventListener('visibilitychange',function(){if(!document.hidden)later();},{passive:true});
+  if(window.visualViewport){
+    window.visualViewport.addEventListener('resize',later,{passive:true});
+    window.visualViewport.addEventListener('scroll',later,{passive:true});
+  }
+  if(window.ResizeObserver){
+    var ro=new ResizeObserver(later);
+    var start=function(){
+      var lib=document.getElementById('pokerLibrary');
+      var training=document.getElementById('training');
+      if(lib)ro.observe(lib);
+      if(training)ro.observe(training);
+    };
+    if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',start,{once:true});else start();
+  }
+  var mo=new MutationObserver(later);
+  mo.observe(document.documentElement,{subtree:true,attributes:true,attributeFilter:['class','style']});
+  setTimeout(sync,100);setTimeout(sync,300);setTimeout(sync,800);
+})();
+</script>
+
