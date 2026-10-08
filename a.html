@@ -5037,3 +5037,85 @@ body:has(#training.answer-bottom-mode) #answerBox.answer-space-expanded:has(#tex
   };
 })();
 </script>
+\n<script id="final-memory-to-answer-binding-v39">
+(function finalMemoryToAnswerBindingV39(){
+  // V39：扑克项目也纳入“倒计时结束 → 确认答案”的统一绑定。
+  const btn=document.getElementById('answerDoneBtn');
+  const remembered=document.getElementById('rememberedBtn');
+  const training=document.getElementById('training');
+  const controls=document.getElementById('memoryControls');
+  if(!btn||!remembered||!training||!controls)return;
+
+  function projectId(){return window.AnMemoryApp?.current?.project?.id||'';}
+  function hasProject(){return !!projectId();}
+  function setMemory(){
+    if(!hasProject())return;
+    remembered.classList.remove('hidden');
+    remembered.textContent='记完了';
+    btn.classList.add('hidden');
+    btn.disabled=false;
+    btn.removeAttribute('aria-disabled');
+    btn.textContent='确认答案';
+    training.classList.add('memory-bottom-mode');
+    training.classList.remove('answer-bottom-mode');
+  }
+  function setAnswer(){
+    if(!hasProject())return;
+    remembered.classList.add('hidden');
+    btn.classList.remove('hidden');
+    btn.disabled=false;
+    btn.removeAttribute('aria-disabled');
+    btn.textContent='确认答案';
+    training.classList.remove('memory-bottom-mode');
+    training.classList.add('answer-bottom-mode');
+    controls.classList.remove('hidden');
+  }
+
+  const app=window.AnMemoryApp;
+  if(!app)return;
+  const oldStart=app.start?.bind(app);
+  if(oldStart){
+    app.start=function(){
+      const r=oldStart(...arguments);
+      requestAnimationFrame(setMemory);
+      return r;
+    };
+  }
+  const oldEnd=app.endMemory?.bind(app);
+  if(oldEnd){
+    app.endMemory=function(){
+      const r=oldEnd(...arguments);
+      if(this.current){
+        // 无论手动“记完了”还是倒计时自动结束，统一切换到确认答案。
+        setAnswer();
+        requestAnimationFrame(setAnswer);
+        setTimeout(setAnswer,0);
+      }
+      return r;
+    };
+  }
+  const oldReturn=app.returnToSetup?.bind(app);
+  if(oldReturn){
+    app.returnToSetup=function(){
+      const r=oldReturn(...arguments);
+      btn.classList.add('hidden');
+      remembered.classList.add('hidden');
+      training.classList.remove('answer-bottom-mode','memory-bottom-mode');
+      return r;
+    };
+  }
+
+  // 手动点击和倒计时结束都必须进入同一个答题按钮状态。
+  remembered.addEventListener('click',()=>{requestAnimationFrame(setAnswer);setTimeout(setAnswer,0);},true);
+
+  // 最终兜底：只要训练区已经进入答题状态，就不允许按钮残留“记完了”。
+  const observer=new MutationObserver(()=>{
+    if(!hasProject())return;
+    if(training.classList.contains('answer-bottom-mode')){
+      if(btn.classList.contains('hidden')||btn.textContent!=='确认答案')setAnswer();
+    }
+  });
+  observer.observe(training,{attributes:true,attributeFilter:['class'],subtree:true,childList:true,characterData:true});
+  window.AnMemoryFinalMemoryAnswerBindingV39={passed:true,policy:'all-projects-including-poker: click-or-timer-end => answer state'};
+})();
+</script>
