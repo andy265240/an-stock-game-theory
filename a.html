@@ -3255,8 +3255,8 @@ body:has(#training:not(.hidden)){overflow:hidden!important;}
       type:p.id,
       qty:app.current.requested,
       correct:score.correctCount??score.hit,
-      total:score.total,
-      rate:score.total?Math.round((score.correctCount??score.hit)/score.total*100):0,
+      total:(String(app.current.truth??'').replace(/\s+/g,'').length||score.total),
+      rate:(String(app.current.truth??'').replace(/\s+/g,'').length||score.total)?Math.round((score.correctCount??score.hit)/(String(app.current.truth??'').replace(/\s+/g,'').length||score.total)*100):0,
       score:score.points??score.hit,
       detail:score,
       createdAt:new Date().toLocaleString()
@@ -3265,7 +3265,9 @@ body:has(#training:not(.hidden)){overflow:hidden!important;}
     app.renderRecords();
     app.__numericReview=true;
     app.__numericReviewShowCorrect=false;
-    app.__numericReviewUserAnswers=userOf(app);
+    if(!Array.isArray(app.__numericReviewUserAnswers)){
+      app.__numericReviewUserAnswers=userOf(app);
+    }
     renderReview(app,false);
     scrollTrainingTop();
 
@@ -3333,6 +3335,33 @@ body:has(#training:not(.hidden)){overflow:hidden!important;}
       e.stopImmediatePropagation();
       const a=window.AnMemoryApp;
       if(!isNumeric(a)||!a.current)return;
+      /* 听记数字：只在这个项目的确认入口逐位判分。
+         不再调用旧的 submitSpoken（它是“连续正确”逻辑，会从第一处错误截断）。
+         同时直接把确认瞬间每个答题格保存给数字复盘层。 */
+      if(a.current.project.id==='spokenNumbers'){
+        const inputs=Array.from(document.querySelectorAll('#textAnswerSlots .numeric-answer-input'));
+        const total=String(a.current.truth??'').replace(/\s+/g,'').length;
+        const vals=Array.from({length:total},()=> '');
+        inputs.forEach(input=>{
+          const i=Number(input.dataset.answerIndex);
+          if(Number.isInteger(i)&&i>=0&&i<total){
+            vals[i]=String(input.value??'').replace(/\D/g,'').slice(-1);
+          }
+        });
+        const truth=String(a.current.truth??'').replace(/\s+/g,'').split('');
+        let hit=0;
+        for(let i=0;i<total;i++){
+          if(vals[i]!=='' && vals[i]===truth[i]) hit++;
+        }
+        a.answers.setTotal(total);
+        a.answers.answers=vals.map(v=>v||undefined);
+        a.answers.cursor=vals.reduce((n,v,i)=>v!==''?Math.max(n,i+1):n,0);
+        a.answers.editIndex=null;
+        a.__numericReviewUserAnswers=vals.slice();
+        const score={hit,correctCount:hit,total,points:hit,rate:total?Math.round(hit/total*100):0};
+        showNumericResult(a,score);
+        return;
+      }
       const truth=Formatter.truthTokens(a.current.project,a.current.truth);
       const score=a.scorer.score(a.current.project,truth,a.answers.answers);
       showNumericResult(a,score);
@@ -3462,6 +3491,9 @@ body:has(#training:not(.hidden)){overflow:hidden!important;}
   #unifiedReviewBar .ur-btn{padding:8px 16px!important;font-size:16px!important;}
 }
 </style>
+
+
+
 </body>
 
 
@@ -5119,3 +5151,6 @@ body:has(#training.answer-bottom-mode) #answerBox.answer-space-expanded:has(#tex
   window.AnMemoryFinalMemoryAnswerBindingV39={passed:true,policy:'all-projects-including-poker: click-or-timer-end => answer state'};
 })();
 </script>
+
+
+
