@@ -903,12 +903,20 @@ body:has(#training.answer-bottom-mode) #textAnswerUI .answer-panel>.answerTitle 
   display:none!important;
 }
 </style>
+
+<style id="xiaohonghua-reward-style">
+#clearFlowersBtn{white-space:nowrap}
+#xiaohonghuaReward{margin:12px auto 4px;text-align:center;line-height:1.65;overflow-wrap:anywhere}
+#xiaohonghuaReward .xh-flowers{font-size:1.45em;letter-spacing:.12em}
+#xiaohonghuaReward .xh-praise{margin-top:5px}
+#xiaohonghuaReward .xh-total{margin-top:4px;font-size:.95em}
+</style>
 </head>
 <body>
 <section id="home"><h1>安子记忆</h1><div class="sub">选择训练项目和数量，开始训练。</div></section>
 <div id="bootStatus" hidden style="padding:12px;margin:10px 0;border-radius:10px;background:#fff0f0;color:#b42318;font-size:14px"></div>
 <section id="setup"><div class="grid"><div><label>训练项目</label><select id="type"><option value="speedNumbers">快速数字</option><option value="speedCards">快速扑克</option><option value="randomWords">随机词汇</option><option value="binary">二进制数字</option><option value="randomNumbers">随机数字</option><option value="randomCards">随机扑克</option><option value="namesFaces">人名头像</option><option value="abstractImages">抽象图像</option><option value="historicDates">虚拟历史事件</option><option value="spokenNumbers">听记数字</option><option value="randomLetters">随机字母</option><option value="poetryMemory">诗词记忆</option><option value="wordMemory">单词记忆</option><option value="storyMemory">故事记忆</option></select></div><div><label>出题数量</label><select id="qty"><option value="40">40个</option><option value="80">80个</option><option value="104">104个</option><option value="120">120个</option><option value="150">150个</option><option value="200">200个</option><option value="300">300个</option><option value="400">400个</option><option value="500">500个</option><option value="600">600个</option><option value="700">700个</option><option value="800">800个</option><option value="900">900个</option><option value="1000">1000个</option></select></div><div><label>记忆时间</label><select id="timeLimit"><option value="60">1分钟</option><option value="120">2分钟</option><option value="300">5分钟</option></select></div></div><button class="startBtn" id="startBtn">开始记忆</button></section>
-<section id="recordsSection"><h2>训练记录</h2><div id="records" class="scroll"></div><div class="recordTools"><button id="exportBtn">导出成绩</button><button id="clearScoresBtn" class="danger" type="button">成绩清除</button></div></section>
+<section id="recordsSection"><h2>训练记录</h2><div id="records" class="scroll"></div><div class="recordTools"><button id="exportBtn">导出成绩</button><button id="clearScoresBtn" class="danger" type="button">清除成绩</button><button id="clearFlowersBtn" class="danger" type="button">清除累计🌹</button></div></section>
 <div id="homeClockBar" aria-live="off" hidden><div id="homeClock"></div></div>
 <section id="training" class="hidden"><div id="phase" class="phase">记忆阶段</div><div id="stim" class="stim"></div><div id="answerBox" class="answerBox hidden"><div class="answerTitle">记忆结束，请开始答题</div><div id="pokerAnswerUI" class="hidden"><div class="answer-panel"><div class="answerTitle">我的答案 <span id="answerProgress">0 / 0</span></div><div id="answerSlots" class="answer-slots"></div></div><div id="pokerLibraryHeader" class="poker-library-header"><span class="poker-library-label">请左右滑动点击牌面进行答题</span><span class="poker-top-actions"><button type="button" class="undoBtn poker-top-undo" id="pokerTopUndo">撤销</button><button type="button" class="undoBtn poker-top-delete" id="pokerTopDelete">删除</button></span></div><div id="pokerLibrary" class="poker-library"></div><div class="poker-actions"><button class="skipBtn" id="pokerSkip">跳过</button><button class="undoBtn" id="pokerUndo" style="display:none!important">撤销上一张</button><button class="confirmBtn" id="pokerConfirm">确定答案</button></div></div><div id="textAnswerUI"><div class="answer-panel"><div class="answerTitle">我的答案 <span id="textAnswerProgress">0 / 0</span></div><div id="textAnswerSlots" class="answer-slots"></div><div class="answer-entry hidden"><input id="answer" autocomplete="off" tabindex="-1" aria-hidden="true"></div></div><div class="poker-actions"><button class="skipBtn" id="textSkip">跳过</button><button class="undoBtn" id="textUndo">撤销上一项</button><button class="confirmBtn" id="textConfirm" style="display:none!important">确定答案</button></div></div></div></section><div id="memoryControls" class="memory-controls hidden"><div class="memory-controls-inner"><div id="homeClockInBar" class="home-clock-in-bar" aria-live="off"></div><div id="timer" class="memory-timer"></div><button id="rememberedBtn" class="memory-done">记完了</button><button id="answerDoneBtn" class="memory-done hidden">确认答案</button></div></div>
 <div id="trainingTopBar" class="training-top-bar"><button type="button" id="trainingBack" class="training-back">返回</button><div id="trainingProject" class="training-project"></div><div id="trainingQty" class="training-qty"></div></div>
@@ -1089,7 +1097,7 @@ Object.assign(Generators,{
   }
 });
 const Formatter={memory(id,raw){if(id==='speedNumbers'||id==='randomNumbers'){return this.numberMemoryHTML(raw)}if(id==='binary'){const prev=this._binaryMode;this._binaryMode=true;const html=this.numberMemoryHTML(raw);this._binaryMode=prev;return html}if(id==='randomWords'){const cols=[];const total=raw.length;for(let start=0;start<total;start+=20){const end=Math.min(start+20,total);let col='<div class=\"word-memory-column\">';for(let i=start;i<end;i++){col+='<div class=\"word-memory-item\"><span class=\"word-memory-index\">'+(i+1)+'</span><span class=\"word-memory-word\">'+Util.escape(raw[i])+'</span></div>';}col+='</div>';cols.push(col);}return '<div class=\"word-memory-header\">共'+total+'组 · 每列20组 · 左右滑动查看全部</div><div class=\"word-memory-columns\">'+cols.join('')+'</div>';}if(id==='abstractImages'||id==='historicDates')return '';if(id==='speedCards'||id==='randomCards')return raw.join(' ');return Array.isArray(raw)?raw.join(' '):raw},numberMemoryHTML(raw){const a=String(raw).split(''),html=[];const isBinary=this._binaryMode===true;const perRow=isBinary?15:10;const blockSize=isBinary?30:40;for(let i=0;i<a.length;i+=perRow){const row=a.slice(i,i+perRow);html.push('<div class=\"number-memory-row '+(isBinary?'binary-memory-row':'')+'\">'+row.map((v,k)=>{const idx=i+k;return isBinary&&k%3===0&&k>0?'<span class=\"binary-group-gap\"></span><span class=\"number-memory-cell\">'+v+'</span>':'<span class=\"number-memory-cell\">'+v+'</span>'}).join('')+'</div>');}return html.join('')},truthTokens(project,truth){if(project.kind==='cards')return truth.slice();if(project.id==='randomWords')return Array.isArray(truth)?truth.slice():Util.tokens(truth);if(project.id==='binary'||project.kind==='numbers')return String(truth).replace(/\s+/g,'').split('');return Util.tokens(truth)}};
-const Renderer={showMemory(project,truth){if(project.inputMode==='poker'){DOM.stim.className='poker-memory';const blocks=[];if(project.id==='randomCards'){for(let d=0;d<truth.length;d+=52){const deck=truth.slice(d,d+52),rows=[];for(let i=0;i<deck.length;i+=6)rows.push(deck.slice(i,i+6));blocks.push('<div class=\"poker-deck-block\"><div class=\"poker-deck-title\">第'+(d/52+1)+'副 · 52张</div>'+rows.map((row,ri)=>'<div class=\"poker-row\" aria-label=\"第'+(d/52+1)+'副第'+(ri+1)+'行\">'+row.map(c=>Renderer.card(c)).join('')+(row.length<6?Array(6-row.length).fill('<div class=\"memory-card poker-empty-card\" aria-hidden=\"true\"></div>').join(''):'')+'</div>').join('')+'</div>');if(d+52<truth.length)blocks.push('<div class=\"poker-row-gap\"></div>')}}else{for(let i=0;i<truth.length;i+=6)blocks.push('<div class=\"poker-row\">'+truth.slice(i,i+6).map(c=>Renderer.card(c)).join('')+'</div>')}DOM.stim.innerHTML=blocks.join('')+'<div class="poker-memory-end">以上是所有内容</div>';return}if(project.id==='speedNumbers'||project.id==='randomNumbers'||project.id==='binary'){DOM.stim.className='number-memory'+(project.id==='binary'?' binary-memory':'');Formatter._binaryMode=project.id==='binary';DOM.stim.innerHTML=Formatter.memory(project.id,truth)+'<div class="all-content-end">以上是所有内容</div>';Formatter._binaryMode=false;return}if(project.id==='randomWords'){DOM.stim.className='word-memory';DOM.stim.innerHTML=Formatter.memory(project.id,truth)+'<div class="all-content-end">以上是所有内容</div>';return}DOM.stim.className='stim';DOM.stim.innerHTML='<div class="memory-content-main">'+Util.escape(Formatter.memory(project.id,truth))+'</div><div class="all-content-end">以上是所有内容</div>'},showNamesFaces(truth){DOM.stim.className='nameface-memory';DOM.stim.innerHTML=truth.map(p=>`<div class="nameface-card"><img class="nameface-avatar" src="${p.avatar}" alt="头像" loading="eager" onerror="this.dataset.avatarFailed='1';this.onerror=null;this.src='data:image/svg+xml;charset=UTF-8,${encodeURIComponent('<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 300 300\"><rect width=\"300\" height=\"300\" fill=\"#e9e9e9\"/><circle cx=\"150\" cy=\"112\" r=\"58\" fill=\"#bbb\"/><path d=\"M65 290c8-78 45-108 85-108s77 30 85 108\" fill=\"#999\"/></svg>')}';"><div class="nameface-name">${Util.escape(p.full)}</div></div>`).join('')+'<div class="all-content-end">以上是所有内容</div>'},showAbstractImages(rows){DOM.stim.className='abstract-memory';DOM.stim.innerHTML=rows.map((row,r)=>`<div class="abstract-row" data-row="${r}">${row.map(src=>`<img class="abstract-img" src="${src}" alt="抽象图形" loading="eager">`).join('')}</div>`).join('')+'<div class="all-content-end">以上是所有内容</div>'},showHistoricDates(items){DOM.stim.className='wmc-grid-scroll';DOM.stim.innerHTML=items.map(x=>`<div style="display:grid;grid-template-columns:100px 1fr;gap:12px;padding:10px 12px;border-bottom:1px solid #eee;text-align:left"><strong>${x.year}</strong><span>${Util.escape(x.event)}</span></div>`).join('')+'<div class="all-content-end">以上是所有内容</div>'},nameFaceAnswer(p,i){return `<div class="nameface-answer-card" data-i="${i}"><img class="nameface-avatar" src="${p.avatar}" alt="头像" loading="lazy" onerror="this.onerror=null;this.src='data:image/svg+xml;charset=UTF-8,${encodeURIComponent('<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 300 300\"><rect width=\"300\" height=\"300\" fill=\"#e9e9e9\"/><circle cx=\"150\" cy=\"112\" r=\"58\" fill=\"#bbb\"/><path d=\"M65 290c8-78 45-108 85-108s77 30 85 108\" fill=\"#999\"/></svg>')}';"><div class="nameface-inputs"><input data-part="first" placeholder="前面的名字"><input data-part="last" placeholder="后面的名字"></div></div>`},card(card,small=false,disabled=false){const r=card.slice(0,-1),s=card.slice(-1),red=s==='♥'||s==='♦',face=['J','Q','K'].includes(r);if(!small)return `<div class="memory-card poker-memory-card ${red?'card-red':'card-black'}${face?' face-card':''}" data-card="${Util.escape(card)}"><span class="memory-rank">${r}</span><span class="memory-suit">${s}</span></div>`;return `<button type="button" class="library-card ${red?'card-red':'card-black'}${face?' face-card':''}" data-card="${Util.escape(card)}" ${disabled?'disabled':''}><span class="memory-rank">${r}</span><span class="memory-suit">${s}</span></button>`},answerSlots(answers,editIndex=null,onSelect=null){if(window.AnMemoryApp?.current?.project?.inputMode==='poker'){const app=window.AnMemoryApp;const decks=app.current.project.id==='randomCards'?app.current.requested:1;let html='';for(let d=0;d<decks;d++){const base=d*52;html+='<div class="poker-answer-deck"><div class="poker-answer-memory-grid">';for(let i=0;i<52;i++){const idx=base+i,val=answers?.[idx],cls=editIndex===idx?' editing':'';let inner='';if(typeof val==='string'&&val){const r=val.slice(0,-1),su=val.slice(-1),red=su==='♥'||su==='♦',face=['J','Q','K'].includes(r);inner='<span class="memory-rank '+(red?'card-red':'card-black')+(face?' face-card':'')+'">'+Util.escape(r)+'</span><span class="memory-suit '+(red?'card-red':'card-black')+'">'+Util.escape(su)+'</span>';}else if(val===null){inner='<span class="poker-answer-skip">跳过</span>';}html+='<div class="poker-answer-memory-card'+cls+(val===undefined?' empty-answer-slot':' filled-answer-slot')+'" data-i="'+idx+'" aria-label="第'+(idx+1)+'个答题位置">'+inner+'</div>';}html+='</div></div>';if(d+1<decks)html+='<div class="poker-row-gap"></div>'}DOM.answerSlots.innerHTML=html;if(onSelect)DOM.answerSlots.querySelectorAll('.poker-answer-memory-card:not(.poker-answer-empty-slot)').forEach(b=>{const go=e=>{if(e){e.preventDefault();e.stopPropagation()}onSelect(Number(b.dataset.i))};b.onclick=go;b.ontouchend=go});return}DOM.answerSlots.innerHTML=answers.map((x,i)=>x===undefined?`<div class="answer-slot" data-i="${i}">${i+1}</div>`:x===null?`<div class="answer-slot skipped${editIndex===i?' editing':''}" data-i="${i}">跳过</div>`:`<div class="answer-slot chosen${editIndex===i?' editing':''}" data-i="${i}">${Util.escape(x)}</div>`).join('');if(onSelect)DOM.answerSlots.querySelectorAll('.answer-slot').forEach(b=>b.addEventListener('click',()=>onSelect(Number(b.dataset.i))))},pokerLibrary(cards,onPick,disableSet){const deck=cards.slice(0,52);DOM.pokerLibrary.innerHTML='<div class="poker-library-hint">请点击下方牌面进行答题</div><div class="poker-library-track">'+deck.map((c,i)=>Renderer.card(c,true,disableSet.has(i)).replace('data-card="'+Util.escape(c)+'"','data-card="'+Util.escape(c)+'" data-index="'+i+'"')).join('')+'</div>';DOM.pokerLibrary.querySelectorAll('.library-card').forEach(b=>{
+const Renderer={showMemory(project,truth){if(project.inputMode==='poker'){DOM.stim.className='poker-memory';const blocks=[];if(project.id==='randomCards'){for(let d=0;d<truth.length;d+=52){const deck=truth.slice(d,d+52),rows=[];for(let i=0;i<deck.length;i+=6)rows.push(deck.slice(i,i+6));blocks.push('<div class=\"poker-deck-block\"><div class=\"poker-deck-title\">第'+(d/52+1)+'副 · 52张</div>'+rows.map((row,ri)=>'<div class=\"poker-row\" aria-label=\"第'+(d/52+1)+'副第'+(ri+1)+'行\">'+row.map(c=>Renderer.card(c)).join('')+(row.length<6?Array(6-row.length).fill('<div class=\"memory-card poker-empty-card\" aria-hidden=\"true\"></div>').join(''):'')+'</div>').join('')+'</div>');if(d+52<truth.length)blocks.push('<div class=\"poker-row-gap\"></div>')}}else{for(let i=0;i<truth.length;i+=6)blocks.push('<div class=\"poker-row\">'+truth.slice(i,i+6).map(c=>Renderer.card(c)).join('')+'</div>')}DOM.stim.innerHTML=blocks.join('')+'<div class="poker-memory-end">以上是所有内容</div>';return}if(project.id==='speedNumbers'||project.id==='randomNumbers'||project.id==='binary'){DOM.stim.className='number-memory'+(project.id==='binary'?' binary-memory':'');Formatter._binaryMode=project.id==='binary';DOM.stim.innerHTML=Formatter.memory(project.id,truth)+'<div class="all-content-end">以上是所有内容</div>';Formatter._binaryMode=false;return}if(project.id==='randomWords'){DOM.stim.className='word-memory';DOM.stim.innerHTML=Formatter.memory(project.id,truth)+'<div class="all-content-end">以上是所有内容</div>';return}DOM.stim.className='stim';DOM.stim.innerHTML='<div class="memory-content-main">'+Util.escape(Formatter.memory(project.id,truth))+'</div><div class="all-content-end">以上是所有内容</div>'},showNamesFaces(truth){DOM.stim.className='nameface-memory';DOM.stim.innerHTML=truth.map(p=>`<div class="nameface-card"><img class="nameface-avatar" src="${p.avatar}" alt="头像" loading="eager" onerror="this.dataset.avatarFailed='1';this.onerror=null;this.src='data:image/svg+xml;charset=UTF-8,${encodeURIComponent('<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 300 300\"><rect width=\"300\" height=\"300\" fill=\"#e9e9e9\"/><circle cx=\"150\" cy=\"112\" r=\"58\" fill=\"#bbb\"/><path d=\"M65 290c8-78 45-108 85-108s77 30 85 108\" fill=\"#999\"/></svg>')}';"><div class="nameface-name">${Util.escape(p.full)}</div></div>`).join('')+'<div class="all-content-end">以上是所有内容</div>'},showAbstractImages(rows){DOM.stim.className='abstract-memory';DOM.stim.innerHTML=rows.map((row,r)=>`<div class="abstract-row" data-row="${r}">${row.map(src=>`<img class="abstract-img" src="${src}" alt="抽象图形" loading="eager">`).join('')}</div>`).join('')+'<div class="all-content-end">以上是所有内容</div>'},showHistoricDates(items){DOM.stim.className='wmc-grid-scroll';DOM.stim.innerHTML=items.map(x=>`<div style="display:grid;grid-template-columns:100px 1fr;gap:12px;padding:10px 12px;border-bottom:1px solid #eee;text-align:left"><strong>${x.year}</strong><span>${Util.escape(x.event)}</span></div>`).join('')+'<div class="all-content-end">以上是所有内容</div>'},nameFaceAnswer(p,i){return `<div class="nameface-answer-card" data-i="${i}"><img class="nameface-avatar" src="${p.avatar}" alt="头像" loading="lazy" onerror="this.onerror=null;this.src='data:image/svg+xml;charset=UTF-8,${encodeURIComponent('<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 300 300\"><rect width=\"300\" height=\"300\" fill=\"#e9e9e9\"/><circle cx=\"150\" cy=\"112\" r=\"58\" fill=\"#bbb\"/><path d=\"M65 290c8-78 45-108 85-108s77 30 85 108\" fill=\"#999\"/></svg>')}';"><div class="nameface-inputs"><input data-part="first" placeholder="前面的名字"><input data-part="last" placeholder="后面的名字"></div></div>`},card(card,small=false,disabled=false){const r=card.slice(0,-1),s=card.slice(-1),red=s==='♥'||s==='♦',face=['J','Q','K'].includes(r);if(!small)return `<div class="memory-card poker-memory-card ${red?'card-red':'card-black'}${face?' face-card':''}" data-card="${Util.escape(card)}"><span class="memory-rank">${r}</span><span class="memory-suit">${s}</span></div>`;return `<button type="button" class="library-card ${red?'card-red':'card-black'}${face?' face-card':''}" data-card="${Util.escape(card)}" ${disabled?'disabled':''}><span class="memory-rank">${r}</span><span class="memory-suit">${s}</span></button>`},answerSlots(answers,editIndex=null,onSelect=null){if(window.AnMemoryApp?.current?.project?.inputMode==='poker'){const app=window.AnMemoryApp;const decks=app.current.project.id==='randomCards'?app.current.requested:1;const activeIndex=editIndex===null?app.answers.cursor:editIndex;let html='';for(let d=0;d<decks;d++){const base=d*52;html+='<div class="poker-answer-deck"><div class="poker-answer-memory-grid">';for(let i=0;i<52;i++){const idx=base+i,val=answers?.[idx],cls=activeIndex===idx?' editing':'';let inner='';if(typeof val==='string'&&val){const r=val.slice(0,-1),su=val.slice(-1),red=su==='♥'||su==='♦',face=['J','Q','K'].includes(r);inner='<span class="memory-rank '+(red?'card-red':'card-black')+(face?' face-card':'')+'">'+Util.escape(r)+'</span><span class="memory-suit '+(red?'card-red':'card-black')+'">'+Util.escape(su)+'</span>';}else if(val===null){inner='<span class="poker-answer-skip">跳过</span>';}html+='<div class="poker-answer-memory-card'+cls+(val===undefined?' empty-answer-slot':' filled-answer-slot')+'" data-i="'+idx+'" aria-label="第'+(idx+1)+'个答题位置">'+inner+'</div>';}html+='</div></div>';if(d+1<decks)html+='<div class="poker-row-gap"></div>'}DOM.answerSlots.innerHTML=html;if(onSelect)DOM.answerSlots.querySelectorAll('.poker-answer-memory-card:not(.poker-answer-empty-slot)').forEach(b=>{const go=e=>{if(e){e.preventDefault();e.stopPropagation()}onSelect(Number(b.dataset.i))};b.onclick=go;b.ontouchend=go});return}DOM.answerSlots.innerHTML=answers.map((x,i)=>x===undefined?`<div class="answer-slot" data-i="${i}">${i+1}</div>`:x===null?`<div class="answer-slot skipped${editIndex===i?' editing':''}" data-i="${i}">跳过</div>`:`<div class="answer-slot chosen${editIndex===i?' editing':''}" data-i="${i}">${Util.escape(x)}</div>`).join('');if(onSelect)DOM.answerSlots.querySelectorAll('.answer-slot').forEach(b=>b.addEventListener('click',()=>onSelect(Number(b.dataset.i))))},pokerLibrary(cards,onPick,disableSet){const deck=cards.slice(0,52);DOM.pokerLibrary.innerHTML='<div class="poker-library-hint">请点击下方牌面进行答题</div><div class="poker-library-track">'+deck.map((c,i)=>Renderer.card(c,true,disableSet.has(i)).replace('data-card="'+Util.escape(c)+'"','data-card="'+Util.escape(c)+'" data-index="'+i+'"')).join('')+'</div>';DOM.pokerLibrary.querySelectorAll('.library-card').forEach(b=>{
   let sx=0,sy=0,moved=false,armed=false,suppressClick=false;
   const threshold=10;
   const pick=e=>{
@@ -1420,7 +1428,7 @@ setupTextAnswer(){DOM.pokerAnswerUI.classList.add('hidden');DOM.textAnswerUI.cla
  DOM.textAnswerSlots.querySelectorAll('.answer-slot').forEach(el=>el.onclick=()=>{const i=Number(el.dataset.i);a.select(i);DOM.answer.value=a.answers[i]===null||a.answers[i]===undefined?'':a.answers[i];this.renderTextAnswers();DOM.answer.focus()});
  DOM.answer.placeholder=a.editIndex===null?'请输入答案':'正在修改第 '+(a.editIndex+1)+' 项；回车保存';
 }
-commitText(){if(!this.current)return;const raw=DOM.answer.value.trim();if(!raw)return;const p=this.current.project;let value=raw;if(p.id!=='randomWords'){value=raw.replace(/\s+/g,'')}if(aSafe(this.answers.editIndex)){this.answers.edit(this.answers.editIndex,value)}else this.answers.add(value);DOM.answer.value='';this.renderTextAnswers()}skipText(){if(!this.current)return;if(this.answers.editIndex!==null){this.answers.edit(this.answers.editIndex,null)}else this.answers.skip();this.renderTextAnswers()}undoAnswer(){if(!this.current)return;if(this.answers.undo()){this.answers.clearEdit();this.rebuildPokerUsed();this.renderAllAnswerUI()}}deletePokerAnswer(){if(!this.current||this.current.project.inputMode!=='poker')return;const idx=this.answers.editIndex!==null?this.answers.editIndex:this.answers.cursor-1;if(idx<0)return;if(this.answers.deleteAt(idx)){this.rebuildPokerUsed();this.renderAllAnswerUI();requestAnimationFrame(()=>{const el=DOM.answerSlots.querySelector('.poker-answer-memory-card[data-i="'+idx+'"]');if(el)el.scrollIntoView({block:'nearest',behavior:'smooth'})})}}renderAllAnswerUI(){if(this.current?.project.inputMode==='poker'){Renderer.answerSlots(this.answers.answers,this.answers.editIndex,i=>{this.answers.select(i);this.renderAllAnswerUI()});DOM.answerProgress.textContent=this.answers.filledCount()+' / '+this.answers.total;Renderer.pokerLibrary(this.pokerCards,(i,c)=>this.pickPoker(i,c),this.pokerUsedIndices);const pokerTopUndo=document.getElementById('pokerTopUndo');if(pokerTopUndo)pokerTopUndo.disabled=this.answers.history.length===0;const pokerTopDelete=document.getElementById('pokerTopDelete');if(pokerTopDelete){const idx=this.answers.editIndex!==null?this.answers.editIndex:this.answers.cursor-1;pokerTopDelete.disabled=idx<0||this.answers.answers[idx]===undefined} }else this.renderTextAnswers()}setupPokerAnswer(){const p=this.current.project;const decks=p.id==='randomCards'?this.current.requested:1;this.pokerCards=Array.from({length:decks},()=>['♠','♥','♣','♦'].flatMap(s=>RANKS.map(r=>r+s))).flat();this.pokerUsedIndices=new Set();DOM.answerProgress.textContent='0 / '+this.current.total;Renderer.answerSlots(this.answers.answers,this.answers.editIndex,i=>{this.answers.select(i);this.renderAllAnswerUI()});Renderer.pokerLibrary(this.pokerCards,(index,card)=>this.pickPoker(index,card),this.pokerUsedIndices);const pokerTopUndo=document.getElementById('pokerTopUndo');if(pokerTopUndo)pokerTopUndo.disabled=this.answers.history.length===0;const pokerTopDelete=document.getElementById('pokerTopDelete');if(pokerTopDelete)pokerTopDelete.onclick=()=>this.deletePokerAnswer();DOM.pokerAnswerUI.classList.remove('hidden');DOM.textAnswerUI.classList.add('hidden')}pickPoker(index,card){if(this.answers.editIndex===null&&this.answers.complete())return;const target=this.answers.editIndex!==null?this.answers.editIndex:this.answers.cursor;if(this.current.project.id==='speedCards'){const existing=this.answers.answers.find((x,i)=>x===card&&i!==target);if(existing!==undefined)return}if(this.answers.editIndex!==null){if(!this.answers.edit(target,card))return;this.answers.cursor=Math.min(target+1,this.answers.total);this.answers.editIndex=null}else{if(!this.answers.add(card))return}this.rebuildPokerUsed();this.renderAllAnswerUI();requestAnimationFrame(()=>{const next=DOM.answerSlots.querySelector('.poker-answer-memory-card[data-i="'+this.answers.cursor+'"]');if(next)next.scrollIntoView({block:'nearest',behavior:'smooth'})})}rebuildPokerUsed(){this.pokerUsedIndices=new Set();if(this.current?.project.id==='speedCards')this.answers.answers.forEach((x,i)=>{if(x!==undefined&&x!==null){const idx=this.pokerCards.indexOf(x);if(idx>=0)this.pokerUsedIndices.add(idx)}})}skipPoker(){const target=this.answers.editIndex!==null?this.answers.editIndex:this.answers.cursor;if(this.answers.editIndex!==null){if(!this.answers.edit(target,null))return;this.answers.cursor=Math.min(target+1,this.answers.total);this.answers.editIndex=null}else this.answers.skip();this.rebuildPokerUsed();this.renderAllAnswerUI();requestAnimationFrame(()=>{const next=DOM.answerSlots.querySelector('.poker-answer-memory-card[data-i="'+this.answers.cursor+'"]');if(next)next.scrollIntoView({block:'nearest',behavior:'smooth'})})}submitText(){if(!this.current)return;this.finish(this.scorer.score(this.current.project,Formatter.truthTokens(this.current.project,this.current.truth),this.answers.answers))}submitPoker(){if(!this.current)return;this.finish(this.scorer.score(this.current.project,Formatter.truthTokens(this.current.project,this.current.truth),this.answers.answers))}finish(score){const p=this.current.project,record={timeSeconds:this.current.timeSeconds,project:p.name,type:p.id,qty:this.current.requested,correct:score.correctCount??score.hit,total:score.total,rate:score.total?(Math.round((score.correctCount??score.hit)/score.total*100)):0,score:score.points??score.hit,detail:score};this.store.add(record);this.renderRecords();DOM.training.classList.add('hidden');DOM.result.classList.remove('hidden');DOM.setup.classList.remove('hidden');DOM.recordsSection.classList.remove('hidden');DOM.result.innerHTML='<div class=\"simple-result\"><div class=\"resultProject\">'+Util.escape(record.project)+'</div><div>记忆时间：'+Util.duration(record.timeSeconds)+'</div><div>出题数量：'+record.qty+(p.quantityUnit||'个')+'</div><div>正确率：'+record.correct+'/'+record.total+'（'+record.rate+'%）</div><button class=\"confirmBtn result-close\" id=\"resultClose\">关闭</button></div>';document.getElementById('resultClose').onclick=()=>{DOM.result.classList.add('hidden');};this.current=null;this.answers.reset()}renderRecords(){const rs=this.store.all();if(!rs.length){DOM.records.innerHTML='<div class="empty">暂无训练记录</div>';return}DOM.records.innerHTML='<table><tr><th>项目</th><th>时间</th><th>数量</th><th>正确率</th></tr>'+rs.map(x=>{const total=Number(x.total);const correct=Number(x.correct);const quantity=(Number.isFinite(total)&&total>0&&Number.isFinite(correct))?(correct+'/'+total):x.qty;return '<tr><td>'+Util.escape(x.project)+'</td><td>'+Util.duration(x.timeSeconds)+'</td><td>'+quantity+'</td><td>'+x.rate+'%</td></tr>'}).join('')+'</table>'}speak(text){if(!('speechSynthesis' in window))return;const u=new SpeechSynthesisUtterance(text);u.lang='zh-CN';u.rate=.7;speechSynthesis.cancel();speechSynthesis.speak(u)}}
+commitText(){if(!this.current)return;const raw=DOM.answer.value.trim();if(!raw)return;const p=this.current.project;let value=raw;if(p.id!=='randomWords'){value=raw.replace(/\s+/g,'')}if(aSafe(this.answers.editIndex)){this.answers.edit(this.answers.editIndex,value)}else this.answers.add(value);DOM.answer.value='';this.renderTextAnswers()}skipText(){if(!this.current)return;if(this.answers.editIndex!==null){this.answers.edit(this.answers.editIndex,null)}else this.answers.skip();this.renderTextAnswers()}undoAnswer(){if(!this.current)return;if(this.answers.undo()){this.answers.clearEdit();this.rebuildPokerUsed();this.renderAllAnswerUI()}}deletePokerAnswer(){if(!this.current||this.current.project.inputMode!=='poker')return;const idx=this.answers.editIndex!==null?this.answers.editIndex:this.answers.cursor-1;if(idx<0)return;if(this.answers.deleteAt(idx)){this.rebuildPokerUsed();this.renderAllAnswerUI();requestAnimationFrame(()=>{const el=DOM.answerSlots.querySelector('.poker-answer-memory-card[data-i="'+idx+'"]');if(el)el.scrollIntoView({block:'nearest',behavior:'smooth'})})}}renderAllAnswerUI(){if(this.current?.project.inputMode==='poker'){Renderer.answerSlots(this.answers.answers,this.answers.editIndex,i=>{this.answers.select(i);this.renderAllAnswerUI()});DOM.answerProgress.textContent=this.answers.filledCount()+' / '+this.answers.total;Renderer.pokerLibrary(this.pokerCards,(i,c)=>this.pickPoker(i,c),this.pokerUsedIndices);const pokerTopUndo=document.getElementById('pokerTopUndo');if(pokerTopUndo)pokerTopUndo.disabled=this.answers.history.length===0;const pokerTopDelete=document.getElementById('pokerTopDelete');if(pokerTopDelete){const idx=this.answers.editIndex!==null?this.answers.editIndex:this.answers.cursor-1;pokerTopDelete.disabled=idx<0||this.answers.answers[idx]===undefined} }else this.renderTextAnswers()}setupPokerAnswer(){const p=this.current.project;const decks=p.id==='randomCards'?this.current.requested:1;this.pokerCards=Array.from({length:decks},()=>['♠','♥','♣','♦'].flatMap(s=>RANKS.map(r=>r+s))).flat();this.pokerUsedIndices=new Set();DOM.answerProgress.textContent='0 / '+this.current.total;Renderer.answerSlots(this.answers.answers,this.answers.editIndex,i=>{this.answers.select(i);this.renderAllAnswerUI()});Renderer.pokerLibrary(this.pokerCards,(index,card)=>this.pickPoker(index,card),this.pokerUsedIndices);const pokerTopUndo=document.getElementById('pokerTopUndo');if(pokerTopUndo)pokerTopUndo.disabled=this.answers.history.length===0;const pokerTopDelete=document.getElementById('pokerTopDelete');if(pokerTopDelete)pokerTopDelete.onclick=()=>this.deletePokerAnswer();DOM.pokerAnswerUI.classList.remove('hidden');DOM.textAnswerUI.classList.add('hidden')}pickPoker(index,card){if(this.answers.editIndex===null&&this.answers.complete())return;const target=this.answers.editIndex!==null?this.answers.editIndex:this.answers.cursor;if(this.current.project.id==='speedCards'){const existing=this.answers.answers.find((x,i)=>x===card&&i!==target);if(existing!==undefined)return}if(this.answers.editIndex!==null){if(!this.answers.edit(target,card))return;this.answers.cursor=Math.min(target+1,this.answers.total);this.answers.editIndex=null}else{if(!this.answers.add(card))return}this.rebuildPokerUsed();this.renderAllAnswerUI();requestAnimationFrame(()=>{const next=DOM.answerSlots.querySelector('.poker-answer-memory-card[data-i="'+this.answers.cursor+'"]');if(next)next.scrollIntoView({block:'nearest',behavior:'smooth'})})}rebuildPokerUsed(){this.pokerUsedIndices=new Set();if(this.current?.project.id==='speedCards')this.answers.answers.forEach((x,i)=>{if(x!==undefined&&x!==null){const idx=this.pokerCards.indexOf(x);if(idx>=0)this.pokerUsedIndices.add(idx)}})}skipPoker(){const target=this.answers.editIndex!==null?this.answers.editIndex:this.answers.cursor;if(this.answers.editIndex!==null){if(!this.answers.edit(target,null))return;this.answers.cursor=Math.min(target+1,this.answers.total);this.answers.editIndex=null}else this.answers.skip();this.rebuildPokerUsed();this.renderAllAnswerUI();requestAnimationFrame(()=>{const next=DOM.answerSlots.querySelector('.poker-answer-memory-card[data-i="'+this.answers.cursor+'"]');if(next)next.scrollIntoView({block:'nearest',behavior:'smooth'})})}submitText(){if(!this.current)return;this.finish(this.scorer.score(this.current.project,Formatter.truthTokens(this.current.project,this.current.truth),this.answers.answers))}submitPoker(){if(!this.current)return;this.finish(this.scorer.score(this.current.project,Formatter.truthTokens(this.current.project,this.current.truth),this.answers.answers))}finish(score){const p=this.current.project,record={timeSeconds:this.current.timeSeconds,project:p.name,type:p.id,qty:this.current.requested,correct:score.correctCount??score.hit,total:score.total,rate:score.total?(Math.round((score.correctCount??score.hit)/score.total*100)):0,score:score.points??score.hit,detail:score};this.store.add(record);this.renderRecords();DOM.training.classList.add('hidden');DOM.result.classList.remove('hidden');DOM.setup.classList.remove('hidden');DOM.recordsSection.classList.remove('hidden');DOM.result.innerHTML='<div class=\"simple-result\"><div class=\"resultProject\">'+Util.escape(record.project)+'</div><div>出题数量：'+record.qty+(p.quantityUnit||'个')+'</div><div>记忆时间：'+Util.duration(record.timeSeconds)+'</div><div>正确率：'+record.correct+'/'+record.total+'（'+record.rate+'%）</div><button class=\"confirmBtn result-close\" id=\"resultClose\">关闭</button></div>';document.getElementById('resultClose').onclick=()=>{DOM.result.classList.add('hidden');};this.current=null;this.answers.reset()}renderRecords(){const rs=this.store.all();if(!rs.length){DOM.records.innerHTML='<div class="empty">暂无训练记录</div>';return}DOM.records.innerHTML='<table><tr><th>项目</th><th>时间</th><th>数量</th><th>正确率</th></tr>'+rs.map(x=>{const total=Number(x.total);const correct=Number(x.correct);const quantity=(Number.isFinite(total)&&total>0&&Number.isFinite(correct))?(correct+'/'+total):x.qty;return '<tr><td>'+Util.escape(x.project)+'</td><td>'+Util.duration(x.timeSeconds)+'</td><td>'+quantity+'</td><td>'+x.rate+'%</td></tr>'}).join('')+'</table>'}speak(text){if(!('speechSynthesis' in window))return;const u=new SpeechSynthesisUtterance(text);u.lang='zh-CN';u.rate=.7;speechSynthesis.cancel();speechSynthesis.speak(u)}}
 function aSafe(v){return v!==null&&v!==undefined}
 /* ================= 听记数字 · 完整闭环 V23 ================= */
 (function(){
@@ -3276,7 +3284,7 @@ body:has(#training:not(.hidden)){overflow:hidden!important;}
     DOM.setup.classList.add('hidden');
     DOM.recordsSection.classList.add('hidden');
     DOM.result.classList.remove('hidden');
-    DOM.result.innerHTML='<div class="simple-result"><div class="resultProject">'+Util.escape(record.project)+'</div><div>记忆时间：'+Util.duration(record.timeSeconds)+'</div><div>出题数量：'+record.qty+(p.quantityUnit||'个')+'</div><div>正确率：'+record.correct+'/'+record.total+'（'+record.rate+'%）</div><button class="confirmBtn result-close" id="resultClose">关闭</button></div>';
+    DOM.result.innerHTML='<div class="simple-result"><div class="resultProject">'+Util.escape(record.project)+'</div><div>出题数量：'+record.qty+(p.quantityUnit||'个')+'</div><div>记忆时间：'+Util.duration(record.timeSeconds)+'</div><div>正确率：'+record.correct+'/'+record.total+'（'+record.rate+'%）</div><button class="confirmBtn result-close" id="resultClose">关闭</button></div>';
 
     const close=document.getElementById('resultClose');
     const btn=document.getElementById('answerDoneBtn');
@@ -3494,6 +3502,374 @@ body:has(#training:not(.hidden)){overflow:hidden!important;}
 
 
 
+<script id="xiaohonghua-reward-script">
+(function(){
+'use strict';
+const TOTAL_KEY='xiaohonghua_total_v2';
+const RECENT_KEY='xiaohonghua_recent_v2';
+const tiers={encouragement:{count:500,flowers:0},60:{count:1000,flowers:1},70:{count:1000,flowers:2},80:{count:1000,flowers:3},90:{count:2000,flowers:4},100:{count:2000,flowers:5}};
+/* 句库采用完整语意句型与对应情境组合，不靠重复标点凑数；各档语气逐级增强。 */
+const phraseData={
+encouragement:{
+ scenes:['刚才那一瞬间','刚刚出现又消失的那些信息','这次短短的记忆过程','刚才那一眼看到的内容','这一轮小小的挑战','刚才那段需要记住的信息','刚刚闪过眼前的内容','这一次认真尝试的过程','刚才那一串需要回忆的内容','刚刚过去的这一轮'],
+ observations:['你已经抓住了一些线索','你正在一点点发现自己的记忆潜力','有些信息已经被你稳稳地留下了','你已经迈出了很不错的一步','你的注意力正在慢慢找到节奏','已经能看到新的进步苗头','你正在积累属于自己的记忆经验','有些内容已经留在了脑海里','你正在熟悉这种有趣的挑战','你比刚开始时又多了一次发现自己的机会'],
+ reactions:['再试一次，说不定会有新的惊喜。','下一轮也许会带来不一样的发现。','继续保持好奇心，记忆会越来越有趣。','每一次尝试，都在帮你认识自己的能力。','给自己一点时间，惊喜可能就在下一轮。','别小看刚才那一点收获，它值得被看见。','再来一次，看看你还能找回多少信息。','慢慢来，这本来就是一场探索。','下一次挑战，也许连你自己都会惊讶。','继续玩下去，你的记忆故事还在展开。'],
+ templates:['{scene}，{observation}。{reaction}',
+'记忆有时候真的很神奇：{scene}，{observation}。{reaction}',
+'别急着给自己下结论。{scene}，{observation}。{reaction}',
+'回头看看刚才的过程：{scene}，{observation}。{reaction}',
+'每一次尝试都值得被看见。{scene}，{observation}。{reaction}',
+'也许新的惊喜正在路上。{scene}，{observation}。{reaction}',
+'刚才这一轮有值得肯定的地方：{scene}，{observation}。{reaction}',
+'慢慢来，记忆的乐趣就在探索里。{scene}，{observation}。{reaction}',
+'你愿意认真尝试，本身就很棒。{scene}，{observation}。{reaction}',
+'这一轮先给自己一点掌声：{scene}，{observation}。{reaction}']},
+60:{
+ scenes:['刚才那一大串内容','刚刚出现又消失的信息','眼前转瞬即逝的那些细节','刚才那轮记忆挑战','刚刚闪过的那么多内容','刚才需要迅速记住的信息','眼前一闪而过的内容','刚才那段短暂的记忆过程','这一轮出现的许多信息','刚才那些看似转眼就会消失的内容'],
+ observations:['你居然真的记住了这么多','你把不少刚刚消失的信息重新找了回来','你的记忆表现一下子抓住了我的注意','你竟然把这么多细节留在了脑海里','你找回来的内容比我预想的还要多','你把刚才的信息还原得相当漂亮','你展现出了让人惊喜的记忆能力','你记住的内容已经相当可观','你刚刚的表现让我眼前一亮','你把这轮挑战完成得很有看头'],
+ reactions:['这真的有点神奇！','我已经开始期待你的下一轮了！','这一下确实值得鼓掌！','再来一次，说不定会更精彩！','这已经有一点记忆魔术的味道了！','这份惊喜可不是随便就能看到的！','继续挑战，我想看看你还能带来什么惊喜！','刚才那一幕，确实让人印象深刻！','这朵小红花，送得很开心！','我得承认，这一轮比我想象的精彩！'],
+ templates:['哇！{scene}，{observation}！{reaction}',
+'等一下，我刚才没看错吧？{scene}，{observation}！{reaction}',
+'这也太让人惊喜了！{scene}，{observation}！{reaction}',
+'亲眼看着{scene}，再看到结果，真的很神奇：{observation}！{reaction}',
+'我本来以为{scene}会很难记住，没想到{observation}！{reaction}',
+'刚才那一幕真让人惊喜：{scene}，{observation}！{reaction}',
+'说真的，{scene}，{observation}！{reaction}',
+'这轮的亮点就在这里：{scene}，{observation}！{reaction}',
+'我得承认，{scene}，{observation}！{reaction}',
+'这一轮确实让我眼前一亮：{scene}，{observation}！{reaction}']},
+70:{
+ scenes:['刚才那一大串内容','刚刚从眼前消失的信息','刚才一闪而过的许多细节','这一轮需要迅速记住的内容','刚才短短时间里出现的信息','刚才那段几乎不给人犹豫机会的内容','眼前转瞬即逝的那一组信息','刚刚消失的那么多内容','这一轮的信息流','刚才需要集中注意力才能记下的内容'],
+ observations:['你竟然把大部分内容重新呈现出来了','你把刚才的信息一项项找了回来','你的记忆表现已经让人刮目相看','你竟能从刚刚消失的内容里找回这么多细节','你对信息的捕捉敏锐得令人惊讶','你把这轮挑战完成得相当漂亮','你展现出的记忆能力明显超出我的预期','你几乎把刚才那一幕重新演了一遍','你找回来的信息多得让人忍不住再看一眼','你让这场记忆挑战突然有了表演的感觉'],
+ reactions:['这已经很有魔术的感觉了！','如果不是亲眼看着，我真想再确认一遍！','这一轮真的值得好好鼓掌！','我已经想看你下一次还能做到什么程度了！','这可不是随便试试就能做到的！','这种还原感，现场看确实很精彩！','我得说，这一轮真的让我服气！','你把普通的记忆挑战变得很有看头！','这份表现，已经足够让人惊叹了！','再往上挑战，会不会更让人不敢相信？'],
+ templates:['哇！{scene}，{observation}！{reaction}',
+'这已经很有魔术的感觉了：{scene}，{observation}！{reaction}',
+'说真的，{scene}，{observation}！{reaction}',
+'我得重新看待这场挑战了：{scene}，{observation}！{reaction}',
+'信息刚刚消失，{scene}，{observation}！{reaction}',
+'如果不是亲眼看着{scene}，我真想再确认一遍：{observation}！{reaction}',
+'这一轮最惊人的地方就在这里：{scene}，{observation}！{reaction}',
+'刚才那一幕还在眼前：{scene}；{observation}！{reaction}',
+'这可不是随便试试就能做到的：{scene}，{observation}！{reaction}',
+'我原本以为{scene}已经很有挑战，没想到{observation}！{reaction}']},
+80:{
+ scenes:['刚才那么多信息','刚才一闪而过的那一大串内容','眼前迅速出现又消失的细节','刚才那轮几乎不给人反应时间的记忆挑战','刚才短短一瞬出现的内容','刚刚消失的整组信息','刚才那段密集的信息','眼前转瞬即逝的内容','刚才需要迅速捕捉的每一项信息','那一大串刚刚还在眼前的内容'],
+ observations:['你竟然抓住了绝大部分','你把绝大多数内容都重新还原出来了','你几乎把刚才看到的内容稳稳留在脑海里','你展现出的记忆能力实在令人惊叹','你居然能把这么多信息重新呈现出来','你把记忆和专注发挥得如此出色','你找回来的细节多到让我有点不敢相信','你完成的还原程度远远超出我的预期','你竟然把大部分细节都准确找回来了','你让刚才那一闪而过的内容几乎无处遁形'],
+ reactions:['这简直让人不敢相信！','我真的想问一句：你刚才是怎么记住的？','这已经不是普通的好表现了！','亲眼看着这一幕，真的会让人起鸡皮疙瘩！','我得承认，这种记忆表现太有冲击力了！','这画面简直像一场现场记忆魔术！','这一下，真的让我看得目不转睛！','我完全理解什么叫真正的记忆高手了！','这一轮的表现，足够让人惊叹好一会儿！','这份能力，值得一阵发自内心的掌声！'],
+ templates:['我的天！{scene}，{observation}！{reaction}',
+'等等！{scene}，{observation}！{reaction}',
+'这画面太不可思议了：{scene}，{observation}！{reaction}',
+'我刚才亲眼看着{scene}，现在再看结果，{observation}！{reaction}',
+'这已经不是普通的好表现了：{scene}，{observation}！{reaction}',
+'我得停一下消化刚才看到的画面：{scene}，{observation}！{reaction}',
+'最让我震惊的是，{scene}，而{observation}！{reaction}',
+'如果把刚才那一幕放在舞台上，{scene}之后，{observation}，一定会引来惊呼！{reaction}',
+'我原以为{scene}已经够难，没想到{observation}！{reaction}',
+'亲眼看到这一轮，才知道什么叫惊人：{scene}，{observation}！{reaction}']},
+90:{
+ scenes:['刚才那么多内容转眼就消失了','刚刚一闪而过的整组信息','刚才那一长串密集的内容','刚刚消失在眼前的每一项信息','刚才那段几乎不给人反应时间的信息','眼前刚刚出现又消失的内容','刚才那轮高密度的记忆挑战','转瞬即逝的那么多细节','刚才那一大段信息流','刚刚还在眼前、转眼就消失的内容'],
+ observations:['你居然几乎全部还原出来了','你竟然把几乎每一项都准确找了回来','你把绝大多数细节一项不落地呈现出来了','你展现出的记忆能力已经达到高手级别','你竟能把几乎所有内容重新呈现在眼前','你完成的还原程度简直令人难以置信','你几乎把刚才那一幕完整地留在了脑海里','你找回来的内容准确得让人惊讶','你把这轮挑战完成得近乎完美','你几乎没有让那些信息从记忆里溜走'],
+ reactions:['这已经是高手级别的表现了！','我真的想把刚才那一幕倒回去再看一次！','现场看到这样的表现，真的会让人看得目瞪口呆！','这根本不是一句“记得不错”就能形容的！','我现在只想为你站起来鼓掌！','这样的记忆表现，足以让旁观者久久回不过神！','这份还原能力实在太震撼了！','如果这是舞台上的表演，我一定会以为自己看到了奇迹！','我真的被刚才这一轮深深震住了！','这样的表现，已经配得上最响亮的喝彩！'],
+ templates:['这是什么惊人的记忆能力！{scene}，{observation}！{reaction}',
+'我真的想把刚才那一幕倒回去再看一次：{scene}，{observation}！{reaction}',
+'这已经不是一句“记得不错”能形容的了：{scene}，{observation}！{reaction}',
+'我刚才几乎不敢眨眼：{scene}，{observation}！{reaction}',
+'如果不是亲眼见证{scene}，我很难相信：{observation}！{reaction}',
+'这种程度的还原，已经超出我的预期：{scene}，{observation}！{reaction}',
+'刚才那一幕真的会留在观众脑海里：{scene}，{observation}！{reaction}',
+'我原本以为这轮挑战已经很难，没想到{scene}之后，{observation}！{reaction}',
+'现场看着{scene}，再看结果，{observation}！{reaction}',
+'这一轮请允许我认真鼓掌：{scene}，{observation}！{reaction}']},
+100:{
+ scenes:['刚才那一大串转瞬即逝的信息','刚刚出现又彻底消失的全部内容','刚才那一轮的每一项信息','刚刚一闪而过的所有细节','眼前转眼消失的整组内容','刚才那段密集的信息流','刚刚出现在眼前的每一条内容','刚才那场记忆挑战中的全部信息','刚刚短暂出现的那么多细节','刚才那一幕里所有转瞬即逝的内容'],
+ observations:['你竟然全部准确还原，一个都没错','你把每一项内容都完整而准确地找回来了','你居然把所有信息都稳稳留在了脑海里','你不仅全部记住了，还把每个细节都准确呈现出来','你完成了百分之百的准确还原','你竟然一项不漏地还原了刚才的全部内容','你把每一个细节都准确无误地重新呈现出来','你让所有信息都像从未消失过一样回到了眼前','你把整轮挑战完成得分毫不差','你竟然把全部内容一字不漏地记了下来'],
+ reactions:['这简直令人难以置信！','我真的不知道该先鼓掌还是先问你是怎么做到的！','这已经不是惊喜，而是让人震撼的现场奇迹！','如果不是亲眼见证，我简直不敢相信！','这样的表现，真的会让人当场看呆！','这就是世界级大师般的震撼感！','我现在只想把掌声送给你，这一轮太不可思议了！','这已经远远超出“记忆力很好”的形容了！','我愿意再看一遍，因为这一幕实在太惊人了！','这份完整又准确的还原，足以让现场所有人惊呼！'],
+ templates:['我的天！全部正确，百分之百！{scene}，{observation}！{reaction}',
+'等一下，全部正确？一个都没错？{scene}，{observation}！{reaction}',
+'这已经不是普通的惊喜，而是真正的震撼：{scene}，{observation}！{reaction}',
+'如果不是亲眼看着{scene}，我简直不敢相信：{observation}！{reaction}',
+'我现在必须重新回想刚才发生了什么：{scene}，{observation}！{reaction}',
+'这是什么大师级的记忆表现！{scene}，{observation}！{reaction}',
+'刚才那些信息明明只出现了那么短的时间，可{observation}！{reaction}',
+'百分之百正确！光是听起来就够惊人，亲眼看见{scene}之后，{observation}！{reaction}',
+'我本来以为“全部记住”只是夸张的说法，直到看到{scene}，才发现{observation}！{reaction}',
+'这一刻我真的被震住了：{scene}，{observation}！{reaction}']}
+};
+function makeBank(tier){
+ const d=phraseData[tier],target=tiers[tier].count,out=[],seen=new Set();
+ // 每档以完整表达为主；把“场景、观察、观众反应”组合成完整句，尽量避免同义情绪连续重复。
+ const patterns={
+  encouragement:[
+   '{scene}，{observation}。{reaction}',
+   '先给自己一点掌声！{scene}，{observation}。{reaction}',
+   '别小看刚才这一轮：{scene}，{observation}。{reaction}',
+   '记忆这件事，越练越有意思。{scene}，{observation}。{reaction}',
+   '这一轮有值得开心的地方：{scene}，{observation}。{reaction}',
+   '慢慢来，你正在找到自己的节奏。{scene}，{observation}。{reaction}',
+   '先别急着否定自己。{scene}，{observation}。{reaction}',
+   '每一次挑战都算数：{scene}，{observation}。{reaction}',
+   '把这次尝试也记进你的进步里：{scene}，{observation}。{reaction}',
+   '我想认真肯定你一下：{scene}，{observation}。{reaction}',
+   '今天的记忆冒险还没结束：{scene}，{observation}。{reaction}',
+   '给自己一点耐心，也给自己一点掌声：{scene}，{observation}。{reaction}'
+  ],
+  60:[
+   '哇！{scene}，{observation}！{reaction}',
+   '等等，我得确认一下：{scene}，{observation}！{reaction}',
+   '这一下真让我意外：{scene}，{observation}！{reaction}',
+   '我刚才还没反应过来呢：{scene}，{observation}！{reaction}',
+   '你看，这不就有惊喜了吗？{scene}，{observation}！{reaction}',
+   '这轮有点意思！{scene}，{observation}！{reaction}',
+   '我得把刚才这一幕记下来：{scene}，{observation}！{reaction}',
+   '原来你能做到这么多！{scene}，{observation}！{reaction}',
+   '这结果比我预想的热闹多了：{scene}，{observation}！{reaction}',
+   '我宣布，这一轮值得一个惊喜表情：{scene}，{observation}！{reaction}',
+   '先别急着结束，我还想夸你一句：{scene}，{observation}！{reaction}',
+   '这份表现让我忍不住笑着鼓掌：{scene}，{observation}！{reaction}'
+  ],
+  70:[
+   '哇！{scene}，{observation}！{reaction}',
+   '等等，这表现不简单！{scene}，{observation}！{reaction}',
+   '你这是开始展现实力了：{scene}，{observation}！{reaction}',
+   '我得重新评估这轮挑战了：{scene}，{observation}！{reaction}',
+   '刚才还在眼前的内容，现在居然被你找回来了：{scene}，{observation}！{reaction}',
+   '这已经让我忍不住多看两眼了：{scene}，{observation}！{reaction}',
+   '好家伙，这一轮真有看头：{scene}，{observation}！{reaction}',
+   '你把这次挑战玩出感觉了：{scene}，{observation}！{reaction}',
+   '如果这是现场表演，我已经开始鼓掌了：{scene}，{observation}！{reaction}',
+   '这可不只是运气好看起来那么简单：{scene}，{observation}！{reaction}',
+   '我刚才的表情大概已经说明一切：{scene}，{observation}！{reaction}',
+   '再这样发挥下去，下一轮可要更精彩了：{scene}，{observation}！{reaction}'
+  ],
+  80:[
+   '我的天！{scene}，{observation}！{reaction}',
+   '等等！我需要缓一下：{scene}，{observation}！{reaction}',
+   '这画面太不可思议了：{scene}，{observation}！{reaction}',
+   '我刚才亲眼看着{scene}，现在再看结果，{observation}！{reaction}',
+   '这已经远超普通的好表现：{scene}，{observation}！{reaction}',
+   '先暂停一下，这一轮值得认真惊叹：{scene}，{observation}！{reaction}',
+   '我得揉揉眼睛再看一遍：{scene}，{observation}！{reaction}',
+   '这简直像把刚才的画面重新播放了一遍：{scene}，{observation}！{reaction}',
+   '我原以为{scene}已经够难，没想到{observation}！{reaction}',
+   '如果现场有观众，现在应该已经有人惊呼了：{scene}，{observation}！{reaction}',
+   '这一下真的把记忆挑战变成了表演：{scene}，{observation}！{reaction}',
+   '我现在只想追问一句：{scene}，{observation}！{reaction}'
+  ],
+  90:[
+   '这是什么惊人的记忆能力！{scene}，{observation}！{reaction}',
+   '我真想把刚才那一幕倒回去再看一次：{scene}，{observation}！{reaction}',
+   '这已经不是一句“记得不错”能形容的了：{scene}，{observation}！{reaction}',
+   '我刚才几乎不敢眨眼：{scene}，{observation}！{reaction}',
+   '如果不是亲眼见证{scene}，我很难相信：{observation}！{reaction}',
+   '请问这是什么高手级别的操作！{scene}，{observation}！{reaction}',
+   '我现在的第一反应就是：这也太强了吧！{scene}，{observation}！{reaction}',
+   '现场看到这一幕，真的会让人忘了该说什么：{scene}，{observation}！{reaction}',
+   '这一轮的震撼程度，必须配上掌声：{scene}，{observation}！{reaction}',
+   '我原本以为这已经够难了，结果你又让我吃了一惊：{scene}，{observation}！{reaction}',
+   '这表现简直像记忆力开了挂：{scene}，{observation}！{reaction}',
+   '旁边要是有人看着，恐怕也会忍不住问你秘诀：{scene}，{observation}！{reaction}'
+  ],
+  100:[
+   '我的天！全部正确，百分之百！{scene}，{observation}！{reaction}',
+   '等一下，全部正确？一个都没错？{scene}，{observation}！{reaction}',
+   '这已经不是普通的惊喜，而是真正的震撼：{scene}，{observation}！{reaction}',
+   '如果不是亲眼看着{scene}，我简直不敢相信：{observation}！{reaction}',
+   '我现在必须重新回想刚才发生了什么：{scene}，{observation}！{reaction}',
+   '这是什么大师级的记忆表现！{scene}，{observation}！{reaction}',
+   '那些信息明明只出现了那么短的时间，可{observation}！{reaction}',
+   '百分之百正确！亲眼看见{scene}之后，{observation}！{reaction}',
+   '我原以为“全部记住”只是夸张的说法，看到{scene}后才发现：{observation}！{reaction}',
+   '这一刻我真的被震住了：{scene}，{observation}！{reaction}',
+   '停！先别急着走，我必须问一句：{scene}，{observation}！{reaction}',
+   '这已经把我的想象力甩在后面了：{scene}，{observation}！{reaction}',
+   '你这是把记忆力开到满格了吗？{scene}，{observation}！{reaction}',
+   '我现在只剩一个问题：你到底是怎么做到的？{scene}，{observation}！{reaction}',
+   '如果这是舞台上的一幕，观众恐怕会直接惊呼出声：{scene}，{observation}！{reaction}',
+   '这不是“表现不错”，这是让我当场瞪大眼睛的程度：{scene}，{observation}！{reaction}',
+   '我的掌声已经准备好了，因为{scene}，{observation}！{reaction}',
+   '等我先把下巴收回来：{scene}，{observation}！{reaction}',
+   '这轮简直像在给“不可思议”三个字做示范：{scene}，{observation}！{reaction}',
+   '你让我亲眼见识了什么叫全中！{scene}，{observation}！{reaction}'
+  ]
+ };
+ const templates=patterns[tier]||d.templates;
+ // 先交错不同句型，再轮换情境、观察与反应，避免句库被一两种模板占满。
+ const sceneCount=d.scenes.length, observationCount=d.observations.length, reactionCount=d.reactions.length;
+ const cycleSize=sceneCount*observationCount*reactionCount;
+ for(let idx=0;idx<templates.length*cycleSize;idx++){
+  const pi=idx%templates.length;
+  const cycle=Math.floor(idx/templates.length);
+  const oi=cycle%observationCount;
+  const si=Math.floor(cycle/observationCount)%sceneCount;
+  const ri=Math.floor(cycle/(observationCount*sceneCount))%reactionCount;
+  const tpl=templates[pi];
+  const reactionText=d.reactions[(ri+si+pi)%reactionCount];
+  let sentence=tpl.replaceAll('{scene}',d.scenes[(si+pi+oi)%sceneCount])
+   .replaceAll('{observation}',d.observations[(oi+pi)%observationCount])
+   .replaceAll('{reaction}',reactionText)
+   .replace(/\s+/g,' ').replace(/([！。？，；])\1+/g,'$1').trim();
+  sentence=sentence.replace(/！(这简直让人不敢相信！)这简直让人不敢相信！/g,'！这简直让人不敢相信！');
+  // 避免开头模板和结尾反应意外说了同一句话。
+  if(reactionText && sentence.indexOf(reactionText)!==sentence.lastIndexOf(reactionText))continue;
+  if(!seen.has(sentence)){seen.add(sentence);out.push(sentence);if(out.length===target)return out;}
+ }
+ return out;
+}
+const banks={};Object.keys(tiers).forEach(k=>banks[k]=makeBank(k));
+function getTotal(){try{return Math.max(0,Number(localStorage.getItem(TOTAL_KEY))||0)}catch(e){return 0}}
+function setTotal(n){try{localStorage.setItem(TOTAL_KEY,String(n))}catch(e){}}
+function getRecent(){try{return JSON.parse(localStorage.getItem(RECENT_KEY)||'[]')}catch(e){return []}}
+function saveRecent(a){try{localStorage.setItem(RECENT_KEY,JSON.stringify(a.slice(-120)))}catch(e){}}
+function praiseFor(rate){let tier=rate>=100?'100':rate>=90?'90':rate>=80?'80':rate>=70?'70':rate>=60?'60':'encouragement';const bank=banks[tier];let recent=getRecent();let available=bank.filter(x=>!recent.includes(x));if(!available.length){recent=[];available=bank.slice()}const sentence=available[Math.floor(Math.random()*available.length)]||'继续挑战，你的下一次表现值得期待。';recent.push(sentence);saveRecent(recent);return {tier,sentence,flowers:tiers[tier].flowers};}
+/* 按当前训练项目润色夸赞用词：夸张感保留，只把“记住的东西”说得更贴合项目。 */
+function currentPraiseProject(){
+  try{
+    const app=window.AnMemoryApp;
+    const p=app&&app.current&&app.current.project;
+    if(p)return String(p.name||p.id||'');
+  }catch(e){}
+  const phase=document.getElementById('phase');
+  return phase?String(phase.textContent||''):'';
+}
+function specializePraise(sentence){
+  const name=currentPraiseProject();
+  let unit='每一项都没错', phrase='每一项内容都准确还原了';
+  if(/快速数字|随机数字|听记数字|数字闪现/.test(name)){
+    unit='一个数都没错'; phrase='每一个数字都准确还原了';
+    sentence=sentence.replace(/你竟然把全部内容一字不漏地记了下来/g,'你竟然把全部数字都记住了，一个数都没错')
+      .replace(/一字不漏/g,unit).replace(/一个都没错/g,unit)
+      .replace(/每一项内容/g,'每一个数字').replace(/全部内容/g,'全部数字');
+  }else if(/二进制数字|二进制闪现/.test(name)){
+    unit='每一位都没错'; phrase='每一位二进制数字都准确还原了';
+    sentence=sentence.replace(/你竟然把全部内容一字不漏地记了下来/g,'你竟然把全部二进制数字都记住了，每一位都没错')
+      .replace(/一字不漏/g,unit).replace(/一个都没错/g,unit)
+      .replace(/每一项内容/g,'每一位二进制数字').replace(/全部内容/g,'全部二进制数字');
+  }else if(/快速扑克|随机扑克/.test(name)){
+    unit='一张牌都没错'; phrase='每一张牌都准确还原了';
+    sentence=sentence.replace(/你竟然把全部内容一字不漏地记了下来/g,'你竟然把全部扑克牌都记住了，一张牌都没认错')
+      .replace(/一字不漏/g,'一张牌都没认错').replace(/一个都没错/g,unit)
+      .replace(/每一项内容/g,'每一张牌').replace(/全部内容/g,'全部扑克牌');
+  }else if(/随机词汇|单词记忆/.test(name)){
+    unit='一个词都没错'; phrase='每一个词都准确记住了';
+    sentence=sentence.replace(/你竟然把全部内容一字不漏地记了下来/g,'你竟然把全部词汇一字不漏地记了下来')
+      .replace(/一个都没错/g,unit).replace(/每一项内容/g,'每一个词').replace(/全部内容/g,'全部词汇');
+  }else if(/随机字母/.test(name)){
+    unit='一个字母都没错'; phrase='每一个字母都准确记住了';
+    sentence=sentence.replace(/你竟然把全部内容一字不漏地记了下来/g,'你竟然把全部字母都记住了，一个字母都没错')
+      .replace(/一字不漏/g,unit).replace(/一个都没错/g,unit)
+      .replace(/每一项内容/g,'每一个字母').replace(/全部内容/g,'全部字母');
+  }else if(/人名头像/.test(name)){
+    unit='一个人都没认错'; phrase='每一张头像都认得准确无误';
+    sentence=sentence.replace(/你竟然把全部内容一字不漏地记了下来/g,'你竟然把全部头像都认出来了，一个人都没认错')
+      .replace(/一字不漏/g,unit).replace(/一个都没错/g,unit)
+      .replace(/每一项内容/g,'每一张头像').replace(/全部内容/g,'全部头像');
+  }else if(/抽象图形|抽象图像/.test(name)){
+    unit='一个图形都没认错'; phrase='每一个图形都辨认得准确无误';
+    sentence=sentence.replace(/你竟然把全部内容一字不漏地记了下来/g,'你竟然把全部图形都辨认出来了，一个图形都没认错')
+      .replace(/一字不漏/g,unit).replace(/一个都没错/g,unit)
+      .replace(/每一项内容/g,'每一个图形').replace(/全部内容/g,'全部图形');
+  }else if(/虚拟历史事件/.test(name)){
+    unit='一个事件都没记错'; phrase='每一个历史事件都记得清清楚楚';
+    sentence=sentence.replace(/你竟然把全部内容一字不漏地记了下来/g,'你竟然把全部历史事件都记住了，一个事件都没记错')
+      .replace(/一字不漏/g,unit).replace(/一个都没错/g,unit)
+      .replace(/每一项内容/g,'每一个历史事件').replace(/全部内容/g,'全部历史事件');
+  }else if(/故事记忆/.test(name)){
+    unit='一个情节都没漏掉'; phrase='每一个情节都被你牢牢记住了';
+    sentence=sentence.replace(/你竟然把全部内容一字不漏地记了下来/g,'你竟然把整个故事都记住了，一个情节都没漏掉')
+      .replace(/一字不漏/g,unit).replace(/一个都没错/g,unit)
+      .replace(/每一项内容/g,'每一个情节').replace(/全部内容/g,'整个故事');
+  }else if(/诗词记忆|古诗记忆|古诗/.test(name)){
+    unit='一字不漏'; phrase='每一个字都准确记下来了';
+    sentence=sentence.replace(/你竟然把全部内容一字不漏地记了下来/g,'你竟然把整首诗词都记下来了，一字不漏')
+      .replace(/一个都没错/g,'一字不差');
+  }else{
+    sentence=sentence.replace(/一字不漏/g,'每一项都没漏掉');
+  }
+  return sentence;
+}
+function attachReward(){const result=document.getElementById('result');if(!result||result.classList.contains('hidden'))return;const txt=result.innerText||'';const m=txt.match(/正确率：\s*(\d+)\s*\/\s*(\d+)\s*[（(]\s*(\d+)\s*%/);if(!m)return;const correct=Number(m[1]),totalCount=Number(m[2]),rate=Number(m[3]);const key=txt.match(/记忆时间：[^\n]+/);const recordKey=(key?key[0]:'')+'|'+m[0]+'|'+(txt.match(/出题数量：[^\n]+/)||[''])[0]+'|'+(txt.match(/记忆用时：[^\n]+/)||[''])[0];if(!result.querySelector('#xiaohonghuaReward'))delete result.dataset.xhRecord;if(result.dataset.xhRecord===recordKey)return;result.dataset.xhRecord=recordKey;const simple=result.querySelector('.simple-result');if(!simple)return;let box=document.getElementById('xiaohonghuaReward');if(!box){box=document.createElement('div');box.id='xiaohonghuaReward';}const close=simple.querySelector('.result-close');if(close)simple.insertBefore(box,close);else simple.appendChild(box);let sentence,flowers=0,grandTotal=getTotal();/* 夸赞必须服从真实成绩：零正确时不抽取任何暗示“记住了一些/表现惊人”的句子，也不发小红花。 */if(correct===0||totalCount===0){sentence=correct===0?'这一轮还没有找回正确答案，也没关系。先看看答案，再试一次；每一次练习都能帮你找到更适合自己的记忆方法。':'这一轮没有形成有效评分，准备好后再挑战一次吧。';}else{const p=praiseFor(rate);sentence=specializePraise(p.sentence);flowers=p.flowers;grandTotal+=flowers;setTotal(grandTotal);}box.innerHTML='<div class="xh-heading"></div><div class="xh-flowers"></div><div class="xh-praise"></div>';box.querySelector('.xh-heading').textContent=flowers?'恭喜你获得小红花'+flowers+'朵':'本轮获得小红花0朵';box.querySelector('.xh-flowers').textContent=flowers?'🌹'.repeat(flowers):'';box.querySelector('.xh-praise').textContent=sentence;}
+
+function bind(){const clear=document.getElementById('clearFlowersBtn');if(clear&&!clear.dataset.xhBound){clear.dataset.xhBound='1';clear.addEventListener('click',function(){const currentTotal=getTotal();if(currentTotal<=0){alert('暂无累计🌹');return;}const promptText='目前累计共'+currentTotal+'朵🌹，确认清除累计小红花吗？';if(!confirm(promptText))return;setTotal(0);const box=document.getElementById('xiaohonghuaReward');if(box){const total=box.querySelector('.xh-total');if(total)total.textContent='累计小红花：0朵'}alert('累计小红花已清除。');});}const result=document.getElementById('result');if(result&&!result.dataset.xhObserver){result.dataset.xhObserver='1';new MutationObserver(()=>{if(!result.classList.contains('hidden'))attachReward()}).observe(result,{subtree:true,childList:true,characterData:true,attributes:true,attributeFilter:['class']});}if(result&&!result.classList.contains('hidden'))attachReward();}
+if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',bind);else bind();setInterval(bind,500);
+window.XiaoHongHuaRewardCheck={bankCounts:Object.fromEntries(Object.entries(banks).map(([k,v])=>[k,v.length])),totalBankCount:Object.values(banks).reduce((n,a)=>n+a.length,0)};
+})();
+</script>
+
+<script>
+// 屏幕常亮：页面处于前台时申请 Screen Wake Lock，页面重新显示后自动申请。
+(function(){
+  let wakeLock = null;
+  let requesting = false;
+  async function keepScreenAwake(){
+    if(requesting || document.visibilityState !== 'visible') return;
+    if(!('wakeLock' in navigator)) return;
+    if(wakeLock && !wakeLock.released) return;
+    requesting = true;
+    try {
+      wakeLock = await navigator.wakeLock.request('screen');
+      wakeLock.addEventListener('release', function(){ wakeLock = null; });
+    } catch(e) {
+      wakeLock = null;
+    } finally {
+      requesting = false;
+    }
+  }
+  document.addEventListener('visibilitychange', function(){
+    if(document.visibilityState === 'visible') keepScreenAwake();
+  });
+  window.addEventListener('pageshow', keepScreenAwake);
+  document.addEventListener('pointerdown', keepScreenAwake, {passive:true});
+  document.addEventListener('touchstart', keepScreenAwake, {passive:true});
+  document.addEventListener('keydown', keepScreenAwake);
+  keepScreenAwake();
+})();
+</script>
+
+<!-- 修正版18：除抽象图形、人名头像、古诗记忆外，统一支持输入框退格回删 -->
+<script id="all-answer-input-backspace-v2">
+(function allAnswerInputBackspaceV2(){
+  if(window.__allAnswerInputBackspaceV2)return;
+  window.__allAnswerInputBackspaceV2=true;
+  const excluded=/抽象图形|抽象图像|人名头像|诗词记忆|古诗记忆|古诗/;
+  function visible(el){
+    if(!el || el.disabled || el.readOnly || el.type==='hidden' || el.getAttribute('aria-hidden')==='true' || el.tabIndex<0)return false;
+    const style=window.getComputedStyle(el);
+    return style.display!=='none' && style.visibility!=='hidden' && !!el.getClientRects().length;
+  }
+  function scopeFor(el){
+    return el.closest('#storyAnswerHost') || el.closest('#textAnswerSlots') || el.closest('#answerSlots') || el.closest('#stim') || el.closest('#answerBox') || el.closest('#training');
+  }
+  function fireInput(el){
+    el.dispatchEvent(new Event('input',{bubbles:true}));
+    el.dispatchEvent(new Event('change',{bubbles:true}));
+  }
+  document.addEventListener('keydown',function(e){
+    if(e.key!=='Backspace' && e.key!=='Delete')return;
+    const current=e.target;
+    if(!(current instanceof HTMLInputElement) || !current.closest('#training'))return;
+    const phase=document.getElementById('phase');
+    if(phase && excluded.test(phase.textContent||''))return;
+    if(current.value!=='')return; // 当前格有内容时，保留系统原生删除行为。
+    const root=scopeFor(current);
+    if(!root)return;
+    const fields=Array.from(root.querySelectorAll('input')).filter(visible);
+    const index=fields.indexOf(current);
+    if(index<=0)return;
+    const previous=fields[index-1];
+    if(!previous)return;
+    e.preventDefault();
+    e.stopPropagation();
+    previous.focus({preventScroll:true});
+    const value=previous.value||'';
+    if(value.length){
+      previous.value=value.slice(0,-1);
+      try{previous.setSelectionRange(previous.value.length,previous.value.length);}catch(_){}
+      fireInput(previous);
+    }
+  },true);
+  window.AnMemoryAnswerBackspaceV2={enabled:true,excluded:['抽象图形','人名头像','古诗记忆']};
+})();
+</script>
 </body>
 
 
@@ -3895,6 +4271,7 @@ body:has(#training:not(.hidden)){overflow:hidden!important;}
     e.stopImmediatePropagation();
     const submitMap={
       speedCards:'submitPoker',
+      randomCards:'submitPoker',
       randomWords:'submitText',
       namesFaces:'submitNamesFaces',
       abstractImages:'submitAbstract',
@@ -5140,11 +5517,17 @@ body:has(#training.answer-bottom-mode) #answerBox.answer-space-expanded:has(#tex
   // 手动点击和倒计时结束都必须进入同一个答题按钮状态。
   remembered.addEventListener('click',()=>{requestAnimationFrame(setAnswer);setTimeout(setAnswer,0);},true);
 
-  // 最终兜底：只要训练区已经进入答题状态，就不允许按钮残留“记完了”。
+  // 修正版16：兜底只负责确保答题阶段按钮可见。
+  // 结果弹窗关闭后，按钮变成“返回主页”是正常状态；查看答案等操作引起 DOM 变化时，
+  // 不得再把它改回“确认答案”。只有按钮意外隐藏时才恢复可见，不覆盖按钮文字。
   const observer=new MutationObserver(()=>{
     if(!hasProject())return;
     if(training.classList.contains('answer-bottom-mode')){
-      if(btn.classList.contains('hidden')||btn.textContent!=='确认答案')setAnswer();
+      if(btn.classList.contains('hidden')){
+        btn.classList.remove('hidden');
+        btn.disabled=false;
+        btn.removeAttribute('aria-disabled');
+      }
     }
   });
   observer.observe(training,{attributes:true,attributeFilter:['class'],subtree:true,childList:true,characterData:true});
@@ -5154,3 +5537,91 @@ body:has(#training.answer-bottom-mode) #answerBox.answer-space-expanded:has(#tex
 
 
 
+
+
+<style id="review-controls-interaction-fix-v2">
+/* 修正版12：复盘顶部按钮始终可点击；不改动按钮外观与答题区布局。 */
+#unifiedReviewBar{position:relative!important;z-index:10020!important;pointer-events:auto!important;}
+#unifiedReviewBar .ur-btn{position:relative!important;z-index:10021!important;pointer-events:auto!important;touch-action:manipulation!important;}
+#answerDoneBtn{pointer-events:auto!important;touch-action:manipulation!important;}
+</style>
+<script id="review-controls-interaction-fix-v2-script">
+(function reviewControlsInteractionFixV2(){
+  const training=document.getElementById('training');
+  const setup=document.getElementById('setup');
+  function repairReviewBar(){
+    const bar=document.getElementById('unifiedReviewBar');
+    if(!bar)return;
+    bar.style.setProperty('pointer-events','auto','important');
+    bar.style.setProperty('z-index','10020','important');
+    bar.querySelectorAll('.ur-btn').forEach(b=>{
+      b.style.setProperty('pointer-events','auto','important');
+      b.style.setProperty('z-index','10021','important');
+    });
+  }
+  document.addEventListener('click',function(e){
+    const target=e.target&&e.target.closest?e.target.closest('#urBrand,#urCorrect,#answerDoneBtn'):null;
+    if(!target)return;
+    if(target.id==='answerDoneBtn'&&target.textContent.trim()==='返回主页'){
+      e.preventDefault();e.stopImmediatePropagation();
+      target.disabled=false;target.removeAttribute('disabled');target.removeAttribute('aria-disabled');
+      if(training&&setup&&training.classList.contains('hidden')&&!setup.classList.contains('hidden'))return;
+      if(document.getElementById('result')?.classList.contains('hidden'))window.AnMemoryApp?.returnToSetup();
+      return;
+    }
+    setTimeout(repairReviewBar,0);
+  },true);
+  const mo=new MutationObserver(repairReviewBar);
+  mo.observe(document.body,{subtree:true,childList:true});
+  repairReviewBar();
+  window.AnMemoryReviewControlsInteractionFixV2={passed:true,policy:'review bar styling only; answer button handler is not overwritten'};
+})();
+</script>
+
+<style id="answer-button-hit-area-final-v1">
+/* 修正版15：修复答题阶段底部“确认答案”被答题区/浮层覆盖，触摸落点无法到达按钮的问题。只在答题阶段提升底部控制条点击层级。 */
+#training.answer-bottom-mode #memoryControls{
+  position:fixed!important;left:0!important;right:0!important;bottom:0!important;top:auto!important;
+  z-index:2147483647!important;pointer-events:auto!important;isolation:isolate!important;
+  padding-bottom:env(safe-area-inset-bottom,0px)!important;
+}
+#training.answer-bottom-mode #memoryControls .memory-controls-inner{
+  position:relative!important;z-index:2147483647!important;pointer-events:auto!important;
+}
+#training.answer-bottom-mode #answerDoneBtn{
+  position:relative!important;z-index:2147483647!important;display:inline-flex!important;
+  visibility:visible!important;opacity:1!important;pointer-events:auto!important;
+  touch-action:manipulation!important;-webkit-tap-highlight-color:transparent!important;
+}
+#training.answer-bottom-mode #memoryControls,
+#training.answer-bottom-mode #memoryControls *{ -webkit-user-select:none; }
+</style>
+<script id="answer-button-hit-area-final-v1-script">
+(function answerButtonHitAreaFinal(){
+  const btn=document.getElementById('answerDoneBtn');
+  const training=document.getElementById('training');
+  const controls=document.getElementById('memoryControls');
+  if(!btn||!training||!controls)return;
+  function repairConfirmHitArea(){
+    if(!training.classList.contains('answer-bottom-mode'))return;
+    controls.style.setProperty('pointer-events','auto','important');
+    controls.style.setProperty('z-index','2147483647','important');
+    btn.style.setProperty('pointer-events','auto','important');
+    btn.style.setProperty('touch-action','manipulation','important');
+    if(btn.textContent.trim()==='确认答案'){
+      btn.disabled=false;btn.removeAttribute('disabled');btn.removeAttribute('aria-disabled');
+      btn.classList.remove('hidden');
+    }
+  }
+  repairConfirmHitArea();
+  document.addEventListener('touchstart',function(e){
+    if(e.target===btn||btn.contains(e.target))repairConfirmHitArea();
+  },{capture:true,passive:true});
+  document.addEventListener('click',function(e){
+    if(e.target===btn||btn.contains(e.target))repairConfirmHitArea();
+  },true);
+  const observer=new MutationObserver(repairConfirmHitArea);
+  observer.observe(training,{subtree:true,childList:true,attributes:true,attributeFilter:['class','style','disabled','aria-disabled']});
+  window.AnMemoryAnswerButtonHitAreaFinal={passed:true,policy:'答题阶段确认答案按钮置于最上层并恢复触摸点击'};
+})();
+</script>
