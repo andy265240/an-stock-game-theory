@@ -1,0 +1,269 @@
+<!DOCTYPE html><html lang="zh-CN"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no,viewport-fit=cover"><meta name="theme-color" content="#f7f7f4"><title>安的投资账本</title>
+<style>
+:root{--bg:#f7f7f4;--paper:#fff;--ink:#252824;--muted:#858981;--line:#e8e9e3;--green:#37845d;--red:#c45d60;--blue:#587fcb;--purple:#9070bd;--softgreen:#edf5ef;--softblue:#eef2fa;--softpurple:#f3eff8;--radius:17px}*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--ink);font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Hiragino Sans GB","Microsoft YaHei",sans-serif;font-size:14px;line-height:1.5;padding-bottom:90px}button,input,select,textarea{font:inherit}button{cursor:pointer}.app{width:min(100%,620px);margin:auto;padding:22px 18px 36px}.top{display:flex;align-items:center;justify-content:space-between;margin-bottom:27px}.brand{font-size:16px;font-weight:650;letter-spacing:.04em}.brand small{display:block;font-size:10px;letter-spacing:.17em;color:#9b9e96;font-weight:500;margin-top:2px}.top-actions{display:flex;gap:8px}.tiny-btn{border:1px solid #e3e5df;background:transparent;color:#62675f;border-radius:99px;padding:7px 12px;font-size:12px}.tiny-btn:active{background:#eceee8}.page{display:none;animation:fade .16s ease}.page.active{display:block}@keyframes fade{from{opacity:.6;transform:translateY(3px)}to{opacity:1;transform:none}}.section-head{display:flex;align-items:end;justify-content:space-between;gap:12px;margin:0 0 15px}.section-head h2{font-size:18px;letter-spacing:.01em;margin:0;font-weight:650}.section-head p{font-size:12px;color:var(--muted);margin:4px 0 0}.eyebrow{font-size:11px;color:#969990;letter-spacing:.08em;margin-bottom:5px}.hero{background:#fff;border:1px solid #ecece6;border-radius:var(--radius);padding:21px 20px 17px;margin-bottom:16px}.hero-line{display:flex;justify-content:space-between;align-items:center;gap:12px}.hero-label{font-size:13px;color:#777d73}.hero-value{font-size:clamp(31px,8vw,43px);font-weight:650;letter-spacing:-.045em;line-height:1.15;margin:7px 0 17px;font-variant-numeric:tabular-nums}.hero-foot{display:flex;justify-content:space-between;gap:14px;border-top:1px solid var(--line);padding-top:13px}.hero-foot span{color:var(--muted);font-size:12px}.hero-foot strong{display:block;font-size:15px;margin-top:3px;font-variant-numeric:tabular-nums}.green{color:var(--green)!important}.red{color:var(--red)!important}.blue{color:var(--blue)!important}.purple{color:var(--purple)!important}.metric-section{margin:23px 1px 0}.metric-title{display:flex;align-items:center;justify-content:space-between;margin-bottom:8px}.metric-title h3{font-size:14px;margin:0;font-weight:650}.metric-title span{font-size:11px;color:#9b9e96}.metric-list{background:rgba(255,255,255,.76);border-radius:14px;padding:0 14px;border:1px solid #eeefe9}.metric-row{display:flex;align-items:center;justify-content:space-between;gap:15px;min-height:48px;border-bottom:1px solid #eff0eb}.metric-row:last-child{border-bottom:0}.metric-row .name{color:#737970}.metric-row .val{font-size:15px;font-weight:620;font-variant-numeric:tabular-nums;text-align:right}.metric-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px}.metric-tile{padding:13px 14px;background:#fff;border:1px solid #edeee8;border-radius:14px;min-width:0}.metric-tile .name{font-size:12px;color:#858981}.metric-tile .val{font-size:20px;font-weight:650;letter-spacing:-.02em;margin-top:5px;font-variant-numeric:tabular-nums;overflow-wrap:anywhere}.metric-tile .sub{font-size:11px;color:#9b9e96;margin-top:3px}.section-gap{margin-top:24px}.panel{background:#fff;border:1px solid #e9eae4;border-radius:var(--radius);padding:17px;margin-bottom:13px}.panel h3{font-size:14px;margin:0 0 13px}.field-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}.field{min-width:0}.field.full{grid-column:1/-1}.field label{display:block;color:#737970;font-size:12px;margin-bottom:6px}.field input,.field select,.field textarea,.period{width:100%;border:1px solid #e5e7e0;border-radius:10px;background:#fbfbf9;padding:11px 12px;outline:none;color:var(--ink);min-width:0}.field input:focus,.field select:focus,.field textarea:focus{border-color:#aebba9;box-shadow:0 0 0 3px #edf2eb}.field textarea{resize:vertical;min-height:68px}.primary{background:#30372f;color:white;border:0;border-radius:11px;padding:11px 17px;font-weight:600}.secondary{background:#f1f2ed;color:#4f554c;border:1px solid #e5e7e0;border-radius:11px;padding:10px 14px}.form-actions{display:flex;gap:8px;margin-top:14px}.form-actions button{flex:1}.hint{font-size:11px;line-height:1.65;color:#92968e;margin:12px 1px 0}.tabs{display:flex;gap:6px;background:#eeefe9;padding:4px;border-radius:12px;margin-bottom:14px}.tabs button{flex:1;border:0;border-radius:9px;padding:9px 5px;background:transparent;color:#7b8077;font-size:13px}.tabs button.active{background:white;color:#333a31;box-shadow:0 1px 3px #0000000b;font-weight:600}.month-list{display:grid;gap:8px}.month-item{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:15px 15px;border:1px solid #e9eae4;border-radius:13px;background:#fff;text-align:left;width:100%}.month-item strong{font-size:15px;font-weight:620}.month-item small{display:block;color:#90948c;font-size:11px;margin-top:3px}.month-item .right{text-align:right}.month-item .right b{font-size:15px;font-variant-numeric:tabular-nums}.month-detail-head{display:flex;align-items:center;gap:10px;margin-bottom:16px}.back-btn{border:1px solid #e5e7e0;background:#fff;border-radius:10px;padding:8px 11px;color:#555b52}.table-wrap{overflow-x:auto;border:1px solid #e9eae4;border-radius:13px;background:white}.records{border-collapse:collapse;width:100%;font-size:12px;min-width:360px}.records th,.records td{text-align:left;padding:11px 10px;border-bottom:1px solid #eff0eb;white-space:nowrap}.records th{font-size:11px;font-weight:550;color:#92968e;background:#fafaf8}.records tr:last-child td{border-bottom:0}.records td:last-child{text-align:right}.empty{padding:25px;text-align:center;color:#a0a39b;font-size:12px}.tag{font-size:11px;padding:3px 7px;border-radius:6px;background:#f1f2ed;color:#6c7269}.linkbtn{border:0;background:none;color:var(--blue);padding:3px 4px;font-size:12px}.linkbtn.del{color:var(--red)}.forecast-foot{display:flex;justify-content:space-between;align-items:center;gap:12px;padding:14px 0 4px;border-top:1px solid var(--line);margin-top:8px;font-size:12px;color:#737970}.forecast-foot strong{font-size:16px;color:var(--ink);text-align:right}.forecast-settings{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px;margin-top:13px}.mini label{display:block;font-size:10px;color:#858981;margin-bottom:5px}.mini input{width:100%;min-width:0;border:1px solid #e5e7e0;border-radius:9px;background:#fbfbf9;padding:9px 7px}.scenario{display:inline-flex;align-items:center;gap:7px;font-size:12px}.dot{width:7px;height:7px;border-radius:50%;display:inline-block}.table{width:100%;border-collapse:collapse}.table th,.table td{text-align:left;padding:12px 7px;border-bottom:1px solid #eff0eb;font-size:12px}.table th{font-weight:550;color:#90948c}.table td:nth-child(2),.table td:nth-child(3){font-variant-numeric:tabular-nums}.table tr:last-child td{border-bottom:0}.positive{color:var(--green)!important}.negative{color:var(--red)!important}.bottom-nav{position:fixed;z-index:20;bottom:0;left:0;right:0;padding:8px 12px calc(8px + env(safe-area-inset-bottom));background:#ffffffed;backdrop-filter:blur(16px);border-top:1px solid #e9eae4;display:flex;justify-content:center;gap:3px}.nav-item{width:min(25%,145px);border:0;background:transparent;color:#90948c;padding:7px 4px 5px;border-radius:10px;font-size:11px;display:flex;flex-direction:column;align-items:center;gap:2px}.nav-item .ico{font-size:18px;line-height:1.1}.nav-item.active{color:#30382f;background:#f1f3ee;font-weight:650}.toast{display:none;position:fixed;z-index:30;bottom:88px;left:50%;transform:translateX(-50%);background:#30372f;color:#fff;padding:10px 15px;border-radius:12px;font-size:12px;max-width:90vw}.hide{display:none!important}footer{margin-top:24px;color:#a0a39b;font-size:10px;text-align:center;line-height:1.7}
+/* 下月预测：保留原版三色情景表格的简洁呈现 */
+.page[data-page="forecast"] .head{display:flex;align-items:end;justify-content:space-between;gap:12px;margin:0 0 15px}
+.page[data-page="forecast"] .head h2{font-size:14px;font-weight:600;margin:0}
+.page[data-page="forecast"] .head p{font-size:11px;color:var(--muted);margin:5px 0 0;line-height:1.6}
+.page[data-page="forecast"] .card{background:#fff;border:1px solid var(--line);border-radius:16px;padding:17px;min-width:0}
+.page[data-page="forecast"] .table{width:100%;border-collapse:separate;border-spacing:0 7px}
+.page[data-page="forecast"] .table th{font-size:11px;color:var(--muted);font-weight:500;padding:8px 7px;border:0;background:transparent}
+.page[data-page="forecast"] .table td{font-size:12px;padding:14px 8px;border:0;background:#fafaf8}
+.page[data-page="forecast"] .table td:first-child{border-radius:10px 0 0 10px}
+.page[data-page="forecast"] .table td:last-child{border-radius:0 10px 10px 0}
+.page[data-page="forecast"] .scenario{font-weight:550;white-space:nowrap}
+.page[data-page="forecast"] .scenario.green{color:var(--green)}.page[data-page="forecast"] .scenario.blue{color:var(--blue)}.page[data-page="forecast"] .scenario.purple{color:var(--purple)}
+.page[data-page="forecast"] .forecast-foot{display:flex;justify-content:space-between;align-items:center;gap:12px;padding:15px 0 4px;border-top:1px solid var(--line);margin-top:8px;font-size:11px;color:var(--muted)}
+.page[data-page="forecast"] .forecast-foot strong{font-size:16px;color:var(--ink);text-align:right}
+.page[data-page="forecast"] .forecast-settings{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px;margin-top:13px}
+.page[data-page="forecast"] .mini label{display:block;font-size:10px;color:var(--muted);margin-bottom:5px}
+.page[data-page="forecast"] .mini input{width:100%;min-width:0;border:1px solid var(--line);border-radius:9px;background:#fcfcfa;padding:9px 7px}
+.page[data-page="forecast"] .hint{font-size:10px;line-height:1.7;color:#92968e;margin-top:12px}
+
+
+
+/* 首页今日/本周数据改为轻盈的小长条；下月预测区域不受影响 */
+#homePage .section-head h3,#homePage .metric-title h3{font-size:14px;font-weight:650;line-height:1.5;margin:0}
+#homePage > .section-head{margin-bottom:8px}
+#homePage .compact-summary{padding:0 13px;margin-bottom:13px;border:1px solid #eceee7;border-radius:15px;background:#fff;box-shadow:none}
+#homePage .compact-heading{min-height:39px;border-bottom:1px solid #eff0eb}
+#homePage .compact-label{font-size:12px;color:#777d73;font-weight:550}
+#homePage .compact-month{font-size:11px;color:#8b8f86;background:#f5f6f1;padding:3px 8px;border-radius:99px}
+#homePage .compact-row{display:flex;align-items:center;justify-content:space-between;gap:14px;min-height:43px;border-bottom:1px solid #f0f1ec}
+#homePage .compact-row:last-child{border-bottom:0}
+#homePage .compact-name{font-size:12px;color:#7d8279}
+#homePage .compact-principal .compact-value{font-size:19px;letter-spacing:-.025em}
+#homePage .compact-value{font-size:15px;font-weight:650;font-variant-numeric:tabular-nums;letter-spacing:-.01em;text-align:right}
+#homePage .compact-week{margin-top:18px}
+#homePage .compact-list{background:#fff;border:1px solid #eceee7;border-radius:15px;padding:0 13px}
+#homePage .compact-week .metric-title,#homePage .compact-cumulative .metric-title{margin-bottom:8px}
+@media(min-width:500px){#homePage .compact-row{min-height:45px}}
+#entryPage #entryHint,#morePage .hint{display:none!important}
+
+/* 本月表现可展开/收起 */
+.month-toggle-title{align-items:center}.month-title-actions{display:flex;align-items:center;gap:10px}.collapse-btn{border:0;background:transparent;padding:4px 0 4px 5px;color:#858981;font-size:11px;white-space:nowrap}.collapse-btn:active{opacity:.65}#monthPerformanceSection.is-collapsed #monthPerformanceContent{display:none!important}
+#cumulativePerformanceSection.is-collapsed #cumulativePerformanceContent{display:none!important}
+
+
+/* 记账页：统一概览页的小长条视觉，样式仅作用于记账页 */
+#entryPage > .section-head{margin-bottom:8px}
+#entryPage .section-head h2{font-size:14px;font-weight:650;line-height:1.5;margin:0}
+#entryPage .tabs{display:flex;gap:6px;padding:4px;margin:0 0 10px;background:#f2f3ee;border:1px solid #eceee7;border-radius:12px}
+#entryPage .tabs button{flex:1;min-width:0;padding:9px 4px;border:0;border-radius:9px;background:transparent;color:#73786f;font-size:12px;white-space:nowrap}
+#entryPage .tabs button.active{background:#fff;color:#30352e;box-shadow:0 1px 4px #2025100d;font-weight:650}
+#entryPage .panel{padding:0 13px;margin-bottom:14px;border:1px solid #eceee7;border-radius:15px;background:#fff;box-shadow:none}
+#entryPage #entryForm .field-grid{display:flex;flex-direction:column;gap:0}
+#entryPage #entryForm .field{display:flex;align-items:center;gap:12px;min-height:45px;margin:0;padding:6px 0;border-bottom:1px solid #f0f1ec}
+#entryPage #entryForm .field:last-child{border-bottom:0}
+#entryPage #entryForm .field label{flex:0 0 94px;margin:0;color:#7d8279;font-size:12px;font-weight:400}
+#entryPage #entryForm .field input{flex:1;min-width:0;width:100%;height:32px;padding:5px 9px;border:1px solid #eceee7;border-radius:8px;background:#fafbf8;color:#30352e;font-size:13px;box-shadow:none}
+#entryPage #entryForm .field input:focus{outline:1px solid #cbd9d0;border-color:#cbd9d0}
+#entryPage #entryForm .form-actions{display:flex;gap:8px;padding:10px 0 12px;margin:0}
+#entryPage #entryForm .form-actions button{flex:1;min-height:36px;padding:8px 12px;border-radius:9px;font-size:12px}
+#entryPage .section-gap{margin:18px 0 8px}
+#entryPage .section-gap .period{height:31px;padding:4px 8px;border:1px solid #eceee7;border-radius:8px;background:#fff;font-size:11px}
+#entryPage .table-wrap{overflow-x:auto;border:1px solid #eceee7;border-radius:15px;background:#fff;padding:0 9px}
+#entryPage table.records{width:100%;border-collapse:collapse;font-size:11px}
+#entryPage table.records th{padding:10px 5px;color:#858981;font-size:10px;font-weight:500;background:#fff;border-bottom:1px solid #eff0eb;white-space:nowrap}
+#entryPage table.records td{padding:10px 5px;border-bottom:1px solid #f0f1ec;line-height:1.35;vertical-align:middle}
+#entryPage table.records tbody tr:last-child td{border-bottom:0}
+#entryPage table.records td:first-child{white-space:nowrap;color:#777d73}
+#entryPage table.records td:nth-child(3){white-space:nowrap;font-weight:600;font-variant-numeric:tabular-nums}
+#entryPage table.records td:nth-child(4){max-width:95px;overflow-wrap:anywhere;color:#858981}
+#entryPage .tag{padding:3px 6px;border-radius:6px;font-size:10px;white-space:nowrap}
+#entryPage .linkbtn{padding:3px 5px;font-size:11px}
+#entryPage .empty{padding:17px 0;font-size:11px;color:#999d95}
+@media(max-width:380px){#entryPage #entryForm .field label{flex-basis:82px}#entryPage table.records th,#entryPage table.records td{padding-left:3px;padding-right:3px}#entryPage table.records td:nth-child(4){max-width:65px}}
+
+
+/* 数字显示统一为常规字重；当前本金与其他概览数字同字号 */
+#homePage .compact-principal .compact-value{font-size:15px!important;font-weight:400!important}
+.hero-value,
+.hero-foot strong,
+.metric-row .val,
+.metric-tile .val,
+.month-item strong,
+.month-item .right b,
+.forecast-foot strong,
+.page[data-page="forecast"] .forecast-foot strong,
+#homePage .compact-value,
+#entryPage table.records td:nth-child(3),
+.records td,
+.table td{font-weight:400!important}
+
+</style><style id="prevent-mobile-zoom-patch">
+html, body, button, a, label, input, select, textarea { touch-action: manipulation; }
+/* iOS Safari automatically zooms into text fields smaller than 16px. */
+input, select, textarea { font-size: 16px !important; }
+</style>
+<script id="prevent-mobile-zoom-script">
+(function(){
+  document.addEventListener('gesturestart', function(e){ e.preventDefault(); }, {passive:false});
+  document.addEventListener('gesturechange', function(e){ e.preventDefault(); }, {passive:false});
+  document.addEventListener('gestureend', function(e){ e.preventDefault(); }, {passive:false});
+})();
+</script>
+</head><body><main class="app">
+<header class="top"><div class="brand">安的投资账本<small>PERSONAL INVESTMENT LEDGER</small></div></header>
+<section class="page active" data-page="home" id="homePage">
+ <div class="section-head"><div><h3>今日表现</h3><p id="todayText"></p></div></div>
+ <section class="hero compact-summary"><div class="compact-row compact-principal"><span class="compact-name">当前本金</span><strong class="compact-value blue" id="todayInvestment">¥0.00</strong></div><div class="compact-row"><span class="compact-name">今日盈亏</span><strong class="compact-value green" id="todayProfit">¥0.00</strong></div><div class="compact-row"><span class="compact-name">今日收益率</span><strong class="compact-value" id="todayRate">0.00%</strong></div></section>
+ <section class="metric-section compact-week"><div class="metric-title"><h3>本周表现</h3></div><div class="compact-list"><div class="compact-row"><span class="compact-name">本周盈亏</span><strong class="compact-value" id="weekProfit">¥0.00</strong></div><div class="compact-row"><span class="compact-name">本周收益率</span><strong class="compact-value" id="weekRate">0.00%</strong></div></div></section>
+ <section class="metric-section" id="monthPerformanceSection"><div class="metric-title month-toggle-title"><h3>本月表现</h3><div class="month-title-actions"><button type="button" id="monthPerformanceToggle" class="collapse-btn" aria-expanded="true">收起⌃</button></div></div><div class="metric-list" id="monthPerformanceContent"><div class="metric-row"><span class="name">本月共投资</span><strong class="val blue" id="monthInvested">¥0.00</strong></div><div class="metric-row"><span class="name">本月累计盈亏</span><strong class="val" id="monthProfitHome">¥0.00</strong></div><div class="metric-row"><span class="name">当前有效本金</span><strong class="val blue" id="effectivePrincipal">¥0.00</strong></div><div class="metric-row"><span class="name">本月收益率</span><strong class="val" id="monthRateHome">0.00%</strong></div></div></section>
+ <section class="metric-section compact-cumulative" id="cumulativePerformanceSection"><div class="metric-title month-toggle-title"><h3>累计表现</h3><div class="month-title-actions"><button type="button" id="cumulativePerformanceToggle" class="collapse-btn" aria-expanded="true">收起⌃</button></div></div><div class="compact-list" id="cumulativePerformanceContent"><div class="compact-row"><span class="compact-name">累计盈亏</span><strong class="compact-value" id="totalProfit">¥0.00</strong></div><div class="compact-row"><span class="compact-name">累计收益率</span><strong class="compact-value" id="totalRate">0.00%</strong></div><div class="compact-row"><span class="compact-name">累计追加本金</span><strong class="compact-value blue" id="totalAdded">0次 / ¥0.00</strong></div></div></section>
+</section>
+<section class="page" data-page="entry" id="entryPage"><div class="section-head"><div><h2>记一笔</h2><p></p></div></div><div class="tabs" id="entryTabs"><button class="active" data-mode="profit">记录盈亏</button><button data-mode="add">追加本金</button><button data-mode="initial">初始本金</button></div>
+ <section class="panel"><form id="entryForm"><div class="field-grid"><div class="field"><label for="entryDate">日期</label><input type="date" id="entryDate" required></div><div class="field"><label for="entryAmount" id="amountLabel">盈亏金额（可填负数）</label><input type="number" id="entryAmount" step="0.01" required placeholder="例如：-700 或 700"></div></div><div class="form-actions"><button class="primary" type="submit" id="saveEntry">保存记录</button><button class="secondary" type="button" id="cancelEdit" hidden>取消修改</button></div><p class="hint" id="entryHint"></p></form></section>
+ <div class="section-head section-gap"><div><h2>本月记录</h2><p></p></div><select id="entryMonth" class="period" style="max-width:145px"></select></div><div class="table-wrap"><table class="records"><thead><tr><th>日期</th><th>类型</th><th>金额</th><th>操作</th></tr></thead><tbody id="recordRows"></tbody></table><div class="empty" id="recordEmpty">还没有记录</div></div>
+ </section>
+<section class="page" data-page="history" id="historyPage"><div class="section-head"><div><h2>历史月份</h2><p></p></div></div><div class="month-list" id="monthList"></div><section class="panel hide" id="historyDetail"><div class="month-detail-head"><button class="back-btn" id="historyBack">‹ 返回月份</button><div><strong id="historyMonthTitle"></strong><div class="eyebrow">当月记录与汇总</div></div></div><div class="metric-list" style="margin-bottom:14px"><div class="metric-row"><span class="name">月初有效本金</span><strong class="val" id="histStart"></strong></div><div class="metric-row"><span class="name">当月追加本金</span><strong class="val blue" id="histAdds"></strong></div><div class="metric-row"><span class="name">当月盈亏</span><strong class="val" id="histProfit"></strong></div><div class="metric-row"><span class="name">月末有效本金</span><strong class="val blue" id="histEnd"></strong></div></div><div class="table-wrap"><table class="records"><thead><tr><th>日期</th><th>类型</th><th>金额</th></tr></thead><tbody id="histRows"></tbody></table></div></section></section>
+<section class="page" data-page="forecast" id="forecastPage"><div class="head"><div><h2>本月盈亏预测</h2><p id="forecastBasis">参考来源于过去的数据；预测仅供参考</p></div></div><section class="card"><table class="table"><thead><tr><th>预测情景</th><th>预测收益</th><th>预测收益率</th></tr></thead><tbody><tbody><tr><td><span class="scenario red"><i class="dot" style="background:var(--red)"></i>悲观情景</span></td><td id="pessimisticProfit" class="negative">¥0.00</td><td id="pessimisticRate">0.00%</td></tr><tr><td><span class="scenario green"><i class="dot" style="background:var(--green)"></i>保守情景</span></td><td id="lowProfit" class="positive">¥0.00</td><td id="lowRate">0.00%</td></tr><tr><td><span class="scenario blue"><i class="dot" style="background:var(--blue)"></i>中性情景</span></td><td id="midProfit" class="positive">¥0.00</td><td id="midRate">0.00%</td></tr><tr><td><span class="scenario purple"><i class="dot" style="background:var(--purple)"></i>乐观情景</span></td><td id="highProfit" class="positive">¥0.00</td><td id="highRate">0.00%</td></tr></tbody></table></section>
+</section>
+<section class="page" data-page="more" id="morePage"><div class="section-head"><div><h2>更多设置</h2><p>备份、恢复与月度目标</p></div></div><section class="panel"><h3>本月投资额</h3><div class="field"><label for="monthBudget">本月计划投资额（元）</label><input type="number" id="monthBudget" min="0" step="0.01" placeholder="输入本月计划金额"></div><div class="field" style="margin-top:12px"><label for="monthTarget">本月收益目标（元）</label><input type="number" id="monthTarget" step="0.01" placeholder="输入本月收益目标"></div><button class="primary" id="saveSettings" style="margin-top:13px;width:100%">保存设置</button><p class="hint"></p></section><section class="panel"><h3>数据备份与恢复</h3><p class="hint"></p><div class="form-actions"><button class="secondary" id="export">备份数据</button><button class="secondary" id="importBtn">恢复数据</button><input type="file" id="importFile" accept="application/json,.json" hidden></div></section><footer>安的投资账本 · 本地保存<br>本金可重新开始，历史盈亏永久累计。</footer></section>
+</main><nav class="bottom-nav" aria-label="主导航"><button class="nav-item active" data-target="home"><span class="ico">⌂</span><span>概览</span></button><button class="nav-item" data-target="entry"><span class="ico">＋</span><span>记账</span></button><button class="nav-item" data-target="history"><span class="ico">☷</span><span>历史</span></button><button class="nav-item" data-target="forecast"><span class="ico">✳</span><span>预测</span></button></nav><div class="toast" id="toast"></div>
+<script>
+(()=>{'use strict';const $=id=>document.getElementById(id),KEY='anzhi_investment_ledger_v1',SETKEY='anzhi_investment_ledger_settings_v1';let rows=[],settings={budget:{},target:{},forecasts:{}},mode='profit',editing=null,historyMonth=null;const now=new Date();const iso=d=>{const x=new Date(d.getTime()-d.getTimezoneOffset()*60000);return x.toISOString().slice(0,10)},today=()=>iso(new Date()),monthOf=d=>d.slice(0,7),fmt=n=>new Intl.NumberFormat('zh-CN',{style:'currency',currency:'CNY',minimumFractionDigits:2,maximumFractionDigits:2}).format(Number.isFinite(+n)?+n:0),pct=n=>(Number.isFinite(n)?n:0).toFixed(2)+'%',num=id=>Number($(id)?.value??({lowFactor:25,midFactor:100,highFactor:150}[id]??0))||0,esc=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));function toast(s){const e=$('toast');e.textContent=s;e.style.display='block';clearTimeout(toast.t);toast.t=setTimeout(()=>e.style.display='none',2200)}function save(){localStorage.setItem(KEY,JSON.stringify(rows));localStorage.setItem(SETKEY,JSON.stringify(settings))}function typeLabel(t){return ({initial:'初始本金',add:'追加本金',profit:'盈亏'})[t]||t}function signed(n){return (n>0?'+':n<0?'−':'')+fmt(Math.abs(n))}function color(el,n){el.classList.remove('green','red','positive','negative');if(n>0.000001)el.classList.add('green','positive');else if(n<-.000001)el.classList.add('red','negative')}function byDate(list){return [...list].sort((a,b)=>a.date.localeCompare(b.date)||(a.createdAt||0)-(b.createdAt||0))}function initialPrincipal(){const r=byDate(rows.filter(x=>x.type==='initial'))[0];return r?Math.max(0,Number(r.amount)||0):0}
+function activePrincipal(asOf=today()){
+  // 统一本金规则：单次追加低于设定初始本金，累加到原本金；大于或等于阈值，旧剩余本金视为亏损并开启新一笔。
+  const threshold=initialPrincipal();let principal=0;
+  for(const r of byDate(rows.filter(x=>x.date<=asOf))){
+    const amount=Math.max(0,Number(r.amount)||0);
+    if(r.type==='initial') principal=amount;
+    else if(r.type==='add') principal=threshold>0&&amount>=threshold?amount:principal+amount;
+    else if(r.type==='profit'&&Number(r.amount)<0) principal=Math.max(0,principal+Number(r.amount));
+  }
+  return principal;
+}
+function additions(list=rows){return list.filter(r=>r.type==='add').reduce((s,r)=>s+Number(r.amount),0)}
+function profitSum(list=rows){return list.filter(r=>r.type==='profit').reduce((s,r)=>s+Number(r.amount),0)}
+function bounds(ym){let [y,m]=ym.split('-').map(Number);return {start:`${y}-${String(m).padStart(2,'0')}-01`,end:iso(new Date(y,m,0))}}
+function periodProfit(a,b){
+  // 日/周/月均只统计本周期盈亏；只有单次追加达到或超过设定初始本金，才将旧剩余本金计为亏损。
+  const threshold=initialPrincipal();let principal=0,total=0;
+  for(const r of byDate(rows.filter(x=>x.date<=b))){
+    const amount=Number(r.amount)||0;
+    if(r.type==='initial') principal=Math.max(0,amount);
+    else if(r.type==='add'){
+      if(threshold>0&&amount>=threshold){if(r.date>=a)total-=principal;principal=Math.max(0,amount)}
+      else principal=Math.max(0,principal)+Math.max(0,amount);
+    }else if(r.type==='profit'){
+      if(r.date>=a) total+=amount;
+      if(amount<0) principal=Math.max(0,principal+amount);
+    }
+  }
+  return total;
+}
+function principalBefore(start){const priorDate=iso(new Date(new Date(start+'T12:00:00').getTime()-86400000));const earlier=rows.some(r=>r.date<=priorDate&&['initial','add','profit'].includes(r.type));if(earlier)return activePrincipal(priorDate);const initial=byDate(rows.filter(r=>r.type==='initial'&&r.date>=start))[0];return initial?Math.max(0,+initial.amount):0}
+function monthPrincipalStart(ym){return principalBefore(bounds(ym).start)}
+function rate(profit,base){return base?profit/base*100:0}function monthListValues(){const set=new Set(rows.map(r=>monthOf(r.date)));set.add(monthOf(today()));return [...set].sort().reverse()}function nav(k){document.querySelectorAll('.page').forEach(p=>p.classList.toggle('active',p.dataset.page===k));document.querySelectorAll('.nav-item').forEach(b=>b.classList.toggle('active',b.dataset.target===k));if(k==='history')renderHistory();if(k==='entry')renderRecords();window.scrollTo({top:0,behavior:'smooth'})}document.querySelectorAll('.nav-item').forEach(b=>b.onclick=()=>nav(b.dataset.target));$('monthPerformanceToggle').onclick=()=>{const section=$('monthPerformanceSection'),collapsed=section.classList.toggle('is-collapsed');$('monthPerformanceToggle').textContent=collapsed?'展开⌄':'收起⌃';$('monthPerformanceToggle').setAttribute('aria-expanded',String(!collapsed))};$('cumulativePerformanceToggle').onclick=()=>{const section=$('cumulativePerformanceSection'),collapsed=section.classList.toggle('is-collapsed');$('cumulativePerformanceToggle').textContent=collapsed?'展开⌄':'收起⌃';$('cumulativePerformanceToggle').setAttribute('aria-expanded',String(!collapsed))};
+
+function buildForecast(asOfDate,currentCapital,fallbackProfit){
+  // 以目标月份1日为截止点，预测该月整月盈亏。所有输入都限定在月初可用的数据内。
+  const datedRows=byDate(rows.filter(r=>r.date<=asOfDate&&Number.isFinite(+r.amount)));
+  const targetMonth=monthOf(asOfDate);
+  const targetStart=bounds(targetMonth).start;
+  const monthFactor=365.25/7/12;
+  const signals=[];
+
+  // 近期信号：取月初之前最近一个完整自然周（周一至周日），不拿只有一两天的本周数据冒充整周。
+  const targetWeekStartDate=new Date(targetStart+'T12:00:00');
+  targetWeekStartDate.setDate(targetWeekStartDate.getDate()-((targetWeekStartDate.getDay()+6)%7));
+  const latestWeekEndDate=new Date(targetWeekStartDate);latestWeekEndDate.setDate(latestWeekEndDate.getDate()-1);
+  const latestWeekEnd=iso(latestWeekEndDate);
+  const latestWeekStartDate=new Date(latestWeekEndDate);latestWeekStartDate.setDate(latestWeekStartDate.getDate()-6);
+  const latestWeekStart=iso(latestWeekStartDate);
+  const latestWeekActivity=datedRows.some(r=>r.date>=latestWeekStart&&r.date<=latestWeekEnd&&(r.type==='profit'||r.type==='add'));
+  let latestWeekRate=null;
+  if(latestWeekActivity){
+    const p=periodProfit(latestWeekStart,latestWeekEnd);
+    const adds=additions(datedRows.filter(r=>r.type==='add'&&r.date>=latestWeekStart&&r.date<=latestWeekEnd));
+    const base=principalBefore(latestWeekStart)+adds;
+    if(base>0)latestWeekRate=p/base;
+  }
+  if(latestWeekRate!==null)signals.push({rate:latestWeekRate*monthFactor,weight:.40,name:'最近完整一周'});
+
+  // 月度信号：使用上月数据，但若最近完整周位于上月，则从上月区间中剔除该周，避免同一批盈亏被重复加权。
+  const prevMonthDate=new Date(targetStart+'T12:00:00');prevMonthDate.setDate(0);
+  const prevMonth=monthOf(iso(prevMonthDate));
+  const prevBounds=bounds(prevMonth);
+  let monthSignalEnd=prevBounds.end;
+  if(latestWeekStart>=prevBounds.start&&latestWeekStart<=prevBounds.end){
+    const beforeLatestWeek=new Date(latestWeekStart+'T12:00:00');beforeLatestWeek.setDate(beforeLatestWeek.getDate()-1);
+    monthSignalEnd=iso(beforeLatestWeek);
+  }
+  const monthSignalActivity=monthSignalEnd>=prevBounds.start&&datedRows.some(r=>r.date>=prevBounds.start&&r.date<=monthSignalEnd&&(r.type==='profit'||r.type==='add'));
+  let previousMonthRate=null;
+  if(monthSignalActivity){
+    const p=periodProfit(prevBounds.start,monthSignalEnd);
+    const adds=additions(datedRows.filter(r=>r.type==='add'&&r.date>=prevBounds.start&&r.date<=monthSignalEnd));
+    const base=monthPrincipalStart(prevMonth)+adds;
+    if(base>0)previousMonthRate=p/base;
+  }
+  if(previousMonthRate!==null)signals.push({rate:previousMonthRate,weight:.35,name:'上月（剔除最近完整周）'});
+
+  // 历史信号：最多回看三个月的完整自然周，排除上月及最近周，避免不同信号重复使用同一段盈亏。
+  const cutoffDate=new Date(targetStart+'T12:00:00');cutoffDate.setMonth(cutoffDate.getMonth()-3);
+  const cutoff=iso(cutoffDate);
+  const historicalRates=[];
+  const histEndDate=new Date(prevBounds.start+'T12:00:00');histEndDate.setDate(histEndDate.getDate()-1);
+  // 只统计结束时间早于上月开始的完整周，历史段与“最近完整一周/上月表现”不重叠。
+  let weekEndDate=new Date(histEndDate);
+  weekEndDate.setDate(weekEndDate.getDate()-((weekEndDate.getDay()+6)%7)-1);
+  while(iso(weekEndDate)>=cutoff){
+    const b=iso(weekEndDate);
+    const weekBeginDate=new Date(weekEndDate);weekBeginDate.setDate(weekBeginDate.getDate()-6);
+    const a=iso(weekBeginDate);
+    if(a<cutoff)break;
+    const activity=datedRows.some(r=>r.date>=a&&r.date<=b&&(r.type==='profit'||r.type==='add'));
+    if(activity){
+      const p=periodProfit(a,b);
+      const adds=additions(datedRows.filter(r=>r.type==='add'&&r.date>=a&&r.date<=b));
+      const base=principalBefore(a)+adds;
+      if(base>0)historicalRates.push(p/base);
+    }
+    weekEndDate.setDate(weekEndDate.getDate()-7);
+  }
+  if(historicalRates.length)signals.push({rate:historicalRates.reduce((a,b)=>a+b,0)/historicalRates.length*monthFactor,weight:.25,name:'此前历史表现'});
+
+  if(!signals.length){
+    return {pessimistic:0,low:0,mid:0,high:0,label:'月初可用的历史交易数据不足，暂无法可靠预测'};
+  }
+  const weightTotal=signals.reduce((sum,x)=>sum+x.weight,0);
+  const expectedRate=signals.reduce((sum,x)=>sum+x.rate*x.weight,0)/weightTotal;
+  let volatilityRate=0;
+  if(historicalRates.length>1){
+    const mean=historicalRates.reduce((a,b)=>a+b,0)/historicalRates.length;
+    const variance=historicalRates.reduce((sum,r)=>sum+(r-mean)**2,0)/(historicalRates.length-1);
+    volatilityRate=Math.sqrt(Math.max(0,variance))*Math.sqrt(monthFactor);
+  }else if(signals.length>1){
+    const variance=signals.reduce((sum,x)=>sum+(x.rate-expectedRate)**2,0)/(signals.length-1);
+    volatilityRate=Math.sqrt(Math.max(0,variance));
+  }
+  const expectedProfit=currentCapital*expectedRate;
+  const volatilityProfit=currentCapital*volatilityRate;
+  const historyLabel=historicalRates.length?`此前历史含${historicalRates.length}个有效自然周`:'此前完整周历史不足';
+  return {pessimistic:expectedProfit-2*volatilityProfit,low:expectedProfit-volatilityProfit,mid:expectedProfit,high:expectedProfit+volatilityProfit,label:`参考最近完整一周、上月及近三个月历史（${historyLabel}）；预测已按月初本金固定`};
+}
+
+function getMonthlyForecast(ym){
+  // 每个月只生成并保存一次快照。若本月中途才打开，也严格按本月1日可见的数据生成，之后不随记账变化。
+  settings.forecasts=settings.forecasts&&typeof settings.forecasts==='object'?settings.forecasts:{};
+  const existing=settings.forecasts[ym];
+  if(existing&&existing.month===ym&&Number.isFinite(Number(existing.baseCapital))&&existing.values&&Number.isFinite(Number(existing.values.mid)))return existing;
+  const {start}=bounds(ym);
+  const baseCapital=activePrincipal(start);
+  const fallback=periodProfit(start,start);
+  const computed=buildForecast(start,baseCapital,fallback);
+  const snapshot={month:ym,generatedFor:start,baseCapital,values:{pessimistic:Number(computed.pessimistic)||0,low:Number(computed.low)||0,mid:Number(computed.mid)||0,high:Number(computed.high)||0},label:computed.label||'本月预测已生成'};
+  settings.forecasts[ym]=snapshot;
+  save();
+  return snapshot;
+}
+
+function render(){const d=today(),ym=monthOf(d),{start,end}=bounds(ym),current=activePrincipal(d),dayProfit=periodProfit(d,d),weekStart=new Date(d+'T12:00:00');weekStart.setDate(weekStart.getDate()-((weekStart.getDay()+6)%7));const ws=iso(weekStart),weekProfit=periodProfit(ws,d),weekAdds=additions(rows.filter(r=>r.type==='add'&&r.date>=ws&&r.date<=d)),weekInvested=principalBefore(ws)+weekAdds,monthProfit=periodProfit(start,d),monthAdds=additions(rows.filter(r=>r.type==='add'&&r.date>=start&&r.date<=d)),startP=monthPrincipalStart(ym),monthInvested=startP+monthAdds,allProfit=periodProfit('0000-01-01',d),allAdds=additions();$('todayText').textContent=cnDate(d,true);$('currentMonthLabel').textContent=`${ym.replace('-','年')}月`;$('todayInvestment').textContent=fmt(current);$('todayProfit').textContent=signed(dayProfit);color($('todayProfit'),dayProfit);$('todayRate').textContent=pct(rate(dayProfit,current));color($('todayRate'),dayProfit);$('weekProfit').textContent=signed(weekProfit);color($('weekProfit'),weekProfit);$('weekRate').textContent=pct(rate(weekProfit,weekInvested));color($('weekRate'),weekProfit);$('monthInvested').textContent=fmt(monthInvested);$('monthProfitHome').textContent=signed(monthProfit);color($('monthProfitHome'),monthProfit);$('effectivePrincipal').textContent=fmt(current);$('monthRateHome').textContent=pct(rate(monthProfit,monthInvested));color($('monthRateHome'),monthProfit);$('totalProfit').textContent=signed(allProfit);color($('totalProfit'),allProfit);const initialBase=rows.find(r=>r.type==='initial');$('totalRate').textContent=pct(rate(allProfit,initialBase?+initialBase.amount:current));color($('totalRate'),allProfit);const addCount=rows.filter(r=>r.type==='add').length;$('totalAdded').textContent=`${addCount}次 / ${fmt(allAdds)}`;$('monthCaption').textContent=ym.replace('-','年')+'月累计';$('monthBudget').value=settings.budget[ym]??'';$('monthTarget').value=settings.target[ym]??'';const forecast=getMonthlyForecast(ym),forecastValues=forecast.values,forecastBase=Number(forecast.baseCapital)||0;const scenarioValues=[['pessimisticProfit','pessimisticRate',forecastValues.pessimistic],['lowProfit','lowRate',forecastValues.low],['midProfit','midRate',forecastValues.mid],['highProfit','highRate',forecastValues.high]];scenarioValues.forEach(([profitId,rateId,v])=>{if($(profitId)){$(profitId).textContent=signed(v);color($(profitId),v)}if($(rateId))$(rateId).textContent=pct(rate(v,forecastBase))});if($('forecastAssets'))$('forecastAssets').textContent=fmt(forecastBase+forecastValues.mid);if($('forecastBasis'))$('forecastBasis').textContent=forecast.label;
+const months=monthListValues();$('entryMonth').innerHTML=months.map(m=>`<option value="${m}">${m.replace('-','年')}月</option>`).join('');if(!$('entryMonth').value)$('entryMonth').value=ym;renderRecords();renderHistory()}
+function cnDate(date,full=false){if(!date)return '';const a=date.split('-').map(Number);return full?`${a[0]}年${a[1]}月${a[2]}日`:`${a[1]}月${a[2]}日`}function renderRecords(){if(!$('recordRows'))return;const ym=$('entryMonth').value||monthOf(today()),list=byDate(rows.filter(r=>monthOf(r.date)===ym)).reverse();$('recordRows').innerHTML=list.map(r=>`<tr><td>${esc(cnDate(r.date))}</td><td><span class="tag">${typeLabel(r.type)}</span></td><td class="${r.type==='profit'?(r.amount>=0?'green':'red'):r.type==='add'||r.type==='initial'?'blue':''}">${r.type==='profit'?signed(+r.amount):fmt(+r.amount)}</td><td><button class="linkbtn" data-edit="${r.id}">改</button><button class="linkbtn del" data-del="${r.id}">删</button></td></tr>`).join('');$('recordEmpty').style.display=list.length?'none':'block'}function renderHistory(){const months=monthListValues();$('monthList').classList.toggle('hide',!!historyMonth);$('historyDetail').classList.toggle('hide',!historyMonth);$('monthList').innerHTML=months.map(m=>{const {start,end}=bounds(m),p=periodProfit(start,end),adds=additions(rows.filter(r=>r.type==='add'&&r.date>=start&&r.date<=end));return `<button class="month-item" data-month="${m}"><span><strong>${m.replace('-','年')}月</strong><small>追加本金 ${fmt(adds)}</small></span><span class="right"><b class="${p>0?'green':p<0?'red':''}">${signed(p)}</b><small>当月盈亏　›</small></span></button>`}).join('');if(historyMonth){const {start,end}=bounds(historyMonth),list=byDate(rows.filter(r=>r.date>=start&&r.date<=end)).reverse(),p=periodProfit(start,end);$('historyMonthTitle').textContent=historyMonth.replace('-','年')+'月';$('histStart').textContent=fmt(monthPrincipalStart(historyMonth));$('histAdds').textContent=fmt(additions(rows.filter(r=>r.type==='add'&&r.date>=start&&r.date<=end)));$('histProfit').textContent=signed(p);color($('histProfit'),p);$('histEnd').textContent=fmt(activePrincipal(end));$('histRows').innerHTML=list.map(r=>`<tr><td>${esc(cnDate(r.date,true))}</td><td>${typeLabel(r.type)}</td><td class="${r.type==='profit'?(r.amount>=0?'green':'red'):r.type==='add'||r.type==='initial'?'blue':''}">${r.type==='profit'?signed(+r.amount):fmt(+r.amount)}</td></tr>`).join('')}}$('monthList').onclick=e=>{const b=e.target.closest('[data-month]');if(b){historyMonth=b.dataset.month;renderHistory()}};$('historyBack').onclick=()=>{historyMonth=null;renderHistory()};$('entryMonth').onchange=renderRecords;
+function setMode(m){mode=m;document.querySelectorAll('#entryTabs button').forEach(b=>b.classList.toggle('active',b.dataset.mode===m));$('amountLabel').textContent=m==='profit'?'盈亏金额':m==='add'?'本次追加本金':'初始本金金额';$('entryAmount').placeholder=m==='profit'?'例如：-700 或 700':'输入金额';$('entryHint').textContent=m==='add'?'系统读取你录入的初始本金作为判断标准：单次追加低于初始本金时，原本金保留并累加追加金额；单次追加大于或等于初始本金时，上一笔剩余本金视为亏损，新一笔本金等于本次追加金额。每日、每周、每月及跨月带入均按此规则计算。':m==='initial'?'在这里录入账本的初始本金；系统将它作为每日、每周、每月及跨周期追加判断的统一标准。之后如需投入新资金，请选择“追加本金”。':''}document.querySelectorAll('#entryTabs button').forEach(b=>b.onclick=()=>setMode(b.dataset.mode));function resetForm(){editing=null;$('entryForm').reset();$('entryDate').value=today();$('cancelEdit').hidden=true;$('saveEntry').textContent='保存记录'}$('entryForm').onsubmit=e=>{e.preventDefault();const date=$('entryDate').value,amount=Number($('entryAmount').value);if(!date||!Number.isFinite(amount)||amount<0&&mode!=='profit'||mode==='profit'&&amount===0){toast('请检查日期和金额');return}if(mode==='initial'&&rows.some(r=>r.type==='initial')){toast('已有初始本金记录；后续请使用“追加本金”');return}const old=rows.find(r=>r.id===editing);const item={id:editing||'r'+Date.now()+Math.random().toString(36).slice(2,7),date,type:mode,amount,note:old?.note||'',createdAt:old?old.createdAt:Date.now()};if(editing)rows=rows.map(r=>r.id===editing?item:r);else rows.push(item);save();resetForm();render();toast('已保存')};$('cancelEdit').onclick=resetForm;$('recordRows').onclick=e=>{const ed=e.target.closest('[data-edit]'),del=e.target.closest('[data-del]');if(ed){const r=rows.find(x=>x.id===ed.dataset.edit);if(!r)return;editing=r.id;mode=r.type;setMode(mode);$('entryDate').value=r.date;$('entryAmount').value=r.amount;$('saveEntry').textContent='保存修改';$('cancelEdit').hidden=false;window.scrollTo({top:0,behavior:'smooth'})}if(del){const r=rows.find(x=>x.id===del.dataset.del);if(r&&confirm('确定删除这条记录？')){rows=rows.filter(x=>x.id!==r.id);save();render();toast('记录已删除')}}};['lowFactor','midFactor','highFactor'].forEach(id=>$(id)?.addEventListener('input',render));$('saveSettings').onclick=()=>{const ym=monthOf(today());settings.budget[ym]=num('monthBudget');settings.target[ym]=num('monthTarget');save();toast('设置已保存')};$('export').onclick=()=>{const blob=new Blob([JSON.stringify({app:'安的投资账本',version:2,exportedAt:new Date().toISOString(),records:rows,settings},null,2)],{type:'application/json'}),url=URL.createObjectURL(blob),a=document.createElement('a');a.href=url;a.download='安的投资账本_备份_'+today()+'.json';a.click();URL.revokeObjectURL(url);toast('备份文件已导出')};$('importBtn').onclick=()=>$('importFile').click();$('importFile').onchange=async e=>{const f=e.target.files[0];if(!f)return;try{const d=JSON.parse(await f.text()),arr=Array.isArray(d)?d:d.records;if(!Array.isArray(arr)||arr.some(r=>!r||!r.id||!r.date||!['initial','add','profit'].includes(r.type)||!Number.isFinite(Number(r.amount))))throw 0;if(!confirm(`备份中有 ${arr.length} 条记录。恢复将替换当前账本，是否继续？`))return;rows=arr.map(r=>({...r,amount:+r.amount,createdAt:+r.createdAt||Date.now()}));settings=d.settings||{budget:{},target:{},forecasts:{}};settings.budget=settings.budget&&typeof settings.budget==='object'?settings.budget:{};settings.target=settings.target&&typeof settings.target==='object'?settings.target:{};settings.forecasts=settings.forecasts&&typeof settings.forecasts==='object'?settings.forecasts:{};save();render();toast('恢复成功')}catch(_){toast('恢复失败：文件格式不正确')}finally{e.target.value=''}};
+try{const d=JSON.parse(localStorage.getItem(KEY)||'[]');if(Array.isArray(d)){const sorted=d.filter(r=>r&&r.id&&r.date&&Number.isFinite(+r.amount)).sort((a,b)=>a.date.localeCompare(b.date)||(a.createdAt||0)-(b.createdAt||0));let sawInitial=false;rows=sorted.map(r=>{if(r.type==='initial'||r.type==='add')return {...r,amount:+r.amount};if(r.type==='invest'){const type=sawInitial?'add':'initial';sawInitial=true;return {...r,type,amount:+r.amount}}if(r.type==='loss'||r.type==='fee')return {...r,type:'profit',amount:-Math.abs(+r.amount)};if(r.type==='profit')return {...r,type:'profit',amount:+r.amount};return null}).filter(Boolean)}settings=JSON.parse(localStorage.getItem(SETKEY)||'{"budget":{},"target":{},"forecasts":{}}');if(!settings||typeof settings!=='object')settings={};settings.budget=settings.budget&&typeof settings.budget==='object'?settings.budget:{};settings.target=settings.target&&typeof settings.target==='object'?settings.target:{};settings.forecasts=settings.forecasts&&typeof settings.forecasts==='object'?settings.forecasts:{}}catch(_){}$('entryDate').value=today();$('entryMonth').value=monthOf(today());setMode('profit');render();
+})();
+</script></body></html>
